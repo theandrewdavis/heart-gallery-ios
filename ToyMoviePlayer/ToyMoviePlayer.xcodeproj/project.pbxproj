@@ -17,6 +17,9 @@
 		49509EA3175BFCE000296F68 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509EA2175BFCE000296F68 /* Default@2x.png */; };
 		49509EA5175BFCE000296F68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509EA4175BFCE000296F68 /* Default-568h@2x.png */; };
 		49509EA8175BFCE000296F68 /* HGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509EA7175BFCE000296F68 /* HGViewController.m */; };
+		49509EB7175CBB6000296F68 /* acacia-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49509EB5175CBB6000296F68 /* acacia-video.mp4 */; };
+		49509EB8175CBB6000296F68 /* Video-play-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509EB6175CBB6000296F68 /* Video-play-button@2x.png */; };
+		49509EBA175CBDA700296F68 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49509EB9175CBDA700296F68 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		49509EA4175BFCE000296F68 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		49509EA6175BFCE000296F68 /* HGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGViewController.h; sourceTree = "<group>"; };
 		49509EA7175BFCE000296F68 /* HGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGViewController.m; sourceTree = "<group>"; };
+		49509EB5175CBB6000296F68 /* acacia-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "acacia-video.mp4"; sourceTree = "<group>"; };
+		49509EB6175CBB6000296F68 /* Video-play-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Video-play-button@2x.png"; sourceTree = "<group>"; };
+		49509EB9175CBDA700296F68 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49509EBA175CBDA700296F68 /* MediaPlayer.framework in Frameworks */,
 				49509E8F175BFCE000296F68 /* UIKit.framework in Frameworks */,
 				49509E91175BFCE000296F68 /* Foundation.framework in Frameworks */,
 				49509E93175BFCE000296F68 /* CoreGraphics.framework in Frameworks */,
@@ -54,6 +61,7 @@
 		49509E82175BFCE000296F68 = {
 			isa = PBXGroup;
 			children = (
+				49509EB9175CBDA700296F68 /* MediaPlayer.framework */,
 				49509E94175BFCE000296F68 /* ToyMoviePlayer */,
 				49509E8D175BFCE000296F68 /* Frameworks */,
 				49509E8C175BFCE000296F68 /* Products */,
@@ -93,6 +101,7 @@
 		49509E95175BFCE000296F68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				49509EB4175CBB6000296F68 /* Media */,
 				49509E96175BFCE000296F68 /* ToyMoviePlayer-Info.plist */,
 				49509E97175BFCE000296F68 /* InfoPlist.strings */,
 				49509E9A175BFCE000296F68 /* main.m */,
@@ -102,6 +111,15 @@
 				49509EA4175BFCE000296F68 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49509EB4175CBB6000296F68 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				49509EB5175CBB6000296F68 /* acacia-video.mp4 */,
+				49509EB6175CBB6000296F68 /* Video-play-button@2x.png */,
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +178,8 @@
 				49509EA1175BFCE000296F68 /* Default.png in Resources */,
 				49509EA3175BFCE000296F68 /* Default@2x.png in Resources */,
 				49509EA5175BFCE000296F68 /* Default-568h@2x.png in Resources */,
+				49509EB7175CBB6000296F68 /* acacia-video.mp4 in Resources */,
+				49509EB8175CBB6000296F68 /* Video-play-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
