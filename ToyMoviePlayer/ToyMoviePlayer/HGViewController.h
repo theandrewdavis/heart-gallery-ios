@@ -10,9 +10,4 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface HGViewController : UIViewController <UITextFieldDelegate>
-
-@property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) UILabel *label;
-@property (nonatomic, strong) MPMoviePlayerController *moviePlayer;
-
 @end

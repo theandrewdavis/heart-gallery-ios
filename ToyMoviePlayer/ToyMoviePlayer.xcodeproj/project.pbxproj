@@ -20,6 +20,7 @@
 		49509EB7175CBB6000296F68 /* acacia-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49509EB5175CBB6000296F68 /* acacia-video.mp4 */; };
 		49509EB8175CBB6000296F68 /* Video-play-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509EB6175CBB6000296F68 /* Video-play-button@2x.png */; };
 		49509EBA175CBDA700296F68 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49509EB9175CBDA700296F68 /* MediaPlayer.framework */; };
+		49509EBD175E06D600296F68 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509EBC175E06D600296F68 /* HGMovieView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		49509EB5175CBB6000296F68 /* acacia-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "acacia-video.mp4"; sourceTree = "<group>"; };
 		49509EB6175CBB6000296F68 /* Video-play-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Video-play-button@2x.png"; sourceTree = "<group>"; };
 		49509EB9175CBDA700296F68 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		49509EBB175E06D600296F68 /* HGMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMovieView.h; sourceTree = "<group>"; };
+		49509EBC175E06D600296F68 /* HGMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMovieView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				49509E9E175BFCE000296F68 /* HGAppDelegate.m */,
 				49509EA6175BFCE000296F68 /* HGViewController.h */,
 				49509EA7175BFCE000296F68 /* HGViewController.m */,
+				49509EBB175E06D600296F68 /* HGMovieView.h */,
+				49509EBC175E06D600296F68 /* HGMovieView.m */,
 				49509E95175BFCE000296F68 /* Supporting Files */,
 			);
 			path = ToyMoviePlayer;
@@ -193,6 +198,7 @@
 				49509E9B175BFCE000296F68 /* main.m in Sources */,
 				49509E9F175BFCE000296F68 /* HGAppDelegate.m in Sources */,
 				49509EA8175BFCE000296F68 /* HGViewController.m in Sources */,
+				49509EBD175E06D600296F68 /* HGMovieView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
