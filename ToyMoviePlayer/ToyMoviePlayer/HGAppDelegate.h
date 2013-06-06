@@ -11,9 +11,6 @@
 @class HGViewController;
 
 @interface HGAppDelegate : UIResponder <UIApplicationDelegate>
-
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) HGViewController *viewController;
-
 @end

@@ -20,10 +20,7 @@
 		49509EBA175CBDA700296F68 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49509EB9175CBDA700296F68 /* MediaPlayer.framework */; };
 		49509EBD175E06D600296F68 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509EBC175E06D600296F68 /* HGMovieView.m */; };
 		49509EC4175EBA2800296F68 /* acacia-video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 49509EBF175EBA2800296F68 /* acacia-video.mp4 */; };
-		49509EC5175EBA2800296F68 /* video-play-1.svg in Resources */ = {isa = PBXBuildFile; fileRef = 49509EC0175EBA2800296F68 /* video-play-1.svg */; };
-		49509EC6175EBA2800296F68 /* Video-play-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509EC1175EBA2800296F68 /* Video-play-button@2x.png */; };
 		49509EC7175EBA2800296F68 /* video-play.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 49509EC2175EBA2800296F68 /* video-play.pdf */; };
-		49509EC8175EBA2800296F68 /* video-play.svg in Resources */ = {isa = PBXBuildFile; fileRef = 49509EC3175EBA2800296F68 /* video-play.svg */; };
 		49509ED4175EBA7B00296F68 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 49509ECB175EBA7B00296F68 /* LICENSE.txt */; };
 		49509ED5175EBA7B00296F68 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509ECD175EBA7B00296F68 /* NSString+MD5.m */; };
 		49509ED6175EBA7B00296F68 /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509ECF175EBA7B00296F68 /* PDFView.m */; };
@@ -51,10 +48,7 @@
 		49509EBB175E06D600296F68 /* HGMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMovieView.h; sourceTree = "<group>"; };
 		49509EBC175E06D600296F68 /* HGMovieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMovieView.m; sourceTree = "<group>"; };
 		49509EBF175EBA2800296F68 /* acacia-video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "acacia-video.mp4"; sourceTree = "<group>"; };
-		49509EC0175EBA2800296F68 /* video-play-1.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "video-play-1.svg"; sourceTree = "<group>"; };
-		49509EC1175EBA2800296F68 /* Video-play-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Video-play-button@2x.png"; sourceTree = "<group>"; };
 		49509EC2175EBA2800296F68 /* video-play.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "video-play.pdf"; sourceTree = "<group>"; };
-		49509EC3175EBA2800296F68 /* video-play.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "video-play.svg"; sourceTree = "<group>"; };
 		49509ECB175EBA7B00296F68 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		49509ECC175EBA7B00296F68 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		49509ECD175EBA7B00296F68 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
@@ -143,10 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				49509EBF175EBA2800296F68 /* acacia-video.mp4 */,
-				49509EC0175EBA2800296F68 /* video-play-1.svg */,
-				49509EC1175EBA2800296F68 /* Video-play-button@2x.png */,
 				49509EC2175EBA2800296F68 /* video-play.pdf */,
-				49509EC3175EBA2800296F68 /* video-play.svg */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -232,10 +223,7 @@
 				49509EA3175BFCE000296F68 /* Default@2x.png in Resources */,
 				49509EA5175BFCE000296F68 /* Default-568h@2x.png in Resources */,
 				49509EC4175EBA2800296F68 /* acacia-video.mp4 in Resources */,
-				49509EC5175EBA2800296F68 /* video-play-1.svg in Resources */,
-				49509EC6175EBA2800296F68 /* Video-play-button@2x.png in Resources */,
 				49509EC7175EBA2800296F68 /* video-play.pdf in Resources */,
-				49509EC8175EBA2800296F68 /* video-play.svg in Resources */,
 				49509ED4175EBA7B00296F68 /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

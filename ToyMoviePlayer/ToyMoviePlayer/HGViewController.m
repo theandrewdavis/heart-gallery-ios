@@ -21,7 +21,7 @@
     
     // Add the movie view
     NSURL *movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"acacia-video" ofType:@"mp4"]];
-    CGRect movieViewFrame = [HGMovieView frameWithAspectRatio:9.0 / 5.0 withinBounds:self.view.bounds withMargin:10.0 yOffset:200.0];
+    CGRect movieViewFrame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.width / 9.0 * 5.0);
     HGMovieView *movieView = [[HGMovieView alloc] initWithFrame:movieViewFrame controller:self movieURL:movieURL];
     [self.view addSubview:movieView];
 }

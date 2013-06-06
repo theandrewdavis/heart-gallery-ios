@@ -8,6 +8,7 @@
 
 #import "HGMovieView.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "UIImage+PDF.h"
 
 @implementation HGMovieView
 
@@ -23,15 +24,19 @@
 
 - (void)layoutSubviews
 {
-    // Use a black background for when no poster is given.
+    // Use a black background.
     self.backgroundColor = [UIColor blackColor];
     
-    // TODO add the play button
+    // Add the play button
+    CGFloat playButtonHeight = self.bounds.size.height * 0.25;
+    CGRect playButtonFrame = CGRectMake((self.bounds.size.width - playButtonHeight) / 2.0, (self.bounds.size.height - playButtonHeight) / 2.0, playButtonHeight, playButtonHeight);
+    UIImageView *playButtonView = [[UIImageView alloc] initWithImage:[UIImage imageWithPDFNamed:@"video-play.pdf" atHeight:playButtonHeight]];
+    playButtonView.frame = playButtonFrame;
+    [self addSubview:playButtonView];
     
     // Add a tap recognizer to allow the user to play the movie by tapping it.
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self addGestureRecognizer:tapRecognizer];
-
 }
 
 // Callback for when the view is tapped.
