@@ -26,6 +26,7 @@
 		49509ED6175EBA7B00296F68 /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509ECF175EBA7B00296F68 /* PDFView.m */; };
 		49509ED7175EBA7B00296F68 /* UIImage+PDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509ED1175EBA7B00296F68 /* UIImage+PDF.m */; };
 		49509ED8175EBA7B00296F68 /* UIView+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509ED3175EBA7B00296F68 /* UIView+Image.m */; };
+		49509EE11760B46C00296F68 /* HGPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509EE01760B46C00296F68 /* HGPortraitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		49509ED1175EBA7B00296F68 /* UIImage+PDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PDF.m"; sourceTree = "<group>"; };
 		49509ED2175EBA7B00296F68 /* UIView+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Image.h"; sourceTree = "<group>"; };
 		49509ED3175EBA7B00296F68 /* UIView+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Image.m"; sourceTree = "<group>"; };
+		49509EDF1760B46C00296F68 /* HGPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGPortraitViewController.h; sourceTree = "<group>"; };
+		49509EE01760B46C00296F68 /* HGPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPortraitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 			children = (
 				49509E9D175BFCE000296F68 /* HGAppDelegate.h */,
 				49509E9E175BFCE000296F68 /* HGAppDelegate.m */,
+				49509EDF1760B46C00296F68 /* HGPortraitViewController.h */,
+				49509EE01760B46C00296F68 /* HGPortraitViewController.m */,
 				49509EA6175BFCE000296F68 /* HGViewController.h */,
 				49509EA7175BFCE000296F68 /* HGViewController.m */,
 				49509EBB175E06D600296F68 /* HGMovieView.h */,
@@ -243,6 +248,7 @@
 				49509ED6175EBA7B00296F68 /* PDFView.m in Sources */,
 				49509ED7175EBA7B00296F68 /* UIImage+PDF.m in Sources */,
 				49509ED8175EBA7B00296F68 /* UIView+Image.m in Sources */,
+				49509EE11760B46C00296F68 /* HGPortraitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

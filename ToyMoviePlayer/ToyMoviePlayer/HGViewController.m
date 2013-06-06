@@ -10,7 +10,6 @@
 #import "HGMovieView.h"
 
 @interface HGViewController ()
-
 @end
 
 @implementation HGViewController

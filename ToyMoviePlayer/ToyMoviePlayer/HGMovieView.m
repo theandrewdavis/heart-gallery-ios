@@ -50,15 +50,4 @@
     UIGraphicsEndImageContext();
 }
 
-// Create a frame for the movie view.
-+ (CGRect)frameWithAspectRatio:(CGFloat)aspectRatio withinBounds:(CGRect)bounds withMargin:(CGFloat)margin yOffset:(CGFloat)yOffset
-{
-    CGRect childFrame = bounds;
-    childFrame.size.width -= 2 * margin;
-    childFrame.size.height = (1.0 / aspectRatio) * childFrame.size.width;
-    childFrame.origin.x = margin;
-    childFrame.origin.y = yOffset;
-    return childFrame;
-}
-
 @end

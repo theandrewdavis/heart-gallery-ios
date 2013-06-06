@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGPortraitViewController.h"
 
-@interface HGViewController : UIViewController
+@interface HGViewController : HGPortraitViewController
 @end
