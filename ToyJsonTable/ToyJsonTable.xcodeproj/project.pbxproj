@@ -17,6 +17,7 @@
 		49509F031765FCB800296F68 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509F021765FCB800296F68 /* Default@2x.png */; };
 		49509F051765FCB800296F68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509F041765FCB800296F68 /* Default-568h@2x.png */; };
 		49509F081765FCB800296F68 /* HGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509F071765FCB800296F68 /* HGViewController.m */; };
+		49509F18176CD9C900296F68 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 49509F17176CD9C900296F68 /* response.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		49509F041765FCB800296F68 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		49509F061765FCB800296F68 /* HGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGViewController.h; sourceTree = "<group>"; };
 		49509F071765FCB800296F68 /* HGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGViewController.m; sourceTree = "<group>"; };
+		49509F17176CD9C900296F68 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = response.json; path = Media/response.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		49509EF51765FCB800296F68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				49509F19176CD9DC00296F68 /* Media */,
 				49509EF61765FCB800296F68 /* ToyJsonTable-Info.plist */,
 				49509EF71765FCB800296F68 /* InfoPlist.strings */,
 				49509EFA1765FCB800296F68 /* main.m */,
@@ -102,6 +105,14 @@
 				49509F041765FCB800296F68 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49509F19176CD9DC00296F68 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				49509F17176CD9C900296F68 /* response.json */,
+			);
+			name = Media;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +171,7 @@
 				49509F011765FCB800296F68 /* Default.png in Resources */,
 				49509F031765FCB800296F68 /* Default@2x.png in Resources */,
 				49509F051765FCB800296F68 /* Default-568h@2x.png in Resources */,
+				49509F18176CD9C900296F68 /* response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"Hello!");
+
+    // Load children dictionary from JSON file.
+    NSError *error = nil;
+    NSString* responsePath = [[NSBundle mainBundle] pathForResource:@"response" ofType:@"json"];
+    NSString *jsonString = [[NSString alloc] initWithContentsOfFile:responsePath encoding:NSUTF8StringEncoding error:&error];
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    self.children = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+
+    for (NSDictionary *child in self.children[@"children"]) {
+        NSLog(@"%@", child[@"name"]);
+    }
+
 }
 
 @end
