@@ -22,10 +22,10 @@
 		49509F011765FCB800296F68 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509F001765FCB800296F68 /* Default.png */; };
 		49509F031765FCB800296F68 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509F021765FCB800296F68 /* Default@2x.png */; };
 		49509F051765FCB800296F68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509F041765FCB800296F68 /* Default-568h@2x.png */; };
-		49509F081765FCB800296F68 /* HGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509F071765FCB800296F68 /* HGViewController.m */; };
 		49509F18176CD9C900296F68 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 49509F17176CD9C900296F68 /* response.json */; };
 		49509F1C176CE83A00296F68 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509F1B176CE83A00296F68 /* HGChildTableViewController.m */; };
-		4963242B1771CA3C00F40FC1 /* HGPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4963242A1771CA3C00F40FC1 /* HGPortraitViewController.m */; };
+		4963242E1771CF7000F40FC1 /* HGChildDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4963242D1771CF7000F40FC1 /* HGChildDetailViewController.m */; };
+		496324341771D98F00F40FC1 /* HGPortraitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496324331771D98F00F40FC1 /* HGPortraitNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,13 +48,13 @@
 		49509F001765FCB800296F68 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		49509F021765FCB800296F68 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		49509F041765FCB800296F68 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		49509F061765FCB800296F68 /* HGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGViewController.h; sourceTree = "<group>"; };
-		49509F071765FCB800296F68 /* HGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGViewController.m; sourceTree = "<group>"; };
 		49509F17176CD9C900296F68 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = response.json; path = Media/response.json; sourceTree = "<group>"; };
 		49509F1A176CE83A00296F68 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
 		49509F1B176CE83A00296F68 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
-		496324291771CA3C00F40FC1 /* HGPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGPortraitViewController.h; sourceTree = "<group>"; };
-		4963242A1771CA3C00F40FC1 /* HGPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPortraitViewController.m; sourceTree = "<group>"; };
+		4963242C1771CF7000F40FC1 /* HGChildDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildDetailViewController.h; sourceTree = "<group>"; };
+		4963242D1771CF7000F40FC1 /* HGChildDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildDetailViewController.m; sourceTree = "<group>"; };
+		496324321771D98F00F40FC1 /* HGPortraitNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGPortraitNavigationController.h; sourceTree = "<group>"; };
+		496324331771D98F00F40FC1 /* HGPortraitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPortraitNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +103,12 @@
 			children = (
 				49509EFD1765FCB800296F68 /* HGAppDelegate.h */,
 				49509EFE1765FCB800296F68 /* HGAppDelegate.m */,
-				496324291771CA3C00F40FC1 /* HGPortraitViewController.h */,
-				4963242A1771CA3C00F40FC1 /* HGPortraitViewController.m */,
-				49509F061765FCB800296F68 /* HGViewController.h */,
-				49509F071765FCB800296F68 /* HGViewController.m */,
+				496324321771D98F00F40FC1 /* HGPortraitNavigationController.h */,
+				496324331771D98F00F40FC1 /* HGPortraitNavigationController.m */,
 				49509F1A176CE83A00296F68 /* HGChildTableViewController.h */,
 				49509F1B176CE83A00296F68 /* HGChildTableViewController.m */,
+				4963242C1771CF7000F40FC1 /* HGChildDetailViewController.h */,
+				4963242D1771CF7000F40FC1 /* HGChildDetailViewController.m */,
 				49509EF51765FCB800296F68 /* Supporting Files */,
 			);
 			path = ToyJsonTable;
@@ -218,9 +218,9 @@
 			files = (
 				49509EFB1765FCB800296F68 /* main.m in Sources */,
 				49509EFF1765FCB800296F68 /* HGAppDelegate.m in Sources */,
-				49509F081765FCB800296F68 /* HGViewController.m in Sources */,
 				49509F1C176CE83A00296F68 /* HGChildTableViewController.m in Sources */,
-				4963242B1771CA3C00F40FC1 /* HGPortraitViewController.m in Sources */,
+				4963242E1771CF7000F40FC1 /* HGChildDetailViewController.m in Sources */,
+				496324341771D98F00F40FC1 /* HGPortraitNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

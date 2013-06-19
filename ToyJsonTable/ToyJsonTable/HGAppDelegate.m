@@ -7,8 +7,8 @@
 //
 
 #import "HGAppDelegate.h"
-
-#import "HGViewController.h"
+#import "HGPortraitNavigationController.h"
+#import "HGChildTableViewController.h"
 
 @implementation HGAppDelegate
 
@@ -17,9 +17,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    // Set an HGViewController as top level view controller, the "home page" of the app.
-    HGViewController *viewController = [[HGViewController alloc] init];
-    self.window.rootViewController = viewController;
+    // Make the root view controller a navigation controller bar rooted at the child table.
+    HGChildTableViewController *childTableViewController = [[HGChildTableViewController alloc] init];
+    self.window.rootViewController = [[HGPortraitNavigationController alloc] initWithRootViewController:childTableViewController];
     
     [self.window makeKeyAndVisible];
     return YES;

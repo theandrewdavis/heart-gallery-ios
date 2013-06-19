@@ -1,17 +1,18 @@
 //
-//  HGPortraitViewController.m
-//  ToyMoviePlayer
+//  HGPortraitNavigationController.m
+//  ToyJsonTable
 //
-//  Created by Andrew Davis on 6/6/13.
+//  Created by Andrew Davis on 6/19/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "HGPortraitViewController.h"
+#import "HGPortraitNavigationController.h"
 
-@interface HGPortraitViewController ()
+@interface HGPortraitNavigationController ()
+
 @end
 
-@implementation HGPortraitViewController
+@implementation HGPortraitNavigationController
 
 // Require portrait view for iOS 6.
 - (BOOL)shouldAutorotate

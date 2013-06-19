@@ -7,6 +7,7 @@
 //
 
 #import "HGChildTableViewController.h"
+#import "HGChildDetailViewController.h"
 
 #define kChildTableViewRowHeight 90
 #define kChildTableViewLabelLeftMargin 8
@@ -20,13 +21,21 @@
 
 @implementation HGChildTableViewController
 
-// Initialize with an array of dictionaries containing the child details to display.
-- (id)initWithChildren:(NSArray *)children
-{
+- (id)init {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        self.children = children;
         self.tableView.rowHeight = kChildTableViewRowHeight;
+        
+        // Set the title of the navigation bar.
+        self.navigationItem.title = @"Children";
+        
+        // Load children dictionary from JSON file.
+        NSError *error = nil;
+        NSString* responsePath = [[NSBundle mainBundle] pathForResource:@"response" ofType:@"json"];
+        NSString *jsonString = [[NSString alloc] initWithContentsOfFile:responsePath encoding:NSUTF8StringEncoding error:&error];
+        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        self.children = json[@"children"];
     }
     return self;
 }
@@ -82,13 +91,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    HGChildDetailViewController *childDetailView = [[HGChildDetailViewController alloc] init];
+    [self.navigationController pushViewController:childDetailView animated:YES];
 }
+
+
+
+// Require portrait view for iOS 6.
+- (BOOL)shouldAutorotate
+{
+    NSLog(@"shouldAutorotate");
+    return NO;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    NSLog(@"preferredInterfaceOrientationForPresentation");
+    return UIInterfaceOrientationPortrait;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    NSLog(@"supportedInterfaceOrientations");
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+// Require portrait view for iOS 4 and 5.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
 
 @end
