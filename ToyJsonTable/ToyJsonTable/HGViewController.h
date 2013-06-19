@@ -10,6 +10,6 @@
 
 @interface HGViewController : UIViewController
 
-@property (strong, nonatomic) NSDictionary *children;
+@property (strong, nonatomic) UITableViewController *tableViewController;
 
 @end

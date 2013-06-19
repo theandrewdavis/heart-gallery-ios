@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49057CB0176F301C0077A36C /* 1345492076_alex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49057CAA176F301C0077A36C /* 1345492076_alex.jpg */; };
+		49057CB1176F301C0077A36C /* 1355853731_bruce_011.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49057CAB176F301C0077A36C /* 1355853731_bruce_011.jpg */; };
+		49057CB2176F301C0077A36C /* 1367953229_acacia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49057CAC176F301C0077A36C /* 1367953229_acacia.jpg */; };
+		49057CB3176F301C0077A36C /* small_1345492076_alex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49057CAD176F301C0077A36C /* small_1345492076_alex.jpg */; };
+		49057CB4176F301C0077A36C /* small_1355853731_bruce_011.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49057CAE176F301C0077A36C /* small_1355853731_bruce_011.jpg */; };
+		49057CB5176F301C0077A36C /* small_1367953229_acacia.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49057CAF176F301C0077A36C /* small_1367953229_acacia.jpg */; };
 		49509EEF1765FCB700296F68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49509EEE1765FCB700296F68 /* UIKit.framework */; };
 		49509EF11765FCB800296F68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49509EF01765FCB700296F68 /* Foundation.framework */; };
 		49509EF31765FCB800296F68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49509EF21765FCB800296F68 /* CoreGraphics.framework */; };
@@ -18,9 +24,16 @@
 		49509F051765FCB800296F68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49509F041765FCB800296F68 /* Default-568h@2x.png */; };
 		49509F081765FCB800296F68 /* HGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509F071765FCB800296F68 /* HGViewController.m */; };
 		49509F18176CD9C900296F68 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 49509F17176CD9C900296F68 /* response.json */; };
+		49509F1C176CE83A00296F68 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509F1B176CE83A00296F68 /* HGChildTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49057CAA176F301C0077A36C /* 1345492076_alex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1345492076_alex.jpg; path = Media/1345492076_alex.jpg; sourceTree = "<group>"; };
+		49057CAB176F301C0077A36C /* 1355853731_bruce_011.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1355853731_bruce_011.jpg; path = Media/1355853731_bruce_011.jpg; sourceTree = "<group>"; };
+		49057CAC176F301C0077A36C /* 1367953229_acacia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1367953229_acacia.jpg; path = Media/1367953229_acacia.jpg; sourceTree = "<group>"; };
+		49057CAD176F301C0077A36C /* small_1345492076_alex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = small_1345492076_alex.jpg; path = Media/small_1345492076_alex.jpg; sourceTree = "<group>"; };
+		49057CAE176F301C0077A36C /* small_1355853731_bruce_011.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = small_1355853731_bruce_011.jpg; path = Media/small_1355853731_bruce_011.jpg; sourceTree = "<group>"; };
+		49057CAF176F301C0077A36C /* small_1367953229_acacia.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = small_1367953229_acacia.jpg; path = Media/small_1367953229_acacia.jpg; sourceTree = "<group>"; };
 		49509EEB1765FCB700296F68 /* ToyJsonTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyJsonTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49509EEE1765FCB700296F68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49509EF01765FCB700296F68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +50,8 @@
 		49509F061765FCB800296F68 /* HGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGViewController.h; sourceTree = "<group>"; };
 		49509F071765FCB800296F68 /* HGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGViewController.m; sourceTree = "<group>"; };
 		49509F17176CD9C900296F68 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = response.json; path = Media/response.json; sourceTree = "<group>"; };
+		49509F1A176CE83A00296F68 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
+		49509F1B176CE83A00296F68 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +102,8 @@
 				49509EFE1765FCB800296F68 /* HGAppDelegate.m */,
 				49509F061765FCB800296F68 /* HGViewController.h */,
 				49509F071765FCB800296F68 /* HGViewController.m */,
+				49509F1A176CE83A00296F68 /* HGChildTableViewController.h */,
+				49509F1B176CE83A00296F68 /* HGChildTableViewController.m */,
 				49509EF51765FCB800296F68 /* Supporting Files */,
 			);
 			path = ToyJsonTable;
@@ -110,6 +127,12 @@
 		49509F19176CD9DC00296F68 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				49057CAA176F301C0077A36C /* 1345492076_alex.jpg */,
+				49057CAB176F301C0077A36C /* 1355853731_bruce_011.jpg */,
+				49057CAC176F301C0077A36C /* 1367953229_acacia.jpg */,
+				49057CAD176F301C0077A36C /* small_1345492076_alex.jpg */,
+				49057CAE176F301C0077A36C /* small_1355853731_bruce_011.jpg */,
+				49057CAF176F301C0077A36C /* small_1367953229_acacia.jpg */,
 				49509F17176CD9C900296F68 /* response.json */,
 			);
 			name = Media;
@@ -172,6 +195,12 @@
 				49509F031765FCB800296F68 /* Default@2x.png in Resources */,
 				49509F051765FCB800296F68 /* Default-568h@2x.png in Resources */,
 				49509F18176CD9C900296F68 /* response.json in Resources */,
+				49057CB0176F301C0077A36C /* 1345492076_alex.jpg in Resources */,
+				49057CB1176F301C0077A36C /* 1355853731_bruce_011.jpg in Resources */,
+				49057CB2176F301C0077A36C /* 1367953229_acacia.jpg in Resources */,
+				49057CB3176F301C0077A36C /* small_1345492076_alex.jpg in Resources */,
+				49057CB4176F301C0077A36C /* small_1355853731_bruce_011.jpg in Resources */,
+				49057CB5176F301C0077A36C /* small_1367953229_acacia.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +214,7 @@
 				49509EFB1765FCB800296F68 /* main.m in Sources */,
 				49509EFF1765FCB800296F68 /* HGAppDelegate.m in Sources */,
 				49509F081765FCB800296F68 /* HGViewController.m in Sources */,
+				49509F1C176CE83A00296F68 /* HGChildTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +331,7 @@
 				49509F131765FCB800296F68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

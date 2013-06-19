@@ -7,6 +7,7 @@
 //
 
 #import "HGViewController.h"
+#import "HGChildTableViewController.h"
 
 @interface HGViewController ()
 
@@ -25,12 +26,12 @@
     NSString* responsePath = [[NSBundle mainBundle] pathForResource:@"response" ofType:@"json"];
     NSString *jsonString = [[NSString alloc] initWithContentsOfFile:responsePath encoding:NSUTF8StringEncoding error:&error];
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    self.children = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
 
-    for (NSDictionary *child in self.children[@"children"]) {
-        NSLog(@"%@", child[@"name"]);
-    }
-
+    // Display children in a table view.
+    self.tableViewController = [[HGChildTableViewController alloc] initWithChildren:json[@"children"]];
+    self.tableViewController.view.frame = self.view.bounds;
+    [self.view addSubview:self.tableViewController.view];
 }
 
 @end
