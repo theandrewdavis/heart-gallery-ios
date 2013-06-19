@@ -25,6 +25,7 @@
 		49509F081765FCB800296F68 /* HGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509F071765FCB800296F68 /* HGViewController.m */; };
 		49509F18176CD9C900296F68 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 49509F17176CD9C900296F68 /* response.json */; };
 		49509F1C176CE83A00296F68 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49509F1B176CE83A00296F68 /* HGChildTableViewController.m */; };
+		4963242B1771CA3C00F40FC1 /* HGPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4963242A1771CA3C00F40FC1 /* HGPortraitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		49509F17176CD9C900296F68 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = response.json; path = Media/response.json; sourceTree = "<group>"; };
 		49509F1A176CE83A00296F68 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
 		49509F1B176CE83A00296F68 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
+		496324291771CA3C00F40FC1 /* HGPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGPortraitViewController.h; sourceTree = "<group>"; };
+		4963242A1771CA3C00F40FC1 /* HGPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPortraitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 			children = (
 				49509EFD1765FCB800296F68 /* HGAppDelegate.h */,
 				49509EFE1765FCB800296F68 /* HGAppDelegate.m */,
+				496324291771CA3C00F40FC1 /* HGPortraitViewController.h */,
+				4963242A1771CA3C00F40FC1 /* HGPortraitViewController.m */,
 				49509F061765FCB800296F68 /* HGViewController.h */,
 				49509F071765FCB800296F68 /* HGViewController.m */,
 				49509F1A176CE83A00296F68 /* HGChildTableViewController.h */,
@@ -215,6 +220,7 @@
 				49509EFF1765FCB800296F68 /* HGAppDelegate.m in Sources */,
 				49509F081765FCB800296F68 /* HGViewController.m in Sources */,
 				49509F1C176CE83A00296F68 /* HGChildTableViewController.m in Sources */,
+				4963242B1771CA3C00F40FC1 /* HGPortraitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

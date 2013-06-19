@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGPortraitViewController.h"
 
-@interface HGViewController : UIViewController
+@interface HGViewController : HGPortraitViewController
 
 @property (strong, nonatomic) UITableViewController *tableViewController;
 
