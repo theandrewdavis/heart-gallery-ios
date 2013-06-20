@@ -14,14 +14,25 @@
 
 @implementation HGChildDetailViewController
 
+- (id)initWithChild:(NSDictionary *)child {
+    self = [super init];
+    if (self) {
+        self.child = child;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-    self.label = [[UILabel alloc] initWithFrame:self.view.bounds];
-    self.label.text = @"Hello!";
-    [self.view addSubview:self.label];
-    
+    // Set the title to the child's name
+    self.navigationItem.title = self.child[@"name"];
+
+    // Add a full size image of the child
+    NSString *imageName = [[self.child[@"image-full"] componentsSeparatedByString:@"/"] lastObject];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    [self.view addSubview:imageView];
 }
 
 @end

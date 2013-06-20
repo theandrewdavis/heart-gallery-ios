@@ -21,6 +21,7 @@
 
 @implementation HGChildTableViewController
 
+// Load table data from a JSON file on initialization.
 - (id)init {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
@@ -83,43 +84,19 @@
     UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:kChildTableCellImageViewTag];
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:kChildTableCellLabelTag];
     NSDictionary *child = self.children[indexPath.row];
-    imageView.image = [UIImage imageNamed:@"small_1367953229_acacia.jpg"];
+    NSString *imageName = [[child[@"image-thumbnail"] componentsSeparatedByString:@"/"] lastObject];
+    imageView.image = [UIImage imageNamed:imageName];
     label.text = child[@"name"];
     
     return cell;
 }
 
+// On selection, show a detail view of the child.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HGChildDetailViewController *childDetailView = [[HGChildDetailViewController alloc] init];
+    NSDictionary *child = self.children[indexPath.row];
+    HGChildDetailViewController *childDetailView = [[HGChildDetailViewController alloc] initWithChild:child];
     [self.navigationController pushViewController:childDetailView animated:YES];
 }
-
-
-
-// Require portrait view for iOS 6.
-- (BOOL)shouldAutorotate
-{
-    NSLog(@"shouldAutorotate");
-    return NO;
-}
-
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    NSLog(@"preferredInterfaceOrientationForPresentation");
-    return UIInterfaceOrientationPortrait;
-}
-
-- (NSUInteger)supportedInterfaceOrientations {
-    NSLog(@"supportedInterfaceOrientations");
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-// Require portrait view for iOS 4 and 5.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 
 @end

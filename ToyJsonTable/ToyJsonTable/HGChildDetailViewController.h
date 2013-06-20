@@ -10,6 +10,8 @@
 
 @interface HGChildDetailViewController : UIViewController
 
-@property (strong, nonatomic) UILabel *label;
+@property (strong, nonatomic) NSDictionary *child;
 
+- (id)initWithChild:(NSDictionary *)child;
+    
 @end

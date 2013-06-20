@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HGPortraitTableViewController.h"
 
 @interface HGChildTableViewController : UITableViewController
 
