@@ -32,6 +32,9 @@
 		494795B917732D0100EB4B4D /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 494795B217732D0100EB4B4D /* PDFView.m */; };
 		494795BA17732D0100EB4B4D /* UIImage+PDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 494795B417732D0100EB4B4D /* UIImage+PDF.m */; };
 		494795BB17732D0100EB4B4D /* UIView+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 494795B617732D0100EB4B4D /* UIView+Image.m */; };
+		49EE389A1779BC0400F3AC9B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE38991779BC0400F3AC9B /* SystemConfiguration.framework */; };
+		49EE389C1779BC0D00F3AC9B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EE389B1779BC0D00F3AC9B /* MobileCoreServices.framework */; };
+		49EE38A11779C26700F3AC9B /* HGWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49EE38A01779C26700F3AC9B /* HGWebImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +82,10 @@
 		494795B417732D0100EB4B4D /* UIImage+PDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PDF.m"; sourceTree = "<group>"; };
 		494795B517732D0100EB4B4D /* UIView+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Image.h"; sourceTree = "<group>"; };
 		494795B617732D0100EB4B4D /* UIView+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Image.m"; sourceTree = "<group>"; };
+		49EE38991779BC0400F3AC9B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		49EE389B1779BC0D00F3AC9B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		49EE389F1779C26700F3AC9B /* HGWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGWebImageView.h; sourceTree = "<group>"; };
+		49EE38A01779C26700F3AC9B /* HGWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGWebImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49EE389C1779BC0D00F3AC9B /* MobileCoreServices.framework in Frameworks */,
+				49EE389A1779BC0400F3AC9B /* SystemConfiguration.framework in Frameworks */,
 				4947954917731C4F00EB4B4D /* UIKit.framework in Frameworks */,
 				4947954B17731C4F00EB4B4D /* Foundation.framework in Frameworks */,
 				4947954D17731C4F00EB4B4D /* CoreGraphics.framework in Frameworks */,
@@ -117,6 +126,8 @@
 		4947954717731C4F00EB4B4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49EE389B1779BC0D00F3AC9B /* MobileCoreServices.framework */,
+				49EE38991779BC0400F3AC9B /* SystemConfiguration.framework */,
 				4947954817731C4F00EB4B4D /* UIKit.framework */,
 				4947954A17731C4F00EB4B4D /* Foundation.framework */,
 				4947954C17731C4F00EB4B4D /* CoreGraphics.framework */,
@@ -131,6 +142,8 @@
 				4947955817731C4F00EB4B4D /* HGAppDelegate.m */,
 				4947956017731C4F00EB4B4D /* HGViewController.h */,
 				4947956117731C4F00EB4B4D /* HGViewController.m */,
+				49EE389F1779C26700F3AC9B /* HGWebImageView.h */,
+				49EE38A01779C26700F3AC9B /* HGWebImageView.m */,
 				4947954F17731C4F00EB4B4D /* Supporting Files */,
 			);
 			path = ToyImageLoader;
@@ -293,6 +306,7 @@
 				494795B917732D0100EB4B4D /* PDFView.m in Sources */,
 				494795BA17732D0100EB4B4D /* UIImage+PDF.m in Sources */,
 				494795BB17732D0100EB4B4D /* UIView+Image.m in Sources */,
+				49EE38A11779C26700F3AC9B /* HGWebImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +423,7 @@
 				4947956D17731C4F00EB4B4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
