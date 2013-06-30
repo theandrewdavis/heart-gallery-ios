@@ -1,0 +1,6 @@
+platform :ios, '5.0'
+
+xcodeproj 'ToyImageLoader.xcodeproj'
+
+pod 'AFNetworking'
+pod 'UIImage+PDF'
