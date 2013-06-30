@@ -1,0 +1,22 @@
+{
+  "children": [
+    {
+      "name":"Acacia",
+      "description":"Acacia, born January 1998 is an outgoing and personable young lady. She enjoys attention she receives from others and takes pride in her appearance. She enjoys making new friends and adjusts to new situations easily. Acacia is very artistic and enjoys working on arts and crafts projects. She has very good verbal skills and has the ability to do well in school when not distracted by others.",
+      "image-full":"http://www.heartgalleryalabama.com/images/children/primary/1367953229_acacia.jpg",
+      "image-thumbnail":"http://www.heartgalleryalabama.com/images/children/thumbs/primary/small_1367953229_acacia.jpg"
+    },
+    {
+      "name":"Aleksander \"Bruce\"",
+      "description":"Aleksander \"Bruce,\" born November 1999, is a sweet boy who loves sports and video games. He has a soft heart and enjoys church greatly. He is a very helpful and engaging young man. He is social and loves to talk. He has a great imagination. He loves football and hopes to play for the NFL when he grows up and if that doesn't work out he will be a police officer. Bruce is a charming child who longs for a forever family to call his own.",
+      "image-full":"http://www.heartgalleryalabama.com/images/children/primary/1355853731_bruce_011.jpg",
+      "image-thumbnail":"http://www.heartgalleryalabama.com/images/children/thumbs/primary/small_1355853731_bruce_011.jpg"
+    },
+    {
+      "name":"Alex L. with a really really long name and areallyreallyreallylongword",
+      "description":"Alexander, born June 1999 is a cute boy with a contagious smile. He earns good grades in school by completing his assignments and studying hard for tests. He is in a self- contained classroom, but was taking math and english in the mainstream classes. Eventually, the goal is for Alex to no longer need the self-contained class.",
+      "image-full":"http://www.heartgalleryalabama.com/images/children/primary/1345492076_alex.jpg",
+      "image-thumbnail":"http://www.heartgalleryalabama.com/images/children/thumbs/primary/small_1345492076_alex.jpg",
+    }
+ ]
+}
