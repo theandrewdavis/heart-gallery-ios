@@ -9,6 +9,9 @@ ln -s /vagrant/web /var/www
 # Set up php
 apt-get install -y php5=5.3.10-1ubuntu3.6 php5-mysql
 
+# Restart apache so the php extensions will be used
+service apache2 restart
+
 # mysql connection info
 MYSQL_DB=hg
 MYSQL_USER=hguser
