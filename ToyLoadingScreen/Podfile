@@ -1,0 +1,6 @@
+platform :ios, '5.0'
+
+xcodeproj 'ToyLoadingScreen.xcodeproj'
+
+pod 'AFNetworking'
+pod 'SVProgressHUD'
