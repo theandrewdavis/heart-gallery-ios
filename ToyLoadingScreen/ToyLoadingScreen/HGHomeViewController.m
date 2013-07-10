@@ -25,6 +25,33 @@
 {
     [super viewDidLoad];
     
+    // 1. Save JSON on disk
+    // 2. Recognize 304s and use disk's JSON
+    // 3. Recognize network failures and use disk's JSON
+    // 4. Recognize offline mode and use disk's JSON
+    
+    // I'm learning CoreData to be my disk store.
+    // Considered using RestKit to simplify this. May do it in the future, but it is complex in its own
+    // right and requires knowledge of CoreData anyway, so I should start with CD.
+    
+    // Following tutorial here:
+    // http://developer.apple.com/library/ios/#documentation/DataManagement/Conceptual/iPhoneCoreData01/Articles/02_RootViewController.html
+    
+    // Creating the MOM in code:
+    // http://www.cocoanetics.com/2012/04/creating-a-coredata-model-in-code/
+    
+    //
+    NSManagedObject *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child" inManagedObjectContext:self.managedObjectContext];
+    [child setValue:@24 forKey:@"id"];
+    [child setValue:@"Alicia" forKey:@"name"];
+    [child setValue:@"http://heartgalleryofalabama.com/thumbnails/alicia" forKey:@"imageThumbnail"];
+    [child setValue:@"http://heartgalleryofalabama.com/images/alicia" forKey:@"imageFull"];
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Error!");
+    }
+    
     // Create a frame for the children button.
     CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMarginWidth - kHomeScreenButtonHeight;
     CGFloat buttonWidth = self.view.bounds.size.width - 2 * kHomeScreenMarginWidth;

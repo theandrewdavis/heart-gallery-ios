@@ -10,4 +10,6 @@
 
 @interface HGHomeViewController : UIViewController
 
+@property (nonatomic, weak) NSManagedObjectContext *managedObjectContext;
+
 @end

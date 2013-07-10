@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
+		497A64B4178C2E9B00C56227 /* HGManagedObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A64B3178C2E9B00C56227 /* HGManagedObjectModel.m */; };
+		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
 		49F3E6F3178445BB002B66E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F2178445BB002B66E7 /* UIKit.framework */; };
 		49F3E6F5178445BB002B66E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F4178445BB002B66E7 /* Foundation.framework */; };
 		49F3E6F7178445BB002B66E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F6178445BB002B66E7 /* CoreGraphics.framework */; };
@@ -24,6 +26,9 @@
 		2E75A00E53CC4DD4BD9C95D1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
+		497A64B2178C2E9B00C56227 /* HGManagedObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGManagedObjectModel.h; sourceTree = "<group>"; };
+		497A64B3178C2E9B00C56227 /* HGManagedObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGManagedObjectModel.m; sourceTree = "<group>"; };
+		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		49F3E6EF178445BB002B66E7 /* ToyLoadingScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyLoadingScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F3E6F2178445BB002B66E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49F3E6F4178445BB002B66E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -45,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */,
 				49F3E6F3178445BB002B66E7 /* UIKit.framework in Frameworks */,
 				49F3E6F5178445BB002B66E7 /* Foundation.framework in Frameworks */,
 				49F3E6F7178445BB002B66E7 /* CoreGraphics.framework in Frameworks */,
@@ -76,6 +82,7 @@
 		49F3E6F1178445BB002B66E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49C4FC2E178C351C00CA0DE2 /* CoreData.framework */,
 				49F3E6F2178445BB002B66E7 /* UIKit.framework */,
 				49F3E6F4178445BB002B66E7 /* Foundation.framework */,
 				49F3E6F6178445BB002B66E7 /* CoreGraphics.framework */,
@@ -89,6 +96,8 @@
 			children = (
 				49F3E701178445BB002B66E7 /* HGAppDelegate.h */,
 				49F3E702178445BB002B66E7 /* HGAppDelegate.m */,
+				497A64B2178C2E9B00C56227 /* HGManagedObjectModel.h */,
+				497A64B3178C2E9B00C56227 /* HGManagedObjectModel.m */,
 				4945A023178446D500B116F1 /* HGHomeViewController.h */,
 				4945A024178446D500B116F1 /* HGHomeViewController.m */,
 				49F3E6F9178445BB002B66E7 /* Supporting Files */,
@@ -212,6 +221,7 @@
 				49F3E6FF178445BB002B66E7 /* main.m in Sources */,
 				49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */,
 				4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */,
+				497A64B4178C2E9B00C56227 /* HGManagedObjectModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
