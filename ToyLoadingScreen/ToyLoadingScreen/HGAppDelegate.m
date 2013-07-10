@@ -7,7 +7,7 @@
 //
 
 #import "HGAppDelegate.h"
-#import "HGManagedObjectModel.h"
+#import "HGManagedObjectContext.h"
 #import "HGHomeViewController.h"
 
 @implementation HGAppDelegate
@@ -22,20 +22,8 @@
     HGHomeViewController *viewController = [[HGHomeViewController alloc] init];
     self.window.rootViewController = viewController;
     
-    self.managedObjectModel = [[HGManagedObjectModel alloc] init];
-    self.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
-    
-    NSURL *documentDir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *storeURL = [documentDir URLByAppendingPathComponent:@"HGCoreDataStore.sqlite"];
-    NSError *error = nil;
-    if (![self.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        //[[NSFileManager defaultManager] removeItemAtURL:storeURL error:NULL];
-        // then readd
-        NSLog(@"Error creating persistent store.");
-    }
-    
-    self.managedObjectContext = [[NSManagedObjectContext alloc] init];
-    self.managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    // Create a managed object context and pass it to the top level view controller.
+    self.managedObjectContext = [[HGManagedObjectContext alloc] init];
     viewController.managedObjectContext = self.managedObjectContext;
     
     [self.window makeKeyAndVisible];

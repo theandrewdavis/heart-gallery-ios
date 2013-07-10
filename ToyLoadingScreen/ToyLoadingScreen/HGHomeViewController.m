@@ -41,16 +41,16 @@
     // http://www.cocoanetics.com/2012/04/creating-a-coredata-model-in-code/
     
     //
-    NSManagedObject *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child" inManagedObjectContext:self.managedObjectContext];
-    [child setValue:@24 forKey:@"id"];
-    [child setValue:@"Alicia" forKey:@"name"];
-    [child setValue:@"http://heartgalleryofalabama.com/thumbnails/alicia" forKey:@"imageThumbnail"];
-    [child setValue:@"http://heartgalleryofalabama.com/images/alicia" forKey:@"imageFull"];
-    
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Error!");
-    }
+//    NSManagedObject *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child" inManagedObjectContext:self.managedObjectContext];
+//    [child setValue:@24 forKey:@"id"];
+//    [child setValue:@"Alicia" forKey:@"name"];
+//    [child setValue:@"http://heartgalleryofalabama.com/thumbnails/alicia" forKey:@"imageThumbnail"];
+//    [child setValue:@"http://heartgalleryofalabama.com/images/alicia" forKey:@"imageFull"];
+//    
+//    NSError *error = nil;
+//    if (![self.managedObjectContext save:&error]) {
+//        NSLog(@"Error!");
+//    }
     
     // Create a frame for the children button.
     CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMarginWidth - kHomeScreenButtonHeight;
@@ -63,6 +63,22 @@
     [childrenButton setTitle:@"Children" forState:UIControlStateNormal];
     [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:childrenButton];
+    
+    // Load all children from Core Data and print them.
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
+    NSSortDescriptor *sortNameDescending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    request.sortDescriptors = @[sortNameDescending];
+
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (results == nil) {
+        NSLog(@"Error fetching from store: %@, %@", error, error.userInfo);
+    }
+    
+    for (NSManagedObject *child in results) {
+        NSLog(@"Name: %@, id: %@", (NSString *)[child valueForKey:@"name"], (NSNumber *)[child valueForKey:@"id"]);
+    }
+
 }
 
 - (void)showChildren {
