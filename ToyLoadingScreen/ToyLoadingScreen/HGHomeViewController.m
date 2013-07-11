@@ -9,6 +9,7 @@
 #import "HGHomeViewController.h"
 #import "AFJSONRequestOperation.h"
 #import "SVProgressHUD.h"
+#import "Child.h"
 
 #define kHomeScreenMarginWidth 20.0
 #define kHomeScreenButtonHeight 80.0
@@ -65,20 +66,9 @@
     [self.view addSubview:childrenButton];
     
     // Load all children from Core Data and print them.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
-    NSSortDescriptor *sortNameDescending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    request.sortDescriptors = @[sortNameDescending];
-
-    NSError *error = nil;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
-    if (results == nil) {
-        NSLog(@"Error fetching from store: %@, %@", error, error.userInfo);
+    for (Child *child in [Child allFromContext:self.managedObjectContext]) {
+        NSLog(@"Name: %@, id: %@", child.name, child.id);
     }
-    
-    for (NSManagedObject *child in results) {
-        NSLog(@"Name: %@, id: %@", (NSString *)[child valueForKey:@"name"], (NSNumber *)[child valueForKey:@"id"]);
-    }
-
 }
 
 - (void)showChildren {
