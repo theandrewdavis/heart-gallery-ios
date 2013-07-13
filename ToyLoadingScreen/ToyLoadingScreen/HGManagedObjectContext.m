@@ -56,15 +56,16 @@
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] init];
     
     // Create the attribute descriptions for the child entity description.
-    NSAttributeDescription *idDescription = [[self class] createAttributeDescription:@"id" type:NSInteger32AttributeType optional:NO indexed:YES];
+    NSAttributeDescription *idDescription = [[self class] createAttributeDescription:@"childID" type:NSInteger32AttributeType optional:NO indexed:YES];
     NSAttributeDescription *nameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:YES];
-    NSAttributeDescription *thumbnailDescription = [[self class] createAttributeDescription:@"imageThumbnail" type:NSStringAttributeType optional:YES indexed:NO];
-    NSAttributeDescription *imageDescription = [[self class] createAttributeDescription:@"imageFull" type:NSStringAttributeType optional:YES indexed:NO];
+    NSAttributeDescription *descriptionDescription = [[self class] createAttributeDescription:@"description" type:NSStringAttributeType optional:NO indexed:NO];
+    NSAttributeDescription *thumbnailDescription = [[self class] createAttributeDescription:@"imageThumbnail" type:NSStringAttributeType optional:NO indexed:NO];
+    NSAttributeDescription *imageDescription = [[self class] createAttributeDescription:@"imageFull" type:NSStringAttributeType optional:NO indexed:NO];
     
     // Create the child entity description and add it to the managed object context.
     NSEntityDescription *childEntity = [[NSEntityDescription alloc] init];
     childEntity.name = @"Child";
-    childEntity.properties = @[idDescription, nameDescription, thumbnailDescription, imageDescription];
+    childEntity.properties = @[idDescription, nameDescription, descriptionDescription, thumbnailDescription, imageDescription];
     managedObjectModel.entities = @[childEntity];
     
     return managedObjectModel;

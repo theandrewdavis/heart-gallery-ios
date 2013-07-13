@@ -41,17 +41,16 @@
     // Creating the MOM in code:
     // http://www.cocoanetics.com/2012/04/creating-a-coredata-model-in-code/
     
-    //
-//    NSManagedObject *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child" inManagedObjectContext:self.managedObjectContext];
-//    [child setValue:@24 forKey:@"id"];
-//    [child setValue:@"Alicia" forKey:@"name"];
-//    [child setValue:@"http://heartgalleryofalabama.com/thumbnails/alicia" forKey:@"imageThumbnail"];
-//    [child setValue:@"http://heartgalleryofalabama.com/images/alicia" forKey:@"imageFull"];
-//    
-//    NSError *error = nil;
-//    if (![self.managedObjectContext save:&error]) {
-//        NSLog(@"Error!");
-//    }
+    // 1. Use the same column names as MySQL
+    // 2. Use NSFetchRequest to display children in a table
+    // 3. Setup core data to work with multiple entities like media
+    
+    // 1. Start the table view as empty with a loading dialog.
+    // 2. Show an error when reachability is off or a server error, timeout.
+    // 3. Populate/update table on call success.
+    // 4. Ignore 304 not modifieds
+    // 5. Pull to refresh.
+    
     
     // Create a frame for the children button.
     CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMarginWidth - kHomeScreenButtonHeight;
@@ -65,10 +64,12 @@
     [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:childrenButton];
     
+    NSLog(@"Before...");
     // Load all children from Core Data and print them.
     for (Child *child in [Child allFromContext:self.managedObjectContext]) {
-        NSLog(@"Name: %@, id: %@", child.name, child.id);
+        NSLog(@"Name: %@, id: %@", child.name, child.childID);
     }
+    
 }
 
 - (void)showChildren {
@@ -77,13 +78,22 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8081/api.php"]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
 
-        [SVProgressHUD showSuccessWithStatus:@"Complete"];
-
         NSLog(@"success!");
-        NSArray *childJSON = ((NSDictionary *) JSON)[@"children"];
-        for (NSDictionary *child in childJSON) {
-            NSLog(@"Name: %@", child[@"name"]);
+
+        // Replace locally stored child list with the updated version.
+        NSArray *childrenJSON = ((NSDictionary *) JSON)[@"children"];
+        [Child replaceAllWith:childrenJSON inContext:self.managedObjectContext];
+        NSLog(@"Done saving!");
+
+        [SVProgressHUD showSuccessWithStatus:@"Complete"];
+        
+        NSLog(@"After...");
+        // Load all children from Core Data and print them.
+        for (Child *child in [Child allFromContext:self.managedObjectContext]) {
+            NSLog(@"Name: %@, id: %@", child.name, child.childID);
         }
+
+
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"failure");
         NSLog(@"%@", error.localizedDescription);

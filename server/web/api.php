@@ -12,7 +12,7 @@ mysql_select_db($database);
 mysql_set_charset("UTF8");
 
 # Query the database and create an array from the result
-$resource = mysql_query('SELECT name, description, image_large, image_small FROM children');
+$resource = mysql_query('SELECT id, name, description, image_large, image_small FROM children');
 $children = array();
 while ($row = mysql_fetch_assoc($resource)) {
   array_push($children, $row);

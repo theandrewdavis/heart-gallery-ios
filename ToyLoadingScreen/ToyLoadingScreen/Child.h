@@ -11,11 +11,13 @@
 
 @interface Child : NSManagedObject
 
-@property (nonatomic, retain) NSNumber* id;
+@property (nonatomic, retain) NSNumber* childID;
 @property (nonatomic, retain) NSString* name;
+@property (nonatomic, retain) NSString* description;
 @property (nonatomic, retain) NSString* imageThumbnail;
 @property (nonatomic, retain) NSString* imageFull;
 
 + (NSArray *)allFromContext:(NSManagedObjectContext *)managedObjectContext;
++ (void)replaceAllWith:(NSArray *)newChildren inContext:(NSManagedObjectContext *)managedObjectContext;
 
 @end
