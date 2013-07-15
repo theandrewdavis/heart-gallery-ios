@@ -8,6 +8,13 @@
 
 #import "Child.h"
 
+@interface Child ()
+
++ (void)insertFromDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)managedObjectContext;
++ (id)nullToNil:(id)object;
+
+@end
+
 @implementation Child
 
 @dynamic childID;
@@ -16,25 +23,16 @@
 @dynamic imageThumbnail;
 @dynamic imageFull;
 
-// Get all Child objects in the given managed object context, sorted by name.
-+ (NSArray *)allFromContext:(NSManagedObjectContext *)managedObjectContext {
-    // Create a fetch request for all children sorted by name.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
-    NSSortDescriptor *sortNameDescending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    request.sortDescriptors = @[sortNameDescending];
-    
-    // Execute the fetch request and log errors.
-    NSError *error = nil;
-    NSArray *results = [managedObjectContext executeFetchRequest:request error:&error];
-    if (error != nil) {
-        NSLog(@"Error fetching from store: %@, %@", error, error.userInfo);
-    }
-    return results;
+
+// The name of the Child entity used by Core Data.
++ (NSString *)entityName {
+    return @"Child";
 }
 
-+ (void)replaceAllWith:(NSArray *)newChildren inContext:(NSManagedObjectContext *)managedObjectContext {
+// Clear all children in the store and replace them with the children in the given JSON object.
++ (void)replaceAllFromDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)managedObjectContext {
     // Create a fetch request for all children.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:self.entityName];
     request.includesPropertyValues = NO;
     
     // Execute the fetch request and log errors.
@@ -50,21 +48,30 @@
     }
     
     // Add all children in the new dataset to the managed object context.
-    for (NSDictionary *newChild in newChildren) {
-        Child *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child" inManagedObjectContext:managedObjectContext];
-        child.childID = [NSNumber numberWithInteger:[newChild[@"id"] integerValue]];
-        child.description = newChild[@"description"];
-        child.name = newChild[@"name"];
-        child.imageThumbnail = newChild[@"image_small"];
-        child.imageFull = newChild[@"image_large"];
+    for (NSDictionary *newChild in dictionary[@"children"]) {
+        [self insertFromDictionary:newChild inContext:managedObjectContext];
     }
     
     // Save the new context.
     NSError *saveError = nil;
-    [managedObjectContext save:&saveError];
-    if (saveError != nil) {
+    if (![managedObjectContext save:&saveError]) {
         NSLog(@"Error saving store: %@, %@", saveError, saveError.userInfo);
     }
+}
+
+// Map the attributes used in the JSON object to the values used in the Core Data store.
++ (void)insertFromDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)managedObjectContext {
+    Child *child = [NSEntityDescription insertNewObjectForEntityForName:self.entityName inManagedObjectContext:managedObjectContext];
+    child.childID = @([dictionary[@"id"] integerValue]);
+    child.description = [self nullToNil:dictionary[@"description"]];
+    child.name = [self nullToNil:dictionary[@"name"]];
+    child.imageThumbnail = [self nullToNil:dictionary[@"image_small"]];
+    child.imageFull = [self nullToNil:dictionary[@"image_large"]];
+}
+
+// Core Data does not accept NSNull values, so replace instances of NSNull with nil.
++ (id)nullToNil:(id)object {
+    return ([object isEqual:[NSNull null]]) ? nil : object;
 }
 
 @end

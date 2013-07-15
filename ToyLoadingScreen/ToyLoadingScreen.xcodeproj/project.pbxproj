@@ -11,6 +11,7 @@
 		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
 		49C4FC32178D7CEA00CA0DE2 /* HGManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */; };
 		49C4FC41178ED03E00CA0DE2 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC40178ED03E00CA0DE2 /* Child.m */; };
+		49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */; };
 		49F3E6F3178445BB002B66E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F2178445BB002B66E7 /* UIKit.framework */; };
 		49F3E6F5178445BB002B66E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F4178445BB002B66E7 /* Foundation.framework */; };
 		49F3E6F7178445BB002B66E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F6178445BB002B66E7 /* CoreGraphics.framework */; };
@@ -32,6 +33,8 @@
 		49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGManagedObjectContext.m; sourceTree = "<group>"; };
 		49C4FC3F178ED03E00CA0DE2 /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
 		49C4FC40178ED03E00CA0DE2 /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
+		49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
+		49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
 		49F3E6EF178445BB002B66E7 /* ToyLoadingScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyLoadingScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F3E6F2178445BB002B66E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49F3E6F4178445BB002B66E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,6 +115,8 @@
 				49F3E702178445BB002B66E7 /* HGAppDelegate.m */,
 				4945A023178446D500B116F1 /* HGHomeViewController.h */,
 				4945A024178446D500B116F1 /* HGHomeViewController.m */,
+				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
+				49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */,
 				49C4FC43178ED18200CA0DE2 /* Models */,
 				49F3E6F9178445BB002B66E7 /* Supporting Files */,
 			);
@@ -236,6 +241,7 @@
 				4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */,
 				49C4FC32178D7CEA00CA0DE2 /* HGManagedObjectContext.m in Sources */,
 				49C4FC41178ED03E00CA0DE2 /* Child.m in Sources */,
+				49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

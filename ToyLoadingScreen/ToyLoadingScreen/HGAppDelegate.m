@@ -18,13 +18,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    // Set an HGHomeViewController as top level view controller.
-    HGHomeViewController *viewController = [[HGHomeViewController alloc] init];
-    self.window.rootViewController = viewController;
-    
-    // Create a managed object context and pass it to the top level view controller.
-    self.managedObjectContext = [[HGManagedObjectContext alloc] init];
-    viewController.managedObjectContext = self.managedObjectContext;
+    // Create a navigation controller as the root view controller and insert the home screen into it.
+    HGManagedObjectContext *managedObjectContext = [[HGManagedObjectContext alloc] init];
+    HGHomeViewController *homeViewController = [[HGHomeViewController alloc] init];
+    homeViewController.managedObjectContext = managedObjectContext;
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     
     [self.window makeKeyAndVisible];
     return YES;

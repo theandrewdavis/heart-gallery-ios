@@ -7,23 +7,15 @@
 //
 
 #import "HGHomeViewController.h"
-#import "AFJSONRequestOperation.h"
-#import "SVProgressHUD.h"
+#import "HGChildTableViewController.h"
 #import "Child.h"
 
-#define kHomeScreenMarginWidth 20.0
+#define kHomeScreenMargin 20.0
 #define kHomeScreenButtonHeight 80.0
-
-@interface HGHomeViewController ()
-
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
-
-@end
 
 @implementation HGHomeViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // 1. Save JSON on disk
@@ -51,56 +43,36 @@
     // 4. Ignore 304 not modifieds
     // 5. Pull to refresh.
     
-    
     // Create a frame for the children button.
-    CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMarginWidth - kHomeScreenButtonHeight;
-    CGFloat buttonWidth = self.view.bounds.size.width - 2 * kHomeScreenMarginWidth;
-    CGRect childrenButtonFrame = CGRectMake(kHomeScreenMarginWidth, buttonY, buttonWidth, kHomeScreenButtonHeight);
+    CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMargin - kHomeScreenButtonHeight;
+    CGFloat buttonWidth = self.view.bounds.size.width - 2 * kHomeScreenMargin;
+    CGRect childrenButtonFrame = CGRectMake(kHomeScreenMargin, buttonY, buttonWidth, kHomeScreenButtonHeight);
     
     // Add the children button.
     UIButton *childrenButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     childrenButton.frame = childrenButtonFrame;
+    childrenButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [childrenButton setTitle:@"Children" forState:UIControlStateNormal];
     [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:childrenButton];
-    
-    NSLog(@"Before...");
-    // Load all children from Core Data and print them.
-    for (Child *child in [Child allFromContext:self.managedObjectContext]) {
-        NSLog(@"Name: %@, id: %@", child.name, child.childID);
-    }
-    
+}
+
+// Hide the navigation bar for this view only.
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+// Restore the navigation bar so that it will be shown on other views in the navigation controller.
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (void)showChildren {
-    //
-    [SVProgressHUD showWithStatus:@"Loading" maskType:SVProgressHUDMaskTypeBlack];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8081/api.php"]];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-
-        NSLog(@"success!");
-
-        // Replace locally stored child list with the updated version.
-        NSArray *childrenJSON = ((NSDictionary *) JSON)[@"children"];
-        [Child replaceAllWith:childrenJSON inContext:self.managedObjectContext];
-        NSLog(@"Done saving!");
-
-        [SVProgressHUD showSuccessWithStatus:@"Complete"];
-        
-        NSLog(@"After...");
-        // Load all children from Core Data and print them.
-        for (Child *child in [Child allFromContext:self.managedObjectContext]) {
-            NSLog(@"Name: %@, id: %@", child.name, child.childID);
-        }
-
-
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"failure");
-        NSLog(@"%@", error.localizedDescription);
-        [SVProgressHUD showErrorWithStatus:@"Could not connect"];
-    }];
-    
-    [operation start];
+    HGChildTableViewController *childTable = [[HGChildTableViewController alloc] init];
+    childTable.managedObjectContext = self.managedObjectContext;
+    [self.navigationController pushViewController:childTable animated:YES];
 }
 
 @end
