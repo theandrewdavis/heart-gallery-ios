@@ -4,3 +4,4 @@ xcodeproj 'ToyLoadingScreen.xcodeproj'
 
 pod 'AFNetworking'
 pod 'SVProgressHUD'
+pod 'CKRefreshControl'

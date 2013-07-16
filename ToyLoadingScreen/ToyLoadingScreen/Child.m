@@ -26,7 +26,7 @@
 
 // The name of the Child entity used by Core Data.
 + (NSString *)entityName {
-    return @"Child";
+    return NSStringFromClass([self class]);
 }
 
 // Clear all children in the store and replace them with the children in the given JSON object.

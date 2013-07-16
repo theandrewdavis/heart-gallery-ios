@@ -43,6 +43,10 @@
     // 4. Ignore 304 not modifieds
     // 5. Pull to refresh.
     
+    
+    // PULL TO REFRESH TITLE CHANGE
+    // http://www.intertech.com/Blog/ios-6-pull-to-refresh-uirefreshcontrol/
+    
     // Create a frame for the children button.
     CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMargin - kHomeScreenButtonHeight;
     CGFloat buttonWidth = self.view.bounds.size.width - 2 * kHomeScreenMargin;

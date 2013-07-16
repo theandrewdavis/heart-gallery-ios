@@ -9,6 +9,7 @@
 #import "HGChildTableViewController.h"
 #import "AFJSONRequestOperation.h"
 #import "SVProgressHUD.h"
+#import "CKRefreshControl.h"
 #import "Child.h"
 
 #define kChildFetchRequestBatchSize 40
@@ -22,9 +23,16 @@
     // Set the title of the navigation controller.
     self.navigationItem.title = @"Children";
     
-    // Display the children stored on the device then check the web for updates.
+    // Display the children stored on the device.
     [self fetchLocalData];
-    [self fetchRemoteData];
+    
+    // Set up pull to refresh control.
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchRemoteData:) forControlEvents:UIControlEventValueChanged];
+    
+    // Get updates from the web and start the pull to refresh spinner.
+    [self.refreshControl beginRefreshing];
+    [self fetchRemoteData:self.refreshControl];
 }
 
 // Set the number of sections in the table.
@@ -78,29 +86,19 @@
 
 // Fetch a list of all children from the web API. While the request is loading, show an activity indicator
 // and prevent all user interaction.
-- (void)fetchRemoteData {
-    [SVProgressHUD showWithStatus:@"Loading" maskType:SVProgressHUDMaskTypeBlack];
+- (void)fetchRemoteData:(UIRefreshControl *)refreshControl {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8081/api.php"]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         // If the request is successful, update the children in the local store and hide the loading indicator.
         [Child replaceAllFromDictionary:JSON inContext:self.managedObjectContext];
-        [SVProgressHUD showSuccessWithStatus:@"Complete"];
-        
+        [refreshControl performSelector:@selector(endRefreshing) withObject:nil];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        // If the request fails, log the error and inform the user that the update failed.
+        // If the request fails, log the error and hide the loading indicator.
         NSLog(@"Request failed: %@, %@", error.localizedDescription, error.userInfo);
-        [SVProgressHUD showErrorWithStatus:@"Could not connect"];
+        [refreshControl performSelector:@selector(endRefreshing) withObject:nil];
     }];
     [operation start];
     
 }
-
-
-// On selection, show a detail view of the child.
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSDictionary *child = self.children[indexPath.row];
-//    HGChildDetailViewController *childDetailView = [[HGChildDetailViewController alloc] initWithChild:child];
-//    [self.navigationController pushViewController:childDetailView animated:YES];
-//}
 
 @end
