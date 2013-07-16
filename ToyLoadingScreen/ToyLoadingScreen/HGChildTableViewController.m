@@ -95,6 +95,7 @@
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         // If the request fails, log the error and hide the loading indicator.
         NSLog(@"Request failed: %@, %@", error.localizedDescription, error.userInfo);
+        [SVProgressHUD showErrorWithStatus:@"Could not connect"];
         [refreshControl performSelector:@selector(endRefreshing) withObject:nil];
     }];
     [operation start];

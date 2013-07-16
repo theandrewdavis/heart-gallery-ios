@@ -33,16 +33,10 @@
     // Creating the MOM in code:
     // http://www.cocoanetics.com/2012/04/creating-a-coredata-model-in-code/
     
-    // 1. Use the same column names as MySQL
-    // 2. Use NSFetchRequest to display children in a table
-    // 3. Setup core data to work with multiple entities like media
-    
-    // 1. Start the table view as empty with a loading dialog.
-    // 2. Show an error when reachability is off or a server error, timeout.
-    // 3. Populate/update table on call success.
+    // 1. Setup core data to work with multiple entities like media
+    // 2. Error messages in table header.
+    // 3. Show an error when reachability is off or a server error, timeout.
     // 4. Ignore 304 not modifieds
-    // 5. Pull to refresh.
-    
     
     // PULL TO REFRESH TITLE CHANGE
     // http://www.intertech.com/Blog/ios-6-pull-to-refresh-uirefreshcontrol/
