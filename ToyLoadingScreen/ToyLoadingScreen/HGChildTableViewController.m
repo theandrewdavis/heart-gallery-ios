@@ -11,9 +11,10 @@
 #import "SVProgressHUD.h"
 #import "CKRefreshControl.h"
 #import "Child.h"
+#import "Reachability.h"
 
+#define kChildApiUrl @"http://localhost:8081/api.php"
 #define kChildFetchRequestBatchSize 40
-#define kChildTableViewRowHeight 90
 
 @implementation HGChildTableViewController
 
@@ -87,19 +88,40 @@
 // Fetch a list of all children from the web API. While the request is loading, show an activity indicator
 // and prevent all user interaction.
 - (void)fetchRemoteData:(UIRefreshControl *)refreshControl {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:8081/api.php"]];
+    // Don't try to connect if the network is not reachable.
+    if (![self networkReachable]) {
+        [self hidePullToRefresh];
+        [self showNetworkFailure];
+        return;
+    }
+
+    // Download a list of all children. If successful, update the local store. If unsuccessful, show an error.
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kChildApiUrl]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        // If the request is successful, update the children in the local store and hide the loading indicator.
         [Child replaceAllFromDictionary:JSON inContext:self.managedObjectContext];
-        [refreshControl performSelector:@selector(endRefreshing) withObject:nil];
+        [self hidePullToRefresh];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        // If the request fails, log the error and hide the loading indicator.
         NSLog(@"Request failed: %@, %@", error.localizedDescription, error.userInfo);
-        [SVProgressHUD showErrorWithStatus:@"Could not connect"];
-        [refreshControl performSelector:@selector(endRefreshing) withObject:nil];
+        [self hidePullToRefresh];
+        [self showNetworkFailure];
     }];
     [operation start];
-    
+}
+
+// Hide the pull to refresh spinner.
+- (void)hidePullToRefresh {
+    [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil];
+}
+
+// Pop up a message to inform the app could not connect to the remote server.
+- (void)showNetworkFailure {
+    [SVProgressHUD showErrorWithStatus:@"Could not connect"];
+}
+
+// Check if the network is currently reachable.
+- (BOOL)networkReachable {
+    Reachability *reachability = [Reachability reachabilityWithHostname:@"localhost:8081"];
+    return [reachability currentReachabilityStatus] != NotReachable;
 }
 
 @end
