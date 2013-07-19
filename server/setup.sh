@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-# Set up apache
+# Set up php
 apt-get update
+apt-get install -y php5 php5-mysql
+
+# Set up apache
 apt-get install -y apache2
+echo 'ServerName localhost' >> /etc/apache2/httpd.conf
 rm -rf /var/www
 ln -s /vagrant/web /var/www
-
-# Set up php
-apt-get install -y php5=5.3.10-1ubuntu3.6 php5-mysql
-
-# Restart apache so the php extensions will be used
-service apache2 restart
 
 # mysql connection info
 MYSQL_DB=hg
@@ -25,3 +23,5 @@ mysql -u root -e "GRANT ALL PRIVILEGES ON ${MYSQL_DB}.* TO '${MYSQL_USER}'@'loca
 mysql -u${MYSQL_USER} -p${MYSQL_USER_PASSWORD} ${MYSQL_DB} < /vagrant/hg-database.sql
 mysqladmin -uroot password ${MYSQL_ROOT_PASSWORD}
 
+# Restart apache so the php extensions will be used
+service apache2 restart
