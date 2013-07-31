@@ -8,7 +8,7 @@
 
 #import "HGHomeViewController.h"
 #import "HGChildTableViewController.h"
-#import "Child.h"
+#import "HGChild.h"
 
 #define kHomeScreenMargin 20.0
 #define kHomeScreenButtonHeight 80.0

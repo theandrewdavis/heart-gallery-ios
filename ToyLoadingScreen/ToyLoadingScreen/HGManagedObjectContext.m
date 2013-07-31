@@ -7,8 +7,8 @@
 //
 
 #import "HGManagedObjectContext.h"
-#import "Child.h"
-#import "Media.h"
+#import "HGChild.h"
+#import "HGMedia.h"
 
 #define kCoreDataStoreName @"HGCoreDataStore.sqlite"
 
@@ -66,7 +66,7 @@
     
     // Create the child entity description.
     NSEntityDescription *childEntity = [[NSEntityDescription alloc] init];
-    childEntity.name = @"Child";
+    childEntity.name = NSStringFromClass([HGChild class]);
 
     // Create the attribute descriptions for the media entity description.
     NSAttributeDescription *mediaNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:NO];
@@ -74,7 +74,7 @@
 
     // Create the media entity description.
     NSEntityDescription *mediaEntity = [[NSEntityDescription alloc] init];
-    mediaEntity.name = @"Media";
+    mediaEntity.name = NSStringFromClass([HGMedia class]);
     
     // Create a one-to-many relationship between a child and its media.
     NSRelationshipDescription *childMediaDescription = [[NSRelationshipDescription alloc] init];
@@ -104,21 +104,21 @@
 // Clear all children in the store and replace them with the children in the given JSON object.
 - (void)replaceWithDictionary:(NSDictionary *)dictionary {
     // Delete all children in the store.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
     request.includesPropertyValues = NO;
     NSError *fetchError = nil;
     NSArray *children = [self executeFetchRequest:request error:&fetchError];
     if (fetchError != nil) {
         NSLog(@"Error clearing store: %@, %@", fetchError, fetchError.userInfo);
     }
-    for (Child* child in children) {
+    for (HGChild* child in children) {
         [self deleteObject:child];
     }
 
     // Add all children in the new dataset to the managed object context.
     for (NSDictionary *newChild in dictionary[@"children"]) {
         // Add the child's attributes.
-        Child *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child" inManagedObjectContext:self];
+        HGChild *child = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([HGChild class]) inManagedObjectContext:self];
         child.childID = @([newChild[@"id"] integerValue]);
         child.description = [self.class nullToNil:newChild[@"description"]];
         child.name = [self.class nullToNil:newChild[@"name"]];
@@ -128,7 +128,7 @@
         // Add the child's media.
         NSMutableSet *media = [[NSMutableSet alloc] init];
         for (NSDictionary *newMedia in newChild[@"media"]) {
-            Media *mediaItem = [NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:self];
+            HGMedia *mediaItem = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([HGMedia class]) inManagedObjectContext:self];
             mediaItem.name = [self.class nullToNil:newMedia[@"name"]];
             mediaItem.type = @([newMedia[@"name"] integerValue]);
             [media addObject:mediaItem];

@@ -1,5 +1,5 @@
 //
-//  Media.h
+//  HGMedia.h
 //  ToyLoadingScreen
 //
 //  Created by Andrew Davis on 7/24/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface Media : NSManagedObject
+@interface HGMedia : NSManagedObject
 
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSNumber* type;

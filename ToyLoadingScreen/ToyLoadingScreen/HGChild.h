@@ -1,5 +1,5 @@
 //
-//  Child.h
+//  HGChild.h
 //  ToyLoadingScreen
 //
 //  Created by Andrew Davis on 7/11/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface Child : NSManagedObject
+@interface HGChild : NSManagedObject
 
 @property (nonatomic, strong) NSNumber* childID;
 @property (nonatomic, strong) NSString* name;

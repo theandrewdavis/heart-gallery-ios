@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class Child;
+@class HGChild;
 
 @interface HGChildViewController : UIViewController
 
-@property (strong, nonatomic) Child *child;
+@property (strong, nonatomic) HGChild *child;
 
 @end

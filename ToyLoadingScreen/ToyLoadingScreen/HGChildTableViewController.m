@@ -12,7 +12,7 @@
 #import "AFJSONRequestOperation.h"
 #import "SVProgressHUD.h"
 #import "CKRefreshControl.h"
-#import "Child.h"
+#import "HGChild.h"
 #import "Reachability.h"
 
 #define kChildApiUrl @"http://localhost:8081/api.php"
@@ -60,7 +60,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    Child *child = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    HGChild *child = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = child.name;
 
     return cell;
@@ -81,7 +81,7 @@
 // Fetch a list of all children stored on the device with Core Data.
 - (void)fetchLocalData {
     // Prepare a fetch request.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
     NSSortDescriptor *sortNameDescending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
     request.sortDescriptors = @[sortNameDescending];
     request.fetchBatchSize = kChildFetchRequestBatchSize;

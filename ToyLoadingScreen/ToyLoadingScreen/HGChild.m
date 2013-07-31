@@ -1,14 +1,14 @@
 //
-//  Child.m
+//  HGChild.m
 //  ToyLoadingScreen
 //
 //  Created by Andrew Davis on 7/11/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "Child.h"
+#import "HGChild.h"
 
-@implementation Child
+@implementation HGChild
 
 @dynamic childID;
 @dynamic name;
