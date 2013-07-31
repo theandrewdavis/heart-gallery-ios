@@ -8,6 +8,7 @@
 
 #import "HGManagedObjectContext.h"
 #import "Child.h"
+#import "Media.h"
 
 #define kCoreDataStoreName @"HGCoreDataStore.sqlite"
 
@@ -16,6 +17,7 @@
 + (NSManagedObjectModel *)createManagedObjectModel;
 + (NSPersistentStoreCoordinator *)createPersistentStoreCoordinator:(NSManagedObjectModel *)managedObjectModel storeName:(NSString *)storeName;
 + (NSAttributeDescription *)createAttributeDescription:(NSString *)name type:(NSAttributeType)type optional:(BOOL)optional indexed:(BOOL)indexed;
++ (id)nullToNil:(id)object;
 
 @end
 
@@ -56,18 +58,36 @@
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] init];
     
     // Create the attribute descriptions for the child entity description.
-    NSAttributeDescription *idDescription = [[self class] createAttributeDescription:@"childID" type:NSInteger32AttributeType optional:NO indexed:YES];
-    NSAttributeDescription *nameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:YES];
-    NSAttributeDescription *descriptionDescription = [[self class] createAttributeDescription:@"description" type:NSStringAttributeType optional:YES indexed:NO];
-    NSAttributeDescription *thumbnailDescription = [[self class] createAttributeDescription:@"imageThumbnail" type:NSStringAttributeType optional:YES indexed:NO];
-    NSAttributeDescription *imageDescription = [[self class] createAttributeDescription:@"imageFull" type:NSStringAttributeType optional:YES indexed:NO];
+    NSAttributeDescription *childIdDescription = [[self class] createAttributeDescription:@"childID" type:NSInteger32AttributeType optional:NO indexed:YES];
+    NSAttributeDescription *childNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:YES];
+    NSAttributeDescription *childDescriptionDescription = [[self class] createAttributeDescription:@"description" type:NSStringAttributeType optional:YES indexed:NO];
+    NSAttributeDescription *childThumbnailDescription = [[self class] createAttributeDescription:@"imageThumbnail" type:NSStringAttributeType optional:YES indexed:NO];
+    NSAttributeDescription *childImageDescription = [[self class] createAttributeDescription:@"imageFull" type:NSStringAttributeType optional:YES indexed:NO];
     
-    // Create the child entity description and add it to the managed object context.
+    // Create the child entity description.
     NSEntityDescription *childEntity = [[NSEntityDescription alloc] init];
-    childEntity.name = [Child entityName];
-    childEntity.properties = @[idDescription, nameDescription, descriptionDescription, thumbnailDescription, imageDescription];
-    managedObjectModel.entities = @[childEntity];
+    childEntity.name = @"Child";
+
+    // Create the attribute descriptions for the media entity description.
+    NSAttributeDescription *mediaNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:NO];
+    NSAttributeDescription *mediaTypeDescription = [[self class] createAttributeDescription:@"type" type:NSInteger32AttributeType optional:NO indexed:YES];
+
+    // Create the media entity description.
+    NSEntityDescription *mediaEntity = [[NSEntityDescription alloc] init];
+    mediaEntity.name = @"Media";
     
+    // Create a one-to-many relationship between a child and its media.
+    NSRelationshipDescription *childMediaDescription = [[NSRelationshipDescription alloc] init];
+    childMediaDescription.destinationEntity = mediaEntity;
+    childMediaDescription.name = @"media";
+    childMediaDescription.minCount = 0;
+    childMediaDescription.maxCount = 0;
+    childMediaDescription.deleteRule = NSCascadeDeleteRule;
+    
+    // Add the attribute descriptions to the entity descriptions and the entity descriptions to the managed object context.
+    childEntity.properties = @[childIdDescription, childNameDescription, childDescriptionDescription, childThumbnailDescription, childImageDescription, childMediaDescription];
+    mediaEntity.properties = @[mediaNameDescription, mediaTypeDescription];
+    managedObjectModel.entities = @[childEntity, mediaEntity];
     return managedObjectModel;
 }
 
@@ -80,5 +100,53 @@
     attributeDescription.indexed = indexed;
     return attributeDescription;
 }
+
+// Clear all children in the store and replace them with the children in the given JSON object.
+- (void)replaceWithDictionary:(NSDictionary *)dictionary {
+    // Delete all children in the store.
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
+    request.includesPropertyValues = NO;
+    NSError *fetchError = nil;
+    NSArray *children = [self executeFetchRequest:request error:&fetchError];
+    if (fetchError != nil) {
+        NSLog(@"Error clearing store: %@, %@", fetchError, fetchError.userInfo);
+    }
+    for (Child* child in children) {
+        [self deleteObject:child];
+    }
+
+    // Add all children in the new dataset to the managed object context.
+    for (NSDictionary *newChild in dictionary[@"children"]) {
+        // Add the child's attributes.
+        Child *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child" inManagedObjectContext:self];
+        child.childID = @([newChild[@"id"] integerValue]);
+        child.description = [self.class nullToNil:newChild[@"description"]];
+        child.name = [self.class nullToNil:newChild[@"name"]];
+        child.imageThumbnail = [self.class nullToNil:newChild[@"image_small"]];
+        child.imageFull = [self.class nullToNil:newChild[@"image_large"]];
+        
+        // Add the child's media.
+        NSMutableSet *media = [[NSMutableSet alloc] init];
+        for (NSDictionary *newMedia in newChild[@"media"]) {
+            Media *mediaItem = [NSEntityDescription insertNewObjectForEntityForName:@"Media" inManagedObjectContext:self];
+            mediaItem.name = [self.class nullToNil:newMedia[@"name"]];
+            mediaItem.type = @([newMedia[@"name"] integerValue]);
+            [media addObject:mediaItem];
+        }
+        child.media = media;
+    }
+
+    // Save the changes to the managed object context.
+    NSError *saveError = nil;
+    if (![self save:&saveError]) {
+        NSLog(@"Error saving store: %@, %@", saveError, saveError.userInfo);
+    }
+}
+
+// Core Data does not accept NSNull values, so replace instances of NSNull with nil.
++ (id)nullToNil:(id)object {
+    return ([object isEqual:[NSNull null]]) ? nil : object;
+}
+
 
 @end

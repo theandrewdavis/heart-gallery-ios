@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class HGManagedObjectContext;
+
 @interface HGChildTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) HGManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end

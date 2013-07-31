@@ -16,8 +16,6 @@
 @property (nonatomic, strong) NSString* description;
 @property (nonatomic, strong) NSString* imageThumbnail;
 @property (nonatomic, strong) NSString* imageFull;
-
-+ (NSString *)entityName;
-+ (void)replaceAllFromDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)managedObjectContext;
+@property (nonatomic, strong) NSSet* media;
 
 @end

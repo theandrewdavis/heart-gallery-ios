@@ -18,13 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 2. Recognize 304s and use disk's JSON
-    // 3. Recognize network failures and use disk's JSON
-    // 4. Recognize offline mode and use disk's JSON
-
     // 1. Setup core data to work with multiple entities like media
-    // 3. Show an error when reachability is off or a server error, timeout.
-    // 4. Ignore 304 not modifieds
+    // 2. Ignore 304 not modifieds
         
     // Create a frame for the children button.
     CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMargin - kHomeScreenButtonHeight;

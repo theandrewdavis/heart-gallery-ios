@@ -7,6 +7,8 @@
 //
 
 #import "HGChildTableViewController.h"
+#import "HGChildViewController.h"
+#import "HGManagedObjectContext.h"
 #import "AFJSONRequestOperation.h"
 #import "SVProgressHUD.h"
 #import "CKRefreshControl.h"
@@ -14,6 +16,7 @@
 #import "Reachability.h"
 
 #define kChildApiUrl @"http://localhost:8081/api.php"
+#define kChildApiHostName @"www.google.com"
 #define kChildFetchRequestBatchSize 40
 
 @implementation HGChildTableViewController
@@ -63,6 +66,13 @@
     return cell;
 }
 
+// On selection, show a detail view of the child.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HGChildViewController *childViewController = [[HGChildViewController alloc] init];
+    childViewController.child = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self.navigationController pushViewController:childViewController animated:YES];
+}
+
 // When the fetched results controller's data changes, update the table with the new data.
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView reloadData];
@@ -71,7 +81,7 @@
 // Fetch a list of all children stored on the device with Core Data.
 - (void)fetchLocalData {
     // Prepare a fetch request.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[Child entityName]];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
     NSSortDescriptor *sortNameDescending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
     request.sortDescriptors = @[sortNameDescending];
     request.fetchBatchSize = kChildFetchRequestBatchSize;
@@ -90,6 +100,9 @@
 - (void)fetchRemoteData:(UIRefreshControl *)refreshControl {
     // Don't try to connect if the network is not reachable.
     if (![self networkReachable]) {
+        
+        NSLog(@"NOT REACHABLE");
+        
         [self hidePullToRefresh];
         [self showNetworkFailure];
         return;
@@ -98,7 +111,7 @@
     // Download a list of all children. If successful, update the local store. If unsuccessful, show an error.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kChildApiUrl]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        [Child replaceAllFromDictionary:JSON inContext:self.managedObjectContext];
+        [self.managedObjectContext replaceWithDictionary:JSON];
         [self hidePullToRefresh];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Request failed: %@, %@", error.localizedDescription, error.userInfo);
@@ -120,7 +133,7 @@
 
 // Check if the network is currently reachable.
 - (BOOL)networkReachable {
-    Reachability *reachability = [Reachability reachabilityWithHostname:@"localhost:8081"];
+    Reachability *reachability = [Reachability reachabilityWithHostname:kChildApiHostName];
     return [reachability currentReachabilityStatus] != NotReachable;
 }
 
