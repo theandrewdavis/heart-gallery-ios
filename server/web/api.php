@@ -44,6 +44,16 @@ while ($row = mysql_fetch_assoc($resource)) {
 $json = array('children' => array_values($children));
 $json_string = json_encode($json);
 
+# Return 'Not Modified' if ETag matches.
+$etag = md5($json_string);
+if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+  error_log('Found if-none-match: ' . $_SERVER['HTTP_IF_NONE_MATCH']);
+  header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
+  exit();
+}
+
 # Return HTTP response
 header('Content-Type: application/json');
+header('ETag: ' . $etag);
 echo $json_string;
+
