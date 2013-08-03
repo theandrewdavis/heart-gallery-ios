@@ -2,14 +2,15 @@
 
 # Mysql connection info
 $host = 'localhost';
-$database = 'hg';
-$username = 'hguser';
-$password = 'i25iyOnACVax5y3NQAn';
+$database = getenv('MYSQL_DB');
+$username = getenv('MYSQL_USER');
+$password = getenv('MYSQL_USER_PASSWORD');
+error_log('Password: ' . $password);
 
 # Connect to mysql database
 $connection = mysql_connect($host, $username, $password);
 mysql_select_db($database);
-mysql_set_charset("UTF8");
+mysql_set_charset('UTF8');
 
 # Query the database for all children and media.
 $query = 'SELECT children.id, children.name, children.description, children.image_large, children.image_small, media.name AS media_name, media.type AS media_type FROM children LEFT JOIN media ON children.id = media.child_id';
@@ -46,11 +47,11 @@ $json_string = json_encode($json);
 
 # Return 'Not Modified' if ETag matches.
 $etag = md5($json_string);
-if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
-  error_log('Found if-none-match: ' . $_SERVER['HTTP_IF_NONE_MATCH']);
-  header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
-  exit();
-}
+#if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && $_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+#  error_log('Found if-none-match: ' . $_SERVER['HTTP_IF_NONE_MATCH']);
+#  header($_SERVER['SERVER_PROTOCOL'] . ' 304 Not Modified');
+#  exit();
+#}
 
 # Return HTTP response
 header('Content-Type: application/json');

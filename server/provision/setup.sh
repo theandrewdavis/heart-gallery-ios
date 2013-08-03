@@ -6,21 +6,20 @@ apt-get install -y php5 php5-mysql
 
 # Set up apache
 apt-get install -y apache2
-echo 'ServerName localhost' >> /etc/apache2/httpd.conf
 rm -rf /var/www
 ln -s /vagrant/web /var/www
 
-# mysql connection info
-MYSQL_DB=hg
-MYSQL_USER=hguser
-MYSQL_USER_PASSWORD=i25iyOnACVax5y3NQAn
-MYSQL_ROOT_PASSWORD=CBdL7HhUJO0GOUpNIM1
+# Save mysql connection info to httpd.conf
+source /vagrant/provision/secret.sh
+echo "SetEnv MYSQL_DB ${MYSQL_DB}" >> /etc/apache2/httpd.conf
+echo "SetEnv MYSQL_USER ${MYSQL_USER}" >> /etc/apache2/httpd.conf
+echo "SetEnv MYSQL_USER_PASSWORD ${MYSQL_USER_PASSWORD}" >> /etc/apache2/httpd.conf
 
 # Set up mysql
 DEBIAN_FRONTEND=noninteractive apt-get install -y -q mysql-server
 mysqladmin -uroot create ${MYSQL_DB}
 mysql -u root -e "GRANT ALL PRIVILEGES ON ${MYSQL_DB}.* TO '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_USER_PASSWORD}'"
-mysql -u${MYSQL_USER} -p${MYSQL_USER_PASSWORD} ${MYSQL_DB} < /vagrant/hg-database.sql
+mysql -u${MYSQL_USER} -p${MYSQL_USER_PASSWORD} ${MYSQL_DB} < /vagrant/provision/hg-database.sql
 mysqladmin -uroot password ${MYSQL_ROOT_PASSWORD}
 
 # Restart apache so the php extensions will be used
