@@ -19,6 +19,14 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 
 @implementation HGDataController
 
+- (id)init {
+    if (self = [super init]) {
+        // Subscribe to changes in the background managed object context so that they can be merged into the main managed object context.
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
+    }
+    return self;
+}
+
 // Fetch a list of all children stored on the device.
 - (void)fetchLocalData {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
@@ -89,28 +97,36 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 
 // Clear all children in the store and replace them with the children in the given JSON object.
 - (void)update:(NSDictionary *)data version:(NSString *)version  {
+    // Don't update the store if the version has already been saved.
     if (![self isNewVersion:version]) {
         return;
     }
-    
-    // Delete all entities in the context.
-    [self deleteAllEntitiesOfName:NSStringFromClass([HGVersion class])];
-    [self deleteAllEntitiesOfName:NSStringFromClass([HGChild class])];
-    
-    // Recerate all entities from JSON data.
-    [HGVersion addVersion:version toContext:self.managedObjectContext];
-    for (NSDictionary *childData in data[@"children"]) {
-        HGChild *child = [HGChild addChildFromData:childData toContext:self.managedObjectContext];
-        NSMutableSet *media = [[NSMutableSet alloc] init];
-        for (NSDictionary *mediaItemData in childData[@"media"]) {
-            HGMediaItem *mediaItem = [HGMediaItem addMediaItemFromData:mediaItemData toContext:self.managedObjectContext];
-            [media addObject:mediaItem];
+
+    // Create a background thread to store the new data in another managed object context.
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] init];
+        backgroundContext.persistentStoreCoordinator = self.managedObjectContext.persistentStoreCoordinator;
+
+        // Store data from JSON into the background managed object context.
+        [HGVersion addVersion:version toContext:backgroundContext];
+        for (NSDictionary *childData in data[@"children"]) {
+            HGChild *child = [HGChild addChildFromData:childData toContext:backgroundContext];
+            NSMutableSet *media = [[NSMutableSet alloc] init];
+            for (NSDictionary *mediaItemData in childData[@"media"]) {
+                HGMediaItem *mediaItem = [HGMediaItem addMediaItemFromData:mediaItemData toContext:backgroundContext];
+                [media addObject:mediaItem];
+            }
+            child.media = media;
         }
-        child.media = media;
-    }
-    
-    // Save the changes to the managed object context.
-    [self.managedObjectContext save:nil];
+        [backgroundContext save:nil];
+    });
+}
+
+// Merge changes saved in the background managed object context into the main managed object context.
+- (void)contextDidSave:(NSNotification *)notification {
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    });
 }
 
 @end

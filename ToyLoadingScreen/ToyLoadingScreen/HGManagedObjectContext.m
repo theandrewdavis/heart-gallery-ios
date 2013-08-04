@@ -11,7 +11,7 @@
 #import "HGChild.h"
 #import "HGMediaItem.h"
 
-#define kCoreDataStoreName @"HGCoreDataStore.sqlite"
+static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
 
 @implementation HGManagedObjectContext
 
