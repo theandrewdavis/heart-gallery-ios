@@ -25,26 +25,6 @@
     return self;
 }
 
-// Create a persistent store coordinator backed with sqlite. If the store cannot be added, attempt to delete the sqlite file before trying again.
-+ (NSPersistentStoreCoordinator *)createPersistentStoreCoordinator:(NSManagedObjectModel *)managedObjectModel storeName:(NSString *)storeName {
-    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
-
-    // Find the path for the sqlite file in the application's documents directory.
-    NSURL *documentDir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    NSURL *storeURL = [documentDir URLByAppendingPathComponent:storeName];
-    
-    // Try to add the sqlite store.
-    NSError *error = nil;
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        //  If it fails, try deleting the sqlite file. If it still fails, just log the error.
-		[[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
-		if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-            NSLog(@"Error creating store: %@, %@", error, error.userInfo);
-		}
-    }
-    return persistentStoreCoordinator;
-}
-
 // Create the managed object model: a Child entity with attributes such as id, name, and imageThumbnail.
 + (NSManagedObjectModel *)createManagedObjectModel {
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] init];
@@ -95,51 +75,24 @@
     return attributeDescription;
 }
 
-// Delete all entities of the given entity description from the managed object context.
-- (void)deleteAllEntitiesOfName:(NSString *)entityName {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
-    request.includesPropertyValues = NO;
-    NSArray *entities = [self executeFetchRequest:request error:nil];
-    for (NSManagedObject* entity in entities) {
-        [self deleteObject:entity];
-    }
-}
-
-// Check if the supplied version matches the version saved in the managed object context.
-- (BOOL)isNewVersion:(NSString *)version {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGVersion class])];
-    NSArray *versions = [self executeFetchRequest:request error:nil];
-    if (versions.count == 0) {
-        return YES;
-    }
-    HGVersion *storedVersion = (HGVersion *)versions[0];
-    return ![storedVersion.value isEqualToString:version];
-}
-
-// Clear all children in the store and replace them with the children in the given JSON object.
-- (void)update:(NSDictionary *)data version:(NSString *)version  {
-    if (![self isNewVersion:version]) {
-        return;
-    }
+// Create a persistent store coordinator backed with sqlite. If the store cannot be added, attempt to delete the sqlite file before trying again.
++ (NSPersistentStoreCoordinator *)createPersistentStoreCoordinator:(NSManagedObjectModel *)managedObjectModel storeName:(NSString *)storeName {
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
     
-    // Delete all entities in the context.
-    [self deleteAllEntitiesOfName:NSStringFromClass([HGVersion class])];
-    [self deleteAllEntitiesOfName:NSStringFromClass([HGChild class])];
-
-    // Recerate all entities from JSON data.
-    [HGVersion addVersion:version toContext:self];
-    for (NSDictionary *childData in data[@"children"]) {
-        HGChild *child = [HGChild addChildFromData:childData toContext:self];
-        NSMutableSet *media = [[NSMutableSet alloc] init];
-        for (NSDictionary *mediaItemData in childData[@"media"]) {
-            HGMediaItem *mediaItem = [HGMediaItem addMediaItemFromData:mediaItemData toContext:self];
-            [media addObject:mediaItem];
-        }
-        child.media = media;
+    // Find the path for the sqlite file in the application's documents directory.
+    NSURL *documentDir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *storeURL = [documentDir URLByAppendingPathComponent:storeName];
+    
+    // Try to add the sqlite store.
+    NSError *error = nil;
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        //  If it fails, try deleting the sqlite file. If it still fails, just log the error.
+		[[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+		if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+            NSLog(@"Error creating store: %@, %@", error, error.userInfo);
+		}
     }
-
-    // Save the changes to the managed object context.
-    [self save:nil];
+    return persistentStoreCoordinator;
 }
 
 @end

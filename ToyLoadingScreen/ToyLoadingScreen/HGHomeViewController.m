@@ -8,7 +8,6 @@
 
 #import "HGHomeViewController.h"
 #import "HGChildTableViewController.h"
-#import "HGChild.h"
 
 #define kHomeScreenMargin 20.0
 #define kHomeScreenButtonHeight 80.0
@@ -47,7 +46,7 @@
 // Open a table view of all children. Activated when the "Children" button is pressed.
 - (void)showChildren {
     HGChildTableViewController *childTable = [[HGChildTableViewController alloc] init];
-    childTable.managedObjectContext = self.managedObjectContext;
+    childTable.dataController = self.dataController;
     [self.navigationController pushViewController:childTable animated:YES];
 }
 

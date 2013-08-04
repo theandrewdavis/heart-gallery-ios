@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGDataController.h"
 
-@class HGManagedObjectContext;
+@interface HGChildTableViewController : UITableViewController <HGDataControllerDelegate>
 
-@interface HGChildTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-
-@property (nonatomic, strong) HGManagedObjectContext *managedObjectContext;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) HGDataController *dataController;
 
 @end

@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class HGManagedObjectContext;
+@class HGDataController;
 
 @interface HGHomeViewController : UIViewController
 
-@property (nonatomic, strong) HGManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) HGDataController *dataController;
 
 @end

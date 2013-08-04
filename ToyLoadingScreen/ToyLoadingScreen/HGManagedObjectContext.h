@@ -9,7 +9,4 @@
 #import <CoreData/CoreData.h>
 
 @interface HGManagedObjectContext : NSManagedObjectContext
-
-- (void)update:(NSDictionary *)data version:(NSString *)version;
-
 @end
