@@ -15,8 +15,8 @@
 #import "HGChild.h"
 #import "Reachability.h"
 
-#define kChildApiUrl @"http://localhost:8081/api.php"
-#define kChildApiHostName @"www.google.com"
+#define kChildApiUrl @"http://ec2-54-221-46-93.compute-1.amazonaws.com/api.php"
+#define kChildApiHostName @"ec2-54-221-46-93.compute-1.amazonaws.com"
 #define kChildFetchRequestBatchSize 40
 
 @implementation HGChildTableViewController
@@ -111,7 +111,8 @@
     // Download a list of all children. If successful, update the local store. If unsuccessful, show an error.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kChildApiUrl]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        [self.managedObjectContext replaceWithDictionary:JSON];
+        NSString *version = response.allHeaderFields[@"ETag"];
+        [self.managedObjectContext update:JSON version:version];
         [self hidePullToRefresh];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Request failed: %@, %@", error.localizedDescription, error.userInfo);

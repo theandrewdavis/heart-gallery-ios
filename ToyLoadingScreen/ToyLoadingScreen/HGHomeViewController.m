@@ -17,10 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // 1. Setup core data to work with multiple entities like media
-    // 2. Ignore 304 not modifieds
-        
+
     // Create a frame for the children button.
     CGFloat buttonY = self.view.bounds.size.height - kHomeScreenMargin - kHomeScreenButtonHeight;
     CGFloat buttonWidth = self.view.bounds.size.width - 2 * kHomeScreenMargin;

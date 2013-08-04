@@ -8,7 +8,7 @@
 
 #import "HGChildViewController.h"
 #import "HGChild.h"
-#import "HGMedia.h"
+#import "HGMediaItem.h"
 
 @implementation HGChildViewController
 
@@ -20,7 +20,7 @@
     
     UILabel *label = [[UILabel alloc] initWithFrame:self.view.bounds];
     label.numberOfLines = 0;
-    for (HGMedia *mediaItem in self.child.media) {
+    for (HGMediaItem *mediaItem in self.child.media) {
         label.text = [NSString stringWithFormat:@"%@\n%@", label.text, mediaItem.name];
     }
     [self.view addSubview:label];

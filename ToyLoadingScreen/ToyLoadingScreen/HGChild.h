@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
 @interface HGChild : NSManagedObject
@@ -17,5 +16,7 @@
 @property (nonatomic, strong) NSString* imageThumbnail;
 @property (nonatomic, strong) NSString* imageFull;
 @property (nonatomic, strong) NSSet* media;
+
++ (HGChild *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
 
 @end

@@ -1,17 +1,18 @@
 //
-//  HGMedia.h
+//  HGMediaItem.h
 //  ToyLoadingScreen
 //
 //  Created by Andrew Davis on 7/24/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface HGMedia : NSManagedObject
+@interface HGMediaItem : NSManagedObject
 
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSNumber* type;
+
++ (HGMediaItem *)addMediaItemFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
 
 @end

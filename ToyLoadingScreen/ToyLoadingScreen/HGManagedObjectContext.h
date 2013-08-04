@@ -10,6 +10,6 @@
 
 @interface HGManagedObjectContext : NSManagedObjectContext
 
-- (void)replaceWithDictionary:(NSDictionary *)dictionary;
+- (void)update:(NSDictionary *)data version:(NSString *)version;
 
 @end
