@@ -35,11 +35,11 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     versionEntity.name = NSStringFromClass([HGVersion class]);
     
     // Create the child entity description.
-    NSAttributeDescription *childIdDescription = [[self class] createAttributeDescription:@"childID" type:NSInteger32AttributeType optional:NO indexed:YES];
     NSAttributeDescription *childNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:YES];
     NSAttributeDescription *childDescriptionDescription = [[self class] createAttributeDescription:@"description" type:NSStringAttributeType optional:YES indexed:NO];
-    NSAttributeDescription *childThumbnailDescription = [[self class] createAttributeDescription:@"imageThumbnail" type:NSStringAttributeType optional:YES indexed:NO];
-    NSAttributeDescription *childImageDescription = [[self class] createAttributeDescription:@"imageFull" type:NSStringAttributeType optional:YES indexed:NO];
+    NSAttributeDescription *childGenderDescription = [[self class] createAttributeDescription:@"gender" type:NSStringAttributeType optional:YES indexed:YES];
+    NSAttributeDescription *childBirthdayDescription = [[self class] createAttributeDescription:@"birthday" type:NSDateAttributeType optional:YES indexed:YES];
+    NSAttributeDescription *childThumbnailDescription = [[self class] createAttributeDescription:@"thumbnail" type:NSStringAttributeType optional:YES indexed:NO];
     NSEntityDescription *childEntity = [[NSEntityDescription alloc] init];
     childEntity.name = NSStringFromClass([HGChild class]);
 
@@ -59,7 +59,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     
     // Add the attribute descriptions to the entity descriptions and the entity descriptions to the managed object context.
     versionEntity.properties = @[versionValueDescription];
-    childEntity.properties = @[childIdDescription, childNameDescription, childDescriptionDescription, childThumbnailDescription, childImageDescription, childMediaDescription];
+    childEntity.properties = @[childNameDescription, childDescriptionDescription, childGenderDescription, childBirthdayDescription, childThumbnailDescription, childMediaDescription];
     mediaEntity.properties = @[mediaNameDescription, mediaTypeDescription];
     managedObjectModel.entities = @[versionEntity, childEntity, mediaEntity];
     return managedObjectModel;

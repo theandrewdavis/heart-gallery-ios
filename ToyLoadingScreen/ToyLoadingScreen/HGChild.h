@@ -10,11 +10,11 @@
 
 @interface HGChild : NSManagedObject
 
-@property (nonatomic, strong) NSNumber* childID;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* description;
-@property (nonatomic, strong) NSString* imageThumbnail;
-@property (nonatomic, strong) NSString* imageFull;
+@property (nonatomic, strong) NSString* gender;
+@property (nonatomic, strong) NSDate* birthday;
+@property (nonatomic, strong) NSString* thumbnail;
 @property (nonatomic, strong) NSSet* media;
 
 + (HGChild *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;

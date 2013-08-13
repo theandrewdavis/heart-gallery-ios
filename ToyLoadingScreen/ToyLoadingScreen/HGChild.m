@@ -11,22 +11,28 @@
 
 @implementation HGChild
 
-@dynamic childID;
 @dynamic name;
 @dynamic description;
-@dynamic imageThumbnail;
-@dynamic imageFull;
+@dynamic gender;
+@dynamic birthday;
+@dynamic thumbnail;
 @dynamic media;
 
 
 // Add a child entity to the managed object context and populate it with data from a JSON dictionary.
 + (HGChild *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context {
+    static NSDateFormatter *dateFormatter = nil;
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"YYYY-MM-dd";
+    }
+
     HGChild *child = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([self class]) inManagedObjectContext:context];
-    child.childID = @([[data objectForKeyNotNull:@"id"] integerValue]);
-    child.description = [data objectForKeyNotNull:@"description"];
     child.name = [data objectForKeyNotNull:@"name"];
-    child.imageThumbnail = [data objectForKeyNotNull:@"image_small"];
-    child.imageFull = [data objectForKeyNotNull:@"image_large"];
+    child.description = [data objectForKeyNotNull:@"description"];
+    child.gender = [data objectForKeyNotNull:@"gender"];
+    child.birthday = [dateFormatter dateFromString:[data objectForKeyNotNull:@"birthday"]];
+    child.thumbnail = [data objectForKeyNotNull:@"thumbnail"];
     return child;
 }
 

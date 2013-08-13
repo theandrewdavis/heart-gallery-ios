@@ -28,6 +28,7 @@ static int kWellMargin = 10;
     CGFloat wellHeight = 2 * kWellMargin + 2 * kButtonHeight + kBorderSize;
     UIImageView *well = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"well-background.png"]];
     well.frame = CGRectMake(kBorderSize, self.view.bounds.size.height - kBorderSize - wellHeight, bodyWidth, wellHeight);
+    well.userInteractionEnabled = YES;
     [self.view addSubview:well];
     
     // Add a "Donate" button.
@@ -83,6 +84,7 @@ static int kWellMargin = 10;
     [self.navigationController pushViewController:childTable animated:YES];
 }
 
+// Open the donate page of the Heart Gallery website in Safari.
 - (void)donate {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.heartgalleryalabama.com/support.php"]];
 }

@@ -13,8 +13,8 @@
 #import "HGVersion.h"
 #import "HGMediaItem.h"
 
-static NSString *kChildApiUrl = @"http://ec2-54-221-46-93.compute-1.amazonaws.com/api.php";
-static NSString *kChildApiHostName = @"ec2-54-221-46-93.compute-1.amazonaws.com";
+static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
+static NSString *kChildApiHostName = @"heartgalleryalabama.com";
 static NSInteger kChildFetchRequestBatchSize = 40;
 
 @implementation HGDataController
@@ -31,8 +31,8 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 - (void)fetchLocalData {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
     request.fetchBatchSize = kChildFetchRequestBatchSize;
-    NSSortDescriptor *sortNameDescending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    request.sortDescriptors = @[sortNameDescending];
+    NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sortNameAscending];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController.delegate = self;
     
