@@ -14,62 +14,48 @@
 #define kHomeScreenButtonHeight 60.0
 
 static int kBorderSize = 3;
-static int kButtonWellEdgeMargin = 15;
-static int kButtonWellInnerMargin = 5;
-static int kButtonWellButtonHeight = 60;
+static int kButtonHeight = 60;
 
 @implementation HGHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:160.0f/255.0f green:0.0f blue:0.0f alpha:1.0f]; // [UIColor redColor]
     CGFloat bodyWidth = self.view.bounds.size.width - 2 * kBorderSize;
-    
-    // Add the button well.
-    CGFloat buttonWellHeight = kButtonWellEdgeMargin * 2 + kButtonWellInnerMargin + kButtonWellButtonHeight * 2;
-    CGFloat buttonWellY = self.view.bounds.size.height - buttonWellHeight - kBorderSize;
-    UIImageView *buttonWell = [[UIImageView alloc] initWithFrame:CGRectMake(kBorderSize, buttonWellY, bodyWidth, buttonWellHeight)];
-    buttonWell.image = [UIImage imageNamed:@"gray-background.png"];
-    [self.view addSubview:buttonWell];
-    
-    CGRect donateButtonFrame = CGRectMake(kButtonWellEdgeMargin, kButtonWellEdgeMargin, buttonWell.bounds.size.width - 2 * kButtonWellEdgeMargin, kButtonWellButtonHeight);
-    CGRect childrenButtonFrame = CGRectMake(kButtonWellEdgeMargin, kButtonWellEdgeMargin + kButtonWellButtonHeight + kButtonWellInnerMargin, buttonWell.bounds.size.width - 2 * kButtonWellEdgeMargin, kButtonWellButtonHeight);
     
     // Add a "Children" button.
     UIButton *childrenButton = [UIButton buttonWithColor:[UIColor redColor]];
-    childrenButton.frame = childrenButtonFrame;
+    childrenButton.frame = CGRectMake(kBorderSize, self.view.bounds.size.height - kBorderSize - kButtonHeight, bodyWidth, kButtonHeight);
     [childrenButton setTitle:@"Children" forState:UIControlStateNormal];
     [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
-    [buttonWell addSubview:childrenButton];
+    [self.view addSubview:childrenButton];
     
     // Add a "Donate" button.
     UIButton *donateButton = [UIButton buttonWithColor:[UIColor colorWithRed:90.0f/255.0f green:124.0f/255.0f blue:194.0f/255.0f alpha:1.0f]];
-    donateButton.frame = donateButtonFrame;
+    donateButton.frame = CGRectMake(kBorderSize, childrenButton.frame.origin.y - kBorderSize - kButtonHeight, bodyWidth, kButtonHeight);
     [donateButton setTitle:@"Donate" forState:UIControlStateNormal];
     [donateButton addTarget:self action:@selector(donate) forControlEvents:UIControlEventTouchUpInside];
-    [buttonWell addSubview:donateButton];
+    [self.view addSubview:donateButton];
     
     // Add the title image.
-    NSString *titleName = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"ipad-title.png" : @"iphone-title.png";
-    UIImage *titleImage = [UIImage imageNamed:titleName];
+    NSString *titleImageName = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) ? @"title-ipad.png" : @"title-iphone.png";
+    UIImage *titleImage = [UIImage imageNamed:titleImageName];
     CGFloat titleImageViewHeight = bodyWidth * titleImage.size.height / titleImage.size.width;
     UIImageView *titleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kBorderSize, kBorderSize, bodyWidth, titleImageViewHeight)];
     titleImageView.image = titleImage;
     [self.view addSubview:titleImageView];
-
-    // Fill in remaining space with images.
-    NSArray *imageNames = @[@"iphone-image1.jpg", @"iphone-image2.jpg", @"iphone-image3.jpg"];
-    CGSize sampleImageSize = [UIImage imageNamed:imageNames[0]].size;
-    CGFloat sampleImageIdealHeight = bodyWidth * sampleImageSize.height / sampleImageSize.width;
-    CGFloat totalAvailableImageHeight = buttonWell.frame.origin.y - titleImageView.frame.origin.y - titleImageView.bounds.size.height - 2 * kBorderSize;
-    int fillImagesCount = MIN(imageNames.count, roundf(totalAvailableImageHeight / sampleImageIdealHeight));
-    CGFloat actualImageHeight = (totalAvailableImageHeight - (fillImagesCount - 1) * kBorderSize) / fillImagesCount;
     
-    CGFloat fillImagesY = titleImageView.frame.origin.y + titleImageView.bounds.size.height + kBorderSize;
-    for (int index = 0; index < fillImagesCount; index++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kBorderSize, fillImagesY + (actualImageHeight + kBorderSize) * index, bodyWidth, actualImageHeight)];
-        imageView.image = [UIImage imageNamed:imageNames[index]];
+    // Add the filler images.
+    NSMutableArray *fillImageNames = @[@"home-image-1.jpg", @"home-image-2.jpg"].mutableCopy;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [fillImageNames addObject:@"home-image-3.jpg"];
+    }
+    CGFloat fillImagesYTop = titleImageView.frame.origin.y + titleImageView.bounds.size.height + kBorderSize;
+    CGFloat fillImagesYBottom = donateButton.frame.origin.y - kBorderSize;
+    CGFloat fillImageHeight = (fillImagesYBottom - fillImagesYTop - (fillImageNames.count - 1) * kBorderSize) / fillImageNames.count;
+    for (int index = 0; index < fillImageNames.count; index++) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(kBorderSize, fillImagesYTop + (fillImageHeight + kBorderSize) * index, bodyWidth, fillImageHeight)];
+        imageView.image = [UIImage imageNamed:fillImageNames[index]];
         [self.view addSubview:imageView];
     }
 }
