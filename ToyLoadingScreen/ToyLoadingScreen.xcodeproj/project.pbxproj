@@ -13,10 +13,19 @@
 		499EB5E417AE6D9C00C3BE34 /* HGVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E317AE6D9C00C3BE34 /* HGVersion.m */; };
 		499EB5EA17AE779A00C3BE34 /* NSDictionary+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */; };
 		499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */; };
+		499EB5F117B65B7D00C3BE34 /* gray-banner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5EF17B65B7D00C3BE34 /* gray-banner.jpg */; };
+		499EB5F217B65B7D00C3BE34 /* gray-wide-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5F017B65B7D00C3BE34 /* gray-wide-image.jpg */; };
+		499EB5FC17B691FC00C3BE34 /* gray-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5FB17B691FC00C3BE34 /* gray-background.png */; };
+		499EB5FE17B6998000C3BE34 /* iphone-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5FD17B6997F00C3BE34 /* iphone-title.png */; };
+		499EB60017B69F9B00C3BE34 /* iphone-image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5FF17B69F9B00C3BE34 /* iphone-image1.jpg */; };
+		499EB60317B6A31500C3BE34 /* iphone-image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB60117B6A31500C3BE34 /* iphone-image2.jpg */; };
+		499EB60417B6A31500C3BE34 /* iphone-image3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB60217B6A31500C3BE34 /* iphone-image3.jpg */; };
 		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
 		49C4FC32178D7CEA00CA0DE2 /* HGManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */; };
 		49C4FC41178ED03E00CA0DE2 /* HGChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC40178ED03E00CA0DE2 /* HGChild.m */; };
 		49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */; };
+		49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */; };
+		49CC15C717BA8E62001ECEF9 /* ipad-title.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CC15C617BA8E62001ECEF9 /* ipad-title.png */; };
 		49DAD02A1796BAC900893D33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DAD0291796BAC900893D33 /* SystemConfiguration.framework */; };
 		49F3E6F3178445BB002B66E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F2178445BB002B66E7 /* UIKit.framework */; };
 		49F3E6F5178445BB002B66E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F4178445BB002B66E7 /* Foundation.framework */; };
@@ -44,6 +53,13 @@
 		499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utility.m"; sourceTree = "<group>"; };
 		499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDataController.h; sourceTree = "<group>"; };
 		499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDataController.m; sourceTree = "<group>"; };
+		499EB5EF17B65B7D00C3BE34 /* gray-banner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "gray-banner.jpg"; sourceTree = "<group>"; };
+		499EB5F017B65B7D00C3BE34 /* gray-wide-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "gray-wide-image.jpg"; sourceTree = "<group>"; };
+		499EB5FB17B691FC00C3BE34 /* gray-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-background.png"; sourceTree = "<group>"; };
+		499EB5FD17B6997F00C3BE34 /* iphone-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iphone-title.png"; path = "ToyLoadingScreen/iphone-title.png"; sourceTree = "<group>"; };
+		499EB5FF17B69F9B00C3BE34 /* iphone-image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iphone-image1.jpg"; path = "ToyLoadingScreen/iphone-image1.jpg"; sourceTree = "<group>"; };
+		499EB60117B6A31500C3BE34 /* iphone-image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iphone-image2.jpg"; path = "ToyLoadingScreen/iphone-image2.jpg"; sourceTree = "<group>"; };
+		499EB60217B6A31500C3BE34 /* iphone-image3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "iphone-image3.jpg"; path = "ToyLoadingScreen/iphone-image3.jpg"; sourceTree = "<group>"; };
 		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		49C4FC30178D7CEA00CA0DE2 /* HGManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGManagedObjectContext.h; sourceTree = "<group>"; };
 		49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGManagedObjectContext.m; sourceTree = "<group>"; };
@@ -51,6 +67,9 @@
 		49C4FC40178ED03E00CA0DE2 /* HGChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChild.m; sourceTree = "<group>"; };
 		49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
 		49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
+		49CC15C317BA8374001ECEF9 /* UIButton+ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ColorButton.h"; sourceTree = "<group>"; };
+		49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ColorButton.m"; sourceTree = "<group>"; };
+		49CC15C617BA8E62001ECEF9 /* ipad-title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-title.png"; sourceTree = "<group>"; };
 		49DAD0291796BAC900893D33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49F3E6EF178445BB002B66E7 /* ToyLoadingScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyLoadingScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F3E6F2178445BB002B66E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -85,6 +104,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		499EB5EE17B65B3600C3BE34 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				499EB5FB17B691FC00C3BE34 /* gray-background.png */,
+				499EB5EF17B65B7D00C3BE34 /* gray-banner.jpg */,
+				499EB5F017B65B7D00C3BE34 /* gray-wide-image.jpg */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		499EB5F317B66B4C00C3BE34 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49F3E701178445BB002B66E7 /* HGAppDelegate.h */,
+				49F3E702178445BB002B66E7 /* HGAppDelegate.m */,
+				4945A023178446D500B116F1 /* HGHomeViewController.h */,
+				4945A024178446D500B116F1 /* HGHomeViewController.m */,
+				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
+				49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */,
+				499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */,
+				499EB5E017A7E47500C3BE34 /* HGChildViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		499EB5F417B66B6100C3BE34 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49CC15C317BA8374001ECEF9 /* UIButton+ColorButton.h */,
+				49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		49C4FC43178ED18200CA0DE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +160,11 @@
 		49F3E6E6178445BB002B66E7 = {
 			isa = PBXGroup;
 			children = (
+				49CC15C617BA8E62001ECEF9 /* ipad-title.png */,
+				499EB60117B6A31500C3BE34 /* iphone-image2.jpg */,
+				499EB60217B6A31500C3BE34 /* iphone-image3.jpg */,
+				499EB5FF17B69F9B00C3BE34 /* iphone-image1.jpg */,
+				499EB5FD17B6997F00C3BE34 /* iphone-title.png */,
 				49F3E6F8178445BB002B66E7 /* ToyLoadingScreen */,
 				49F3E6F1178445BB002B66E7 /* Frameworks */,
 				49F3E6F0178445BB002B66E7 /* Products */,
@@ -138,15 +196,10 @@
 		49F3E6F8178445BB002B66E7 /* ToyLoadingScreen */ = {
 			isa = PBXGroup;
 			children = (
-				49F3E701178445BB002B66E7 /* HGAppDelegate.h */,
-				49F3E702178445BB002B66E7 /* HGAppDelegate.m */,
-				4945A023178446D500B116F1 /* HGHomeViewController.h */,
-				4945A024178446D500B116F1 /* HGHomeViewController.m */,
-				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
-				49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */,
-				499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */,
-				499EB5E017A7E47500C3BE34 /* HGChildViewController.m */,
 				49C4FC43178ED18200CA0DE2 /* Models */,
+				499EB5F417B66B6100C3BE34 /* Views */,
+				499EB5F317B66B4C00C3BE34 /* Controllers */,
+				499EB5EE17B65B3600C3BE34 /* Media */,
 				49F3E6F9178445BB002B66E7 /* Supporting Files */,
 			);
 			path = ToyLoadingScreen;
@@ -224,6 +277,14 @@
 				49F3E705178445BB002B66E7 /* Default.png in Resources */,
 				49F3E707178445BB002B66E7 /* Default@2x.png in Resources */,
 				49F3E709178445BB002B66E7 /* Default-568h@2x.png in Resources */,
+				499EB5F117B65B7D00C3BE34 /* gray-banner.jpg in Resources */,
+				499EB5F217B65B7D00C3BE34 /* gray-wide-image.jpg in Resources */,
+				499EB5FC17B691FC00C3BE34 /* gray-background.png in Resources */,
+				499EB5FE17B6998000C3BE34 /* iphone-title.png in Resources */,
+				499EB60017B69F9B00C3BE34 /* iphone-image1.jpg in Resources */,
+				499EB60317B6A31500C3BE34 /* iphone-image2.jpg in Resources */,
+				499EB60417B6A31500C3BE34 /* iphone-image3.jpg in Resources */,
+				49CC15C717BA8E62001ECEF9 /* ipad-title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +337,7 @@
 				499EB5E417AE6D9C00C3BE34 /* HGVersion.m in Sources */,
 				499EB5EA17AE779A00C3BE34 /* NSDictionary+Utility.m in Sources */,
 				499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */,
+				49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
