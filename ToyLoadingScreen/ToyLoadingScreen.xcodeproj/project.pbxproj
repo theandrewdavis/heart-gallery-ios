@@ -14,15 +14,15 @@
 		499EB5EA17AE779A00C3BE34 /* NSDictionary+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */; };
 		499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */; };
 		499EB5FE17B6998000C3BE34 /* title-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5FD17B6997F00C3BE34 /* title-iphone.png */; };
-		499EB60017B69F9B00C3BE34 /* home-image-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5FF17B69F9B00C3BE34 /* home-image-2.jpg */; };
 		499EB60317B6A31500C3BE34 /* home-image-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB60117B6A31500C3BE34 /* home-image-1.jpg */; };
-		499EB60417B6A31500C3BE34 /* home-image-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB60217B6A31500C3BE34 /* home-image-3.jpg */; };
 		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
 		49C4FC32178D7CEA00CA0DE2 /* HGManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */; };
 		49C4FC41178ED03E00CA0DE2 /* HGChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC40178ED03E00CA0DE2 /* HGChild.m */; };
 		49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */; };
 		49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */; };
 		49CC15C717BA8E62001ECEF9 /* title-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CC15C617BA8E62001ECEF9 /* title-ipad.png */; };
+		49CC15C917BAB676001ECEF9 /* home-image-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 49CC15C817BAB676001ECEF9 /* home-image-2.jpg */; };
+		49CC15CB17BAB6CB001ECEF9 /* well-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CC15CA17BAB6CB001ECEF9 /* well-background.png */; };
 		49DAD02A1796BAC900893D33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DAD0291796BAC900893D33 /* SystemConfiguration.framework */; };
 		49F3E6F3178445BB002B66E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F2178445BB002B66E7 /* UIKit.framework */; };
 		49F3E6F5178445BB002B66E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F4178445BB002B66E7 /* Foundation.framework */; };
@@ -51,9 +51,7 @@
 		499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDataController.h; sourceTree = "<group>"; };
 		499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDataController.m; sourceTree = "<group>"; };
 		499EB5FD17B6997F00C3BE34 /* title-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-iphone.png"; sourceTree = "<group>"; };
-		499EB5FF17B69F9B00C3BE34 /* home-image-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-image-2.jpg"; sourceTree = "<group>"; };
 		499EB60117B6A31500C3BE34 /* home-image-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-image-1.jpg"; sourceTree = "<group>"; };
-		499EB60217B6A31500C3BE34 /* home-image-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-image-3.jpg"; sourceTree = "<group>"; };
 		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		49C4FC30178D7CEA00CA0DE2 /* HGManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGManagedObjectContext.h; sourceTree = "<group>"; };
 		49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGManagedObjectContext.m; sourceTree = "<group>"; };
@@ -64,6 +62,8 @@
 		49CC15C317BA8374001ECEF9 /* UIButton+ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ColorButton.h"; sourceTree = "<group>"; };
 		49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ColorButton.m"; sourceTree = "<group>"; };
 		49CC15C617BA8E62001ECEF9 /* title-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-ipad.png"; path = "../title-ipad.png"; sourceTree = "<group>"; };
+		49CC15C817BAB676001ECEF9 /* home-image-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-image-2.jpg"; sourceTree = "<group>"; };
+		49CC15CA17BAB6CB001ECEF9 /* well-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "well-background.png"; sourceTree = "<group>"; };
 		49DAD0291796BAC900893D33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49F3E6EF178445BB002B66E7 /* ToyLoadingScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyLoadingScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F3E6F2178445BB002B66E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -104,8 +104,8 @@
 				499EB5FD17B6997F00C3BE34 /* title-iphone.png */,
 				49CC15C617BA8E62001ECEF9 /* title-ipad.png */,
 				499EB60117B6A31500C3BE34 /* home-image-1.jpg */,
-				499EB60217B6A31500C3BE34 /* home-image-3.jpg */,
-				499EB5FF17B69F9B00C3BE34 /* home-image-2.jpg */,
+				49CC15C817BAB676001ECEF9 /* home-image-2.jpg */,
+				49CC15CA17BAB6CB001ECEF9 /* well-background.png */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -269,10 +269,10 @@
 				49F3E707178445BB002B66E7 /* Default@2x.png in Resources */,
 				49F3E709178445BB002B66E7 /* Default-568h@2x.png in Resources */,
 				499EB5FE17B6998000C3BE34 /* title-iphone.png in Resources */,
-				499EB60017B69F9B00C3BE34 /* home-image-2.jpg in Resources */,
 				499EB60317B6A31500C3BE34 /* home-image-1.jpg in Resources */,
-				499EB60417B6A31500C3BE34 /* home-image-3.jpg in Resources */,
 				49CC15C717BA8E62001ECEF9 /* title-ipad.png in Resources */,
+				49CC15C917BAB676001ECEF9 /* home-image-2.jpg in Resources */,
+				49CC15CB17BAB6CB001ECEF9 /* well-background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
