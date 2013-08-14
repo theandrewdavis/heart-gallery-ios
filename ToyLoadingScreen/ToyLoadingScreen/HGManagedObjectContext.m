@@ -42,12 +42,14 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     NSAttributeDescription *childThumbnailDescription = [[self class] createAttributeDescription:@"thumbnail" type:NSStringAttributeType optional:YES indexed:NO];
     NSEntityDescription *childEntity = [[NSEntityDescription alloc] init];
     childEntity.name = NSStringFromClass([HGChild class]);
+    childEntity.managedObjectClassName = NSStringFromClass([HGChild class]);
 
     // Create the media entity description.
     NSAttributeDescription *mediaNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:NO];
     NSAttributeDescription *mediaTypeDescription = [[self class] createAttributeDescription:@"type" type:NSInteger32AttributeType optional:NO indexed:YES];
     NSEntityDescription *mediaEntity = [[NSEntityDescription alloc] init];
     mediaEntity.name = NSStringFromClass([HGMediaItem class]);
+    mediaEntity.managedObjectClassName = NSStringFromClass([HGMediaItem class]);
     
     // Create a one-to-many relationship between a child and its media.
     NSRelationshipDescription *childMediaDescription = [[NSRelationshipDescription alloc] init];

@@ -19,4 +19,6 @@
 
 + (HGChild *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
 
+- (NSURL *)thumbnailURL;
+
 @end

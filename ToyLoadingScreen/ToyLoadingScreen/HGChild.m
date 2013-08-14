@@ -9,6 +9,8 @@
 #import "HGChild.h"
 #import "NSDictionary+Utility.h"
 
+static NSString *kThumbnailUrlPrefix = @"http://www.heartgalleryalabama.com/images/children/thumbs/primary/";
+
 @implementation HGChild
 
 @dynamic name;
@@ -34,6 +36,11 @@
     child.birthday = [dateFormatter dateFromString:[data objectForKeyNotNull:@"birthday"]];
     child.thumbnail = [data objectForKeyNotNull:@"thumbnail"];
     return child;
+}
+
+// Return the full URL for an thumbnail.
+- (NSURL *)thumbnailURL {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kThumbnailUrlPrefix, self.thumbnail]];
 }
 
 @end

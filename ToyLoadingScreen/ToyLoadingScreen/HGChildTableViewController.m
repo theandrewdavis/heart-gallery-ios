@@ -12,6 +12,7 @@
 #import "SVProgressHUD.h"
 #import "CKRefreshControl.h"
 #import "HGChild.h"
+#import "HGWebImageView.h"
 
 static int kTableRowHeight = 90;
 static int kCellImageTag = 1;
@@ -63,7 +64,7 @@ static int kCellLabelRightMargin = 20;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
         // Create child thumbnail image.
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.rowHeight - 1, tableView.rowHeight - 1)];
+        HGWebImageView *imageView = [[HGWebImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.rowHeight - 1, tableView.rowHeight - 1)];
         imageView.tag = kCellImageTag;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         [imageView setClipsToBounds:YES];
@@ -79,11 +80,12 @@ static int kCellLabelRightMargin = 20;
     }
     
     // Fill out the cached cell with the child's name and image.
-    HGChild *child = [self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
+    HGChild *child = (HGChild *)[self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
     label.text = child.name;
-    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:kCellImageTag];
-    imageView.image = [UIImage imageNamed:@"home-image-1.jpg"];
+    HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
+    imageView.url = child.thumbnailURL;
+    NSLog(@"Child thumbnail: %@", child.thumbnailURL);
 
     return cell;
 }
