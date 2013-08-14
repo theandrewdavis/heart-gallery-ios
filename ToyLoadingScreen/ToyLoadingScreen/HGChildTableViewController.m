@@ -13,10 +13,18 @@
 #import "CKRefreshControl.h"
 #import "HGChild.h"
 
+static int kTableRowHeight = 90;
+static int kCellImageTag = 1;
+static int kCellLabelTag = 2;
+static int kCellLabelLeftMargin = 10;
+static int kCellLabelRightMargin = 20;
+
 @implementation HGChildTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.rowHeight = kTableRowHeight;
     
     // Set the title of the navigation controller.
     self.navigationItem.title = @"Children";
@@ -53,10 +61,29 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+        // Create child thumbnail image.
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.rowHeight - 1, tableView.rowHeight - 1)];
+        imageView.tag = kCellImageTag;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [imageView setClipsToBounds:YES];
+        [cell.contentView addSubview:imageView];
+        
+        // Create label for child name.
+        CGFloat labelWidth = tableView.bounds.size.width - tableView.rowHeight - kCellLabelLeftMargin - kCellLabelRightMargin;
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(tableView.rowHeight + kCellLabelLeftMargin, 0, labelWidth, tableView.rowHeight)];
+        label.tag = kCellLabelTag;
+        label.font = [UIFont boldSystemFontOfSize:20];
+        label.numberOfLines = 0;
+        [cell.contentView addSubview:label];
     }
     
+    // Fill out the cached cell with the child's name and image.
     HGChild *child = [self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = child.name;
+    UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
+    label.text = child.name;
+    UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:kCellImageTag];
+    imageView.image = [UIImage imageNamed:@"home-image-1.jpg"];
 
     return cell;
 }
