@@ -31,6 +31,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
 
     // Create the version entity description.
     NSAttributeDescription *versionValueDescription = [[self class] createAttributeDescription:@"value" type:NSStringAttributeType optional:NO indexed:NO];
+    NSAttributeDescription *versionDateDescription = [[self class] createAttributeDescription:@"date" type:NSDateAttributeType optional:NO indexed:NO];
     NSEntityDescription *versionEntity = [[NSEntityDescription alloc] init];
     versionEntity.name = NSStringFromClass([HGVersion class]);
     
@@ -60,7 +61,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     childMediaDescription.deleteRule = NSCascadeDeleteRule;
     
     // Add the attribute descriptions to the entity descriptions and the entity descriptions to the managed object context.
-    versionEntity.properties = @[versionValueDescription];
+    versionEntity.properties = @[versionValueDescription, versionDateDescription];
     childEntity.properties = @[childNameDescription, childBiographyDescription, childGenderDescription, childBirthdayDescription, childThumbnailDescription, childMediaDescription];
     mediaEntity.properties = @[mediaUrlDescription, mediaTypeDescription];
     managedObjectModel.entities = @[versionEntity, childEntity, mediaEntity];

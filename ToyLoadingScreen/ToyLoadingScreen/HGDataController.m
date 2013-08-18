@@ -87,6 +87,17 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     return ![storedVersion.value isEqualToString:version];
 }
 
+// Check if data has not been updated in one day.
+- (BOOL)isDataStale {
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGVersion class])];
+    NSArray *versions = [self.managedObjectContext executeFetchRequest:request error:nil];
+    if (versions.count == 0) {
+        return YES;
+    }
+    HGVersion *storedVersion = (HGVersion *)versions[0];
+    return [storedVersion.date timeIntervalSinceNow] < -(60 * 60 * 24);
+}
+
 // Clear all children in the store and replace them with the children in the given JSON object.
 - (void)update:(NSDictionary *)data version:(NSString *)version  {
     // Don't update the store if the version has already been saved.
@@ -95,37 +106,27 @@ static NSInteger kChildFetchRequestBatchSize = 40;
         return;
     }
 
-    NSLog(@"Dispatching a JSON processing thread.");
-    // Create a background thread to store the new data in another managed object context.
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-        backgroundContext.parentContext = self.managedObjectContext;
-        
-        // Store data from JSON into the background managed object context.
-        [HGVersion addVersion:version toContext:backgroundContext];
-        for (NSDictionary *childData in data[@"children"]) {
-            HGChild *child = [HGChild addChildFromData:childData toContext:backgroundContext];
-            NSMutableSet *media = [[NSMutableSet alloc] init];
-            for (NSDictionary *mediaItemData in childData[@"media"]) {
-                HGMediaItem *mediaItem = [HGMediaItem addMediaItemFromData:mediaItemData toContext:backgroundContext];
-                [media addObject:mediaItem];
-            }
-            child.media = media;
+    // Remove all children from the store.
+    [self deleteAllEntitiesOfName:NSStringFromClass([HGVersion class])];
+    [self deleteAllEntitiesOfName:NSStringFromClass([HGChild class])];
+    
+    // Add children from the web response.
+    [HGVersion addVersion:version toContext:self.managedObjectContext];
+    for (NSDictionary *childData in data[@"children"]) {
+        HGChild *child = [HGChild addChildFromData:childData toContext:self.managedObjectContext];
+        NSMutableSet *media = [[NSMutableSet alloc] init];
+        for (NSDictionary *mediaItemData in childData[@"media"]) {
+            HGMediaItem *mediaItem = [HGMediaItem addMediaItemFromData:mediaItemData toContext:self.managedObjectContext];
+            [media addObject:mediaItem];
         }
-        
-        NSLog(@"Saving background context.");
-        NSError *error = nil;
-        if (![backgroundContext save:&error]) {
-            NSLog(@"Background context save failed: %@, %@", error.localizedDescription, error.userInfo);
-        };
+        child.media = media;
+    }
 
-        [self.managedObjectContext performBlock:^{
-            NSError *error = nil;
-            if (![self.managedObjectContext save:&error]) {
-                NSLog(@"Main context save failed: %@, %@", error.localizedDescription, error.userInfo);
-            }
-        }];
-    });
+    // Save the context.
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Context save failed: %@, %@", error.localizedDescription, error.userInfo);
+    };
 }
 
 @end

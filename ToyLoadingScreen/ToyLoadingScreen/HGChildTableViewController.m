@@ -38,9 +38,11 @@ static int kCellLabelRightMargin = 20;
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self.dataController action:@selector(fetchRemoteData) forControlEvents:UIControlEventValueChanged];
     
-    // Get updates from the web and start the pull to refresh spinner.
-    [self.refreshControl beginRefreshing];
-    [self.dataController fetchRemoteData];
+    // If data is more than a day old, get updates from the web and start the pull to refresh spinner.
+    if ([self.dataController isDataStale]) {
+        [self.refreshControl beginRefreshing];
+        [self.dataController fetchRemoteData];
+    }
 }
 
 // Set the number of sections in the table.

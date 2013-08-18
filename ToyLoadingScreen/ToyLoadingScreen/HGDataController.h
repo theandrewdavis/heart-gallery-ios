@@ -24,5 +24,6 @@
 
 - (void)fetchLocalData;
 - (void)fetchRemoteData;
+- (BOOL)isDataStale;
 
 @end

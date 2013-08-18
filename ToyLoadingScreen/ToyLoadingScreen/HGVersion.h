@@ -10,7 +10,8 @@
 
 @interface HGVersion : NSManagedObject
 
-@property (nonatomic, strong) NSString* value;
+@property (nonatomic, strong) NSString *value;
+@property (nonatomic, strong) NSDate *date;
 
 + (HGVersion *)addVersion:(NSString *)value toContext:(NSManagedObjectContext *)context;
 
