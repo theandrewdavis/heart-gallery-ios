@@ -82,8 +82,8 @@ static int kCellLabelRightMargin = 20;
     // Fill out the cached cell with the child's name and image.
     HGChild *child = (HGChild *)[self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
-    label.text = child.name;
     HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
+    label.text = child.name;
     imageView.url = [NSURL URLWithString:child.thumbnail];
 
     return cell;

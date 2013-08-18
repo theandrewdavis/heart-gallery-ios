@@ -10,20 +10,30 @@
 #import "UIImage+PDF.h"
 #import "UIImageView+AFNetworking.h"
 
+@interface HGWebImageView ()
+@property (strong, nonatomic) UIImageView *placeholder;
+@property (strong, nonatomic) UIImageView *content;
+@end
+
 @implementation HGWebImageView
 
 - (void)layoutSubviews {
     // Add a "loading" indicator as a placeholder while the image loads.
-    UIImageView *placeholder = [[UIImageView alloc] initWithFrame:self.bounds];
-    placeholder.contentMode = UIViewContentModeCenter;
-    placeholder.image = [UIImage imageWithPDFNamed:@"loading.pdf" atHeight:self.bounds.size.width / 6];
-    [self addSubview:placeholder];
+    self.placeholder = [[UIImageView alloc] initWithFrame:self.bounds];
+    self.placeholder.contentMode = UIViewContentModeCenter;
+    self.placeholder.image = [UIImage imageWithPDFNamed:@"loading.pdf" atHeight:self.bounds.size.width / 6];
+    [self addSubview:self.placeholder];
     
-    // Add the content image asynchronously from the web.
-    UIImageView *content = [[UIImageView alloc] initWithFrame:self.bounds];
-    content.contentMode = self.contentMode;
-    [content setImageWithURL:self.url];
-    [self addSubview:content];
+    // Add the content image asynchronously from the web if URL is already set.
+    self.content = [[UIImageView alloc] initWithFrame:self.bounds];
+    self.content.contentMode = self.contentMode;
+    [self addSubview:self.content];
+    [self.content setImageWithURL:self.url];
+}
+
+- (void)setUrl:(NSURL *)url {
+    _url = url;
+    [self.content setImageWithURL:self.url];
 }
 
 @end
