@@ -2,10 +2,30 @@
 
 require_once dirname(__FILE__) . '/../mobile/lib/Database.php';
 
+# Translate thumbnail file name to its full URL.
+function thumbnail_to_url($name) {
+	static $thumbnail_prefix = 'http://www.heartgalleryalabama.com/images/children/thumbs/primary/';
+    return $thumbnail_prefix . $name;
+}
+
 # Translate a media type number into a media type name.
 function media_type_name($media_type_value) {
 	static $media_types = array('0' => 'image', '1' => 'audio', '2' => 'video');
 	return array_key_exists($media_type_value, $media_types) ? $media_types[$media_type_value] : 'unknown';
+}
+
+# Translate a media name into its full URL.
+function media_name_to_url($name, $type) {
+    static $image_prefix = 'http://www.heartgalleryalabama.com/images/children/primary/';
+    static $multimedia_prefix = 'http://www.heartgalleryalabama.com/images/children/sound_clips/';
+
+    if ($type == 'image') {
+        return $image_prefix . $name;
+    } else if ($type == 'audio' || $type == 'video') {
+        return $multimedia_prefix . $name;
+    } else {
+        return '';
+    }
 }
 
 # Fetch all children and associated media from the database.
@@ -26,18 +46,18 @@ foreach ($childRows as $row) {
 		$child['description'] = $row['child_bio'];
 		$child['gender'] = $row['child_gender'];
 		$child['birthday'] = $row['child_birthday'];
-		$child['thumbnail'] = $row['child_thumbnail'];
+		$child['thumbnail'] = thumbnail_to_url($row['child_thumbnail']);
 		$child['media'] = array();
-		array_push($child['media'], array('name' => $row['child_image'], 'type' => 'image'));
-		array_push($child['media'], array('name' => $row['child_video'], 'type' => 'video'));
+        $image_url = media_name_to_url($row['child_image'], 'image');
+		array_push($child['media'], array('url' => $image_url, 'type' => 'image'));
 		$children[$row['child_id']] = $child;
 	}
 
 	# Add media attributes to the media array if they exist.
 	if (isset($row['media_name']) && isset($row['media_type'])) {
 		$media_item = array();
-		$media_item['name'] = $row['media_name'];
 		$media_item['type'] = media_type_name($row['media_type']);
+		$media_item['url'] = media_name_to_url($row['media_name'], $media_item['type']);
 		array_push($children[$row['child_id']]['media'], $media_item);
 	}
 }
