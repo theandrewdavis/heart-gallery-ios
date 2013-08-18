@@ -19,14 +19,6 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 
 @implementation HGDataController
 
-- (id)init {
-    if (self = [super init]) {
-        // Subscribe to changes in the background managed object context so that they can be merged into the main managed object context.
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
-    }
-    return self;
-}
-
 // Fetch a list of all children stored on the device.
 - (void)fetchLocalData {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
@@ -99,14 +91,16 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 - (void)update:(NSDictionary *)data version:(NSString *)version  {
     // Don't update the store if the version has already been saved.
     if (![self isNewVersion:version]) {
+        NSLog(@"Not a new version, aborting");
         return;
     }
 
+    NSLog(@"Dispatching a JSON processing thread.");
     // Create a background thread to store the new data in another managed object context.
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] init];
-        backgroundContext.persistentStoreCoordinator = self.managedObjectContext.persistentStoreCoordinator;
-
+        NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+        backgroundContext.parentContext = self.managedObjectContext;
+        
         // Store data from JSON into the background managed object context.
         [HGVersion addVersion:version toContext:backgroundContext];
         for (NSDictionary *childData in data[@"children"]) {
@@ -118,14 +112,19 @@ static NSInteger kChildFetchRequestBatchSize = 40;
             }
             child.media = media;
         }
-        [backgroundContext save:nil];
-    });
-}
+        
+        NSLog(@"Saving background context.");
+        NSError *error = nil;
+        if (![backgroundContext save:&error]) {
+            NSLog(@"Background context save failed: %@, %@", error.localizedDescription, error.userInfo);
+        };
 
-// Merge changes saved in the background managed object context into the main managed object context.
-- (void)contextDidSave:(NSNotification *)notification {
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+        [self.managedObjectContext performBlock:^{
+            NSError *error = nil;
+            if (![self.managedObjectContext save:&error]) {
+                NSLog(@"Main context save failed: %@, %@", error.localizedDescription, error.userInfo);
+            }
+        }];
     });
 }
 

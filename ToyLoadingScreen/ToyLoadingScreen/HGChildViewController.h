@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGSlideShow.h"
 
 @class HGChild;
 
-@interface HGChildViewController : UIViewController
+@interface HGChildViewController : UIViewController <HGSlideShowDataSource>
 
 @property (strong, nonatomic) HGChild *child;
 

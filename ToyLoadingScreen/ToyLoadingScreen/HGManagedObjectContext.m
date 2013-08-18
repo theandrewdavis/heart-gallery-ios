@@ -16,7 +16,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
 @implementation HGManagedObjectContext
 
 - (id)init {
-    self = [super init];
+    self = [super initWithConcurrencyType:NSMainQueueConcurrencyType];
     if (self) {
         NSManagedObjectModel *managedObjectModel = [[self class] createManagedObjectModel];
         NSPersistentStoreCoordinator *persistentStoreCoordinator = [[self class] createPersistentStoreCoordinator:managedObjectModel storeName:kCoreDataStoreName];
@@ -36,7 +36,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     
     // Create the child entity description.
     NSAttributeDescription *childNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:YES];
-    NSAttributeDescription *childDescriptionDescription = [[self class] createAttributeDescription:@"description" type:NSStringAttributeType optional:YES indexed:NO];
+    NSAttributeDescription *childBiographyDescription = [[self class] createAttributeDescription:@"biography" type:NSStringAttributeType optional:YES indexed:NO];
     NSAttributeDescription *childGenderDescription = [[self class] createAttributeDescription:@"gender" type:NSStringAttributeType optional:YES indexed:YES];
     NSAttributeDescription *childBirthdayDescription = [[self class] createAttributeDescription:@"birthday" type:NSDateAttributeType optional:YES indexed:YES];
     NSAttributeDescription *childThumbnailDescription = [[self class] createAttributeDescription:@"thumbnail" type:NSStringAttributeType optional:YES indexed:NO];
@@ -45,8 +45,8 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     childEntity.managedObjectClassName = NSStringFromClass([HGChild class]);
 
     // Create the media entity description.
-    NSAttributeDescription *mediaNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:NO];
-    NSAttributeDescription *mediaTypeDescription = [[self class] createAttributeDescription:@"type" type:NSInteger32AttributeType optional:NO indexed:YES];
+    NSAttributeDescription *mediaUrlDescription = [[self class] createAttributeDescription:@"url" type:NSStringAttributeType optional:NO indexed:NO];
+    NSAttributeDescription *mediaTypeDescription = [[self class] createAttributeDescription:@"type" type:NSStringAttributeType optional:NO indexed:YES];
     NSEntityDescription *mediaEntity = [[NSEntityDescription alloc] init];
     mediaEntity.name = NSStringFromClass([HGMediaItem class]);
     mediaEntity.managedObjectClassName = NSStringFromClass([HGMediaItem class]);
@@ -61,8 +61,8 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     
     // Add the attribute descriptions to the entity descriptions and the entity descriptions to the managed object context.
     versionEntity.properties = @[versionValueDescription];
-    childEntity.properties = @[childNameDescription, childDescriptionDescription, childGenderDescription, childBirthdayDescription, childThumbnailDescription, childMediaDescription];
-    mediaEntity.properties = @[mediaNameDescription, mediaTypeDescription];
+    childEntity.properties = @[childNameDescription, childBiographyDescription, childGenderDescription, childBirthdayDescription, childThumbnailDescription, childMediaDescription];
+    mediaEntity.properties = @[mediaUrlDescription, mediaTypeDescription];
     managedObjectModel.entities = @[versionEntity, childEntity, mediaEntity];
     return managedObjectModel;
 }

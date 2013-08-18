@@ -84,16 +84,16 @@ static int kCellLabelRightMargin = 20;
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
     label.text = child.name;
     HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
-    imageView.url = child.thumbnailURL;
-    NSLog(@"Child thumbnail: %@", child.thumbnailURL);
+    imageView.url = [NSURL URLWithString:child.thumbnail];
 
     return cell;
 }
 
 // On selection, show a detail view of the child.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HGChild *child = [self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
     HGChildViewController *childViewController = [[HGChildViewController alloc] init];
-    childViewController.child = [self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
+    childViewController.child = child; //[self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
     [self.navigationController pushViewController:childViewController animated:YES];
 }
 

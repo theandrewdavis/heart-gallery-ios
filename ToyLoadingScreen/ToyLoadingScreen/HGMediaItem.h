@@ -10,8 +10,8 @@
 
 @interface HGMediaItem : NSManagedObject
 
-@property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSNumber* type;
+@property (nonatomic, strong) NSString* url;
+@property (nonatomic, strong) NSString* type;
 
 + (HGMediaItem *)addMediaItemFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
 

@@ -9,12 +9,10 @@
 #import "HGChild.h"
 #import "NSDictionary+Utility.h"
 
-static NSString *kThumbnailUrlPrefix = @"http://www.heartgalleryalabama.com/images/children/thumbs/primary/";
-
 @implementation HGChild
 
 @dynamic name;
-@dynamic description;
+@dynamic biography;
 @dynamic gender;
 @dynamic birthday;
 @dynamic thumbnail;
@@ -31,16 +29,11 @@ static NSString *kThumbnailUrlPrefix = @"http://www.heartgalleryalabama.com/imag
 
     HGChild *child = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([self class]) inManagedObjectContext:context];
     child.name = [data objectForKeyNotNull:@"name"];
-    child.description = [data objectForKeyNotNull:@"description"];
+    child.biography = [data objectForKeyNotNull:@"description"];
     child.gender = [data objectForKeyNotNull:@"gender"];
     child.birthday = [dateFormatter dateFromString:[data objectForKeyNotNull:@"birthday"]];
     child.thumbnail = [data objectForKeyNotNull:@"thumbnail"];
     return child;
-}
-
-// Return the full URL for an thumbnail.
-- (NSURL *)thumbnailURL {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kThumbnailUrlPrefix, self.thumbnail]];
 }
 
 @end
