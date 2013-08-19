@@ -17,7 +17,7 @@
 		499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildViewController.m */; };
 		499EB5E417AE6D9C00C3BE34 /* HGVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E317AE6D9C00C3BE34 /* HGVersion.m */; };
 		499EB5EA17AE779A00C3BE34 /* NSDictionary+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */; };
-		499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */; };
+		499EB5ED17AE7F5F00C3BE34 /* HGRemoteDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */; };
 		499EB5FE17B6998000C3BE34 /* title-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 499EB5FD17B6997F00C3BE34 /* title-iphone.png */; };
 		499EB60317B6A31500C3BE34 /* home-image-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 499EB60117B6A31500C3BE34 /* home-image-1.jpg */; };
 		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
@@ -63,8 +63,8 @@
 		499EB5E317AE6D9C00C3BE34 /* HGVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGVersion.m; sourceTree = "<group>"; };
 		499EB5E817AE779900C3BE34 /* NSDictionary+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Utility.h"; sourceTree = "<group>"; };
 		499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utility.m"; sourceTree = "<group>"; };
-		499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDataController.h; sourceTree = "<group>"; };
-		499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDataController.m; sourceTree = "<group>"; };
+		499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGRemoteDataController.h; sourceTree = "<group>"; };
+		499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGRemoteDataController.m; sourceTree = "<group>"; };
 		499EB5FD17B6997F00C3BE34 /* title-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-iphone.png"; sourceTree = "<group>"; };
 		499EB60117B6A31500C3BE34 /* home-image-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-image-1.jpg"; sourceTree = "<group>"; };
 		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -166,8 +166,8 @@
 		49C4FC43178ED18200CA0DE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */,
-				499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */,
+				499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */,
+				499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */,
 				49C4FC30178D7CEA00CA0DE2 /* HGManagedObjectContext.h */,
 				49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */,
 				499EB5E817AE779900C3BE34 /* NSDictionary+Utility.h */,
@@ -356,7 +356,7 @@
 				499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */,
 				499EB5E417AE6D9C00C3BE34 /* HGVersion.m in Sources */,
 				499EB5EA17AE779A00C3BE34 /* NSDictionary+Utility.m in Sources */,
-				499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */,
+				499EB5ED17AE7F5F00C3BE34 /* HGRemoteDataController.m in Sources */,
 				49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */,
 				49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */,
 				495064D217BFA2290085CA30 /* HGMovieView.m in Sources */,

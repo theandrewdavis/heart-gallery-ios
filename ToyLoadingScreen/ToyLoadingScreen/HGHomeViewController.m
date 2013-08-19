@@ -80,7 +80,8 @@ static int kWellMargin = 10;
 // Open a table view of all children. Activated when the "Children" button is pressed.
 - (void)showChildren {
     HGChildTableViewController *childTable = [[HGChildTableViewController alloc] init];
-    childTable.dataController = self.dataController;
+    childTable.managedObjectContext = self.managedObjectContext;
+    childTable.remoteDataController = self.dataController;
     [self.navigationController pushViewController:childTable animated:YES];
 }
 

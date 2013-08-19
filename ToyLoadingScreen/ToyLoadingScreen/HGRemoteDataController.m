@@ -1,12 +1,12 @@
 //
-//  HGDataController.m
+//  HGRemoteDataController.m
 //  ToyLoadingScreen
 //
 //  Created by Andrew Davis on 8/4/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "HGDataController.h"
+#import "HGRemoteDataController.h"
 #import "AFJSONRequestOperation.h"
 #import "Reachability.h"
 #import "HGChild.h"
@@ -15,32 +15,11 @@
 
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 static NSString *kChildApiHostName = @"heartgalleryalabama.com";
-static NSInteger kChildFetchRequestBatchSize = 40;
 
-@implementation HGDataController
-
-// Fetch a list of all children stored on the device.
-- (void)fetchLocalData {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
-    request.fetchBatchSize = kChildFetchRequestBatchSize;
-    NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    request.sortDescriptors = @[sortNameAscending];
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    self.fetchedResultsController.delegate = self;
-    
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Fetch request failed: %@, %@", error.localizedDescription, error.userInfo);
-    }
-}
-
-// When local data changes, notify the delegate.
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.delegate dataDidChange:controller];
-}
+@implementation HGRemoteDataController
 
 // Fetch a list of all children from the network.
-- (void)fetchRemoteData {
+- (void)fetchData {
     // Don't try to connect if the network is not reachable.
     if (![self networkReachable]) {
         [self.delegate remoteRequestFailure];

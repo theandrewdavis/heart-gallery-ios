@@ -7,7 +7,7 @@
 //
 
 #import "HGChildTableViewController.h"
-#import "HGDataController.h"
+#import "HGRemoteDataController.h"
 #import "HGChildViewController.h"
 #import "SVProgressHUD.h"
 #import "CKRefreshControl.h"
@@ -20,6 +20,12 @@ static int kCellLabelTag = 2;
 static int kCellLabelLeftMargin = 10;
 static int kCellLabelRightMargin = 20;
 
+static NSInteger kChildFetchRequestBatchSize = 40;
+
+@interface HGChildTableViewController ()
+@property NSFetchedResultsController *fetchedResultsController;
+@end
+
 @implementation HGChildTableViewController
 
 - (void)viewDidLoad {
@@ -30,29 +36,54 @@ static int kCellLabelRightMargin = 20;
     // Set the title of the navigation controller.
     self.navigationItem.title = @"Children";
     
-    // Display the children stored on the device.
-    self.dataController.delegate = self;
-    [self.dataController fetchLocalData];
+    // Add a filter button to the navigation bar.
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filter)];
+    self.navigationItem.rightBarButtonItem = filterButton;
     
+    // Display the children stored on the device.
+    [self fetchDataWithPredicate:nil];
+
     // Set up pull to refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self.dataController action:@selector(fetchRemoteData) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self.remoteDataController action:@selector(fetchRemoteData) forControlEvents:UIControlEventValueChanged];
     
     // If data is more than a day old, get updates from the web and start the pull to refresh spinner.
-    if ([self.dataController isDataStale]) {
+    if ([self.remoteDataController isDataStale]) {
         [self.refreshControl beginRefreshing];
-        [self.dataController fetchRemoteData];
+        [self.remoteDataController fetchData];
     }
+}
+
+// Fetch data from managed object context with a given predicate.
+- (void)fetchDataWithPredicate:(NSPredicate *)predicate {
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
+    NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    request.sortDescriptors = @[sortNameAscending];
+    request.predicate = predicate;
+    request.fetchBatchSize = kChildFetchRequestBatchSize;
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Fetch request failed: %@, %@", error.localizedDescription, error.userInfo);
+    }
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+// Open a filter menu to create a filter to pass to the fetched results controller.
+- (void)filter {
+    NSPredicate *genderPredicate = [NSPredicate predicateWithFormat:@"gender = %@", @"mixed"];
+    [self fetchDataWithPredicate:genderPredicate];
 }
 
 // Set the number of sections in the table.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataController.fetchedResultsController.sections.count;
+    return self.fetchedResultsController.sections.count;
 }
 
 // Set the number of rows in each section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataController.fetchedResultsController.sections[section] numberOfObjects];
+    return [self.fetchedResultsController.sections[section] numberOfObjects];
 }
 
 // Create a cell for the given section and row.
@@ -82,7 +113,7 @@ static int kCellLabelRightMargin = 20;
     }
     
     // Fill out the cached cell with the child's name and image.
-    HGChild *child = (HGChild *)[self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
+    HGChild *child = (HGChild *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
     HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
     label.text = child.name;
@@ -93,15 +124,9 @@ static int kCellLabelRightMargin = 20;
 
 // On selection, show a detail view of the child.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HGChild *child = [self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
     HGChildViewController *childViewController = [[HGChildViewController alloc] init];
-    childViewController.child = child; //[self.dataController.fetchedResultsController objectAtIndexPath:indexPath];
+    childViewController.child = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self.navigationController pushViewController:childViewController animated:YES];
-}
-
-// When the fetched results controller's data changes, update the table with the new data.
-- (void)dataDidChange:(NSFetchedResultsController *)fetchedResultsController {
-    [self.tableView reloadData];
 }
 
 // Hide the spinner when a remote request completes successfully.

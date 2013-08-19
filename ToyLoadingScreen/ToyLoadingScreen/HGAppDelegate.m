@@ -8,7 +8,7 @@
 
 #import "HGAppDelegate.h"
 #import "HGManagedObjectContext.h"
-#import "HGDataController.h"
+#import "HGRemoteDataController.h"
 #import "HGHomeViewController.h"
 
 @implementation HGAppDelegate
@@ -19,11 +19,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     // Create a data controller to manage the list of children.
-    HGDataController *dataController = [[HGDataController alloc] init];
-    dataController.managedObjectContext = [[HGManagedObjectContext alloc] init];
+    NSManagedObjectContext *managedObjectContext = [[HGManagedObjectContext alloc] init];
+    HGRemoteDataController *dataController = [[HGRemoteDataController alloc] init];
+    dataController.managedObjectContext = managedObjectContext;
     
     // Create a navigation controller as the root view controller and insert the home screen into it.
     HGHomeViewController *homeViewController = [[HGHomeViewController alloc] init];
+    homeViewController.managedObjectContext = managedObjectContext;
     homeViewController.dataController = dataController;
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     
