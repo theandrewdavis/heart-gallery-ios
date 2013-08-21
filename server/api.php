@@ -16,11 +16,14 @@ function media_type_name($media_type_value) {
 
 # Translate a media name into its full URL.
 function media_name_to_url($name, $type) {
-    static $image_prefix = 'http://www.heartgalleryalabama.com/images/children/primary/';
+    static $primary_image_prefix = 'http://www.heartgalleryalabama.com/images/children/primary/';
+    static $secondary_image_prefix = 'http://www.heartgalleryalabama.com/images/children/';
     static $multimedia_prefix = 'http://www.heartgalleryalabama.com/images/children/sound_clips/';
 
-    if ($type == 'image') {
-        return $image_prefix . $name;
+    if ($type == 'primary image') {
+        return $primary_image_prefix . $name;
+    } else if ($type == 'image') {
+        return $secondary_image_prefix . $name;
     } else if ($type == 'audio' || $type == 'video') {
         return $multimedia_prefix . $name;
     } else {
@@ -48,7 +51,7 @@ foreach ($childRows as $row) {
 		$child['birthday'] = $row['child_birthday'];
 		$child['thumbnail'] = thumbnail_to_url($row['child_thumbnail']);
 		$child['media'] = array();
-        $image_url = media_name_to_url($row['child_image'], 'image');
+        $image_url = media_name_to_url($row['child_image'], 'primary image');
 		array_push($child['media'], array('url' => $image_url, 'type' => 'image'));
 		$children[$row['child_id']] = $child;
 	}
