@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSDate *birthday;
 @property (nonatomic, strong) NSString *thumbnail;
-@property (nonatomic, strong) NSSet *media;
+@property (nonatomic, strong) NSOrderedSet *media;
 
 + (HGChild *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
 

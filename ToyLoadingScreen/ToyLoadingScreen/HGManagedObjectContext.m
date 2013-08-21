@@ -10,6 +10,7 @@
 #import "HGVersion.h"
 #import "HGChild.h"
 #import "HGMediaItem.h"
+#import "NSManagedObjectModel+KCOrderedAccessorFix.h"
 
 static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
 
@@ -28,6 +29,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
 // Create the managed object model: a Child entity with attributes such as id, name, and imageThumbnail.
 + (NSManagedObjectModel *)createManagedObjectModel {
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] init];
+    [managedObjectModel kc_generateOrderedSetAccessors];
 
     // Create the version entity description.
     NSAttributeDescription *versionValueDescription = [[self class] createAttributeDescription:@"value" type:NSStringAttributeType optional:NO indexed:NO];
@@ -59,6 +61,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     childMediaDescription.minCount = 0;
     childMediaDescription.maxCount = 0;
     childMediaDescription.deleteRule = NSCascadeDeleteRule;
+    childMediaDescription.ordered = YES;
     
     // Add the attribute descriptions to the entity descriptions and the entity descriptions to the managed object context.
     versionEntity.properties = @[versionValueDescription, versionDateDescription];

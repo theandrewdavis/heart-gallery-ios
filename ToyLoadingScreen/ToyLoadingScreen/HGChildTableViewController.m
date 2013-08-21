@@ -51,7 +51,8 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 
     // Set up pull to refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self.remoteDataController action:@selector(fetchRemoteData) forControlEvents:UIControlEventValueChanged];
+    self.remoteDataController.delegate = self;
+    [self.refreshControl addTarget:self.remoteDataController action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     
     // If data is more than a day old, get updates from the web and start the pull to refresh spinner.
     if ([self.remoteDataController isDataStale]) {
@@ -68,6 +69,7 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     request.predicate = predicate;
     request.fetchBatchSize = kChildFetchRequestBatchSize;
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController.delegate = self;
 
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -94,6 +96,11 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 // Set the number of rows in each section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.fetchedResultsController.sections[section] numberOfObjects];
+}
+
+// Update the table when data first loads.
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
 }
 
 // Create a cell for the given section and row.

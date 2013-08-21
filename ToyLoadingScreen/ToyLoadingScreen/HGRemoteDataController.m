@@ -59,6 +59,7 @@ static NSString *kChildApiHostName = @"heartgalleryalabama.com";
 - (BOOL)isNewVersion:(NSString *)version {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGVersion class])];
     NSArray *versions = [self.managedObjectContext executeFetchRequest:request error:nil];
+    NSLog(@"Found %i versions", versions.count);
     if (versions.count == 0) {
         return YES;
     }
@@ -93,7 +94,7 @@ static NSString *kChildApiHostName = @"heartgalleryalabama.com";
     [HGVersion addVersion:version toContext:self.managedObjectContext];
     for (NSDictionary *childData in data[@"children"]) {
         HGChild *child = [HGChild addChildFromData:childData toContext:self.managedObjectContext];
-        NSMutableSet *media = [[NSMutableSet alloc] init];
+        NSMutableOrderedSet *media = [[NSMutableOrderedSet alloc] init];
         for (NSDictionary *mediaItemData in childData[@"media"]) {
             HGMediaItem *mediaItem = [HGMediaItem addMediaItemFromData:mediaItemData toContext:self.managedObjectContext];
             [media addObject:mediaItem];

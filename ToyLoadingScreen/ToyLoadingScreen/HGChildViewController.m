@@ -65,7 +65,7 @@ static int kPageControlHeight = 36;
 
 // Create a view for each media item in the slide show.
 - (UIView *)viewForIndex:(NSUInteger)index {
-    HGMediaItem *mediaItem = self.child.media.allObjects[index];
+    HGMediaItem *mediaItem = self.child.media.array[index];
     NSLog(@"Creating view for %@", mediaItem.url);
     if ([mediaItem.type isEqualToString:@"image"]) {
         HGWebImageView *view = [[HGWebImageView alloc] init];
