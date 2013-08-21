@@ -13,6 +13,7 @@
 #import "CKRefreshControl.h"
 #import "HGChild.h"
 #import "HGWebImageView.h"
+#import "HGFilterViewController.h"
 
 static int kTableRowHeight = 90;
 static int kCellImageTag = 1;
@@ -24,6 +25,7 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 
 @interface HGChildTableViewController ()
 @property NSFetchedResultsController *fetchedResultsController;
+@property HGFilterViewController *filterViewController;
 @end
 
 @implementation HGChildTableViewController
@@ -39,6 +41,10 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     // Add a filter button to the navigation bar.
     UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filter)];
     self.navigationItem.rightBarButtonItem = filterButton;
+    
+    // Save a filter view controller so that it's lifecycle will be tied to the lifecycle of this view controller.
+    self.filterViewController = [[HGFilterViewController alloc] init];
+    self.filterViewController.delegate = self;
     
     // Display the children stored on the device.
     [self fetchDataWithPredicate:nil];
@@ -70,10 +76,14 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
-// Open a filter menu to create a filter to pass to the fetched results controller.
+// Open a filter view to create a filter to pass to the fetched results controller.
 - (void)filter {
-    NSPredicate *genderPredicate = [NSPredicate predicateWithFormat:@"gender = %@", @"mixed"];
-    [self fetchDataWithPredicate:genderPredicate];
+    [self.navigationController presentModalViewController:self.filterViewController animated:YES];
+}
+
+// Reload table data when a new filter is selected.
+- (void)didChangePredicate:(NSPredicate *)predicate {
+    [self fetchDataWithPredicate:predicate];
 }
 
 // Set the number of sections in the table.

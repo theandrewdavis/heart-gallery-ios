@@ -13,6 +13,7 @@
 		495064D517BFACE80085CA30 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495064D417BFACE80085CA30 /* MediaPlayer.framework */; };
 		495064D717BFD1B10085CA30 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 495064D617BFD1B10085CA30 /* play-button.png */; };
 		495064DA17C151350085CA30 /* UIScrollView+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064D917C151340085CA30 /* UIScrollView+Resize.m */; };
+		496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496E849517C2FDF50093AE1E /* HGFilterViewController.m */; };
 		499EB5DE179FF6F100C3BE34 /* HGMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5DD179FF6F100C3BE34 /* HGMediaItem.m */; };
 		499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildViewController.m */; };
 		499EB5E417AE6D9C00C3BE34 /* HGVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E317AE6D9C00C3BE34 /* HGVersion.m */; };
@@ -55,6 +56,8 @@
 		495064D617BFD1B10085CA30 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		495064D817C151340085CA30 /* UIScrollView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Resize.h"; sourceTree = "<group>"; };
 		495064D917C151340085CA30 /* UIScrollView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Resize.m"; sourceTree = "<group>"; };
+		496E849417C2FDF50093AE1E /* HGFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFilterViewController.h; sourceTree = "<group>"; };
+		496E849517C2FDF50093AE1E /* HGFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFilterViewController.m; sourceTree = "<group>"; };
 		499EB5DC179FF6F100C3BE34 /* HGMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMediaItem.h; sourceTree = "<group>"; };
 		499EB5DD179FF6F100C3BE34 /* HGMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMediaItem.m; sourceTree = "<group>"; };
 		499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildViewController.h; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				4945A024178446D500B116F1 /* HGHomeViewController.m */,
 				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
 				49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */,
+				496E849417C2FDF50093AE1E /* HGFilterViewController.h */,
+				496E849517C2FDF50093AE1E /* HGFilterViewController.m */,
 				499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */,
 				499EB5E017A7E47500C3BE34 /* HGChildViewController.m */,
 			);
@@ -362,6 +367,7 @@
 				495064D217BFA2290085CA30 /* HGMovieView.m in Sources */,
 				495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */,
 				495064DA17C151350085CA30 /* UIScrollView+Resize.m in Sources */,
+				496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

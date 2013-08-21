@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HGRemoteDataController.h"
+#import "HGFilterViewController.h"
 
-@interface HGChildTableViewController : UITableViewController// <NSFetchedResultsControllerDelegate>
+@interface HGChildTableViewController : UITableViewController <HGFilterViewControllerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) HGRemoteDataController *remoteDataController;
