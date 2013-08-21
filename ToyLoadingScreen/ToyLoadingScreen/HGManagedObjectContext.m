@@ -39,6 +39,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     
     // Create the child entity description.
     NSAttributeDescription *childNameDescription = [[self class] createAttributeDescription:@"name" type:NSStringAttributeType optional:NO indexed:YES];
+    NSAttributeDescription *childCategoryDescription = [[self class] createAttributeDescription:@"category" type:NSStringAttributeType optional:NO indexed:YES];
     NSAttributeDescription *childBiographyDescription = [[self class] createAttributeDescription:@"biography" type:NSStringAttributeType optional:YES indexed:NO];
     NSAttributeDescription *childGenderDescription = [[self class] createAttributeDescription:@"gender" type:NSStringAttributeType optional:YES indexed:YES];
     NSAttributeDescription *childBirthdayDescription = [[self class] createAttributeDescription:@"birthday" type:NSDateAttributeType optional:YES indexed:YES];
@@ -65,7 +66,7 @@ static NSString *kCoreDataStoreName = @"HGCoreDataStore.sqlite";
     
     // Add the attribute descriptions to the entity descriptions and the entity descriptions to the managed object context.
     versionEntity.properties = @[versionValueDescription, versionDateDescription];
-    childEntity.properties = @[childNameDescription, childBiographyDescription, childGenderDescription, childBirthdayDescription, childThumbnailDescription, childMediaDescription];
+    childEntity.properties = @[childNameDescription, childCategoryDescription, childBiographyDescription, childGenderDescription, childBirthdayDescription, childThumbnailDescription, childMediaDescription];
     mediaEntity.properties = @[mediaUrlDescription, mediaTypeDescription];
     managedObjectModel.entities = @[versionEntity, childEntity, mediaEntity];
     return managedObjectModel;

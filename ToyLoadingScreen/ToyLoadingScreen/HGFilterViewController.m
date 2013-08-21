@@ -43,8 +43,8 @@ static int kNavigationBarHeight = 44;
                 @"title": @"Filter by siblings",
                 @"filters": @[
                     @{@"title": @"Individual or Siblings", @"predicate": [NSPredicate predicateWithValue:YES]},
-                    @{@"title": @"Individual", @"predicate": [NSPredicate predicateWithFormat:@"type = %@", @"individual"]},
-                    @{@"title": @"Siblings", @"predicate": [NSPredicate predicateWithFormat:@"type = %@", @"sibling"]}
+                    @{@"title": @"Individual", @"predicate": [NSPredicate predicateWithFormat:@"category = %@", @"individual"]},
+                    @{@"title": @"Siblings", @"predicate": [NSPredicate predicateWithFormat:@"category = %@", @"sibling"]}
                 ]
             },
             @{

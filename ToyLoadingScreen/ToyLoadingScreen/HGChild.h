@@ -11,6 +11,7 @@
 @interface HGChild : NSManagedObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSString *biography;
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSDate *birthday;

@@ -12,6 +12,7 @@
 @implementation HGChild
 
 @dynamic name;
+@dynamic category;
 @dynamic biography;
 @dynamic gender;
 @dynamic birthday;
@@ -29,6 +30,7 @@
 
     HGChild *child = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([self class]) inManagedObjectContext:context];
     child.name = [data objectForKeyNotNull:@"name"];
+    child.category = [data objectForKeyNotNull:@"category"];
     child.biography = [data objectForKeyNotNull:@"description"];
     child.gender = [data objectForKeyNotNull:@"gender"];
     child.birthday = [dateFormatter dateFromString:[data objectForKeyNotNull:@"birthday"]];
