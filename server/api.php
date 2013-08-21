@@ -2,6 +2,12 @@
 
 require_once dirname(__FILE__) . '/../mobile/lib/Database.php';
 
+# Translate a child category id to its name.
+function category_id_to_name($id) {
+    static $names = array('1' => 'individual', '2' => 'sibling');
+    return array_key_exists($id, $names) ? $names[$id] : 'unknown';
+}
+
 # Translate thumbnail file name to its full URL.
 function thumbnail_to_url($name) {
 	static $thumbnail_prefix = 'http://www.heartgalleryalabama.com/images/children/thumbs/primary/';
@@ -32,9 +38,7 @@ function media_name_to_url($name, $type) {
 }
 
 # Fetch all children and associated media from the database.
-$query = "SELECT child_table.child_id, child_name, child_bio, child_gender, child_birthday, child_image, child_thumbnail, child_video, media_name, media_type " .
-	"FROM child_table " .
-	"LEFT JOIN media_table ON child_table.child_id = media_table.child_id";
+$query = "SELECT child_table.child_id, child_category, child_name, child_bio, child_gender, child_birthday, child_image, child_thumbnail, child_video, media_name, media_type FROM child_table LEFT JOIN media_table ON child_table.child_id = media_table.child_id WHERE child_category IN (1, 2)";
 $childRows = Database::toArray(Database::query($query));
 Database::close();
 
@@ -45,6 +49,7 @@ foreach ($childRows as $row) {
 	if (!array_key_exists($row['child_id'], $children)) {
 		$child = array();
 		$child['id'] = $row['child_id'];
+		$child['category'] = category_id_to_name($row['child_category']);
 		$child['name'] = $row['child_name'];
 		$child['description'] = $row['child_bio'];
 		$child['gender'] = $row['child_gender'];
