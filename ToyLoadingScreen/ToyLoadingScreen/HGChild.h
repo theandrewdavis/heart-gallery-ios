@@ -20,4 +20,8 @@
 
 + (HGChild *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
 
++ (NSPredicate *)predicateForAgeAtMost:(NSUInteger)age;
++ (NSPredicate *)predicateForAgeAtLeast:(NSUInteger)age;
++ (NSPredicate *)predicateForAgeBetween:(NSUInteger)minAge maxAge:(NSUInteger)maxAge;
+
 @end

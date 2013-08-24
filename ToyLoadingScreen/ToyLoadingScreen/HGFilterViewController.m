@@ -7,6 +7,7 @@
 //
 
 #import "HGFilterViewController.h"
+#import "HGChild.h"
 
 static int kNavigationBarHeight = 44;
 
@@ -36,7 +37,7 @@ static int kNavigationBarHeight = 44;
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     
-    // List all filters in the table.
+    // List of all filters in the table.
     if (!self.filters) {
         self.filters = @[
             @{
@@ -59,9 +60,9 @@ static int kNavigationBarHeight = 44;
                 @"title": @"Filter by age",
                 @"filters": @[
                     @{@"title": @"All ages", @"predicate": [NSPredicate predicateWithValue:YES]},
-                    @{@"title": @"12 & Younger", @"predicate": [NSPredicate predicateWithFormat:@"age <= %@", @12]},
-                    @{@"title": @"13 - 15", @"predicate": [NSPredicate predicateWithFormat:@"age >= %@ && age <= %@", @13, @15]},
-                    @{@"title": @"16 & Older", @"predicate": [NSPredicate predicateWithFormat:@"age >= %@", @16]}
+                    @{@"title": @"12 & Younger", @"predicate": [HGChild predicateForAgeAtMost:12]},
+                    @{@"title": @"13 - 15", @"predicate": [HGChild predicateForAgeBetween:13 maxAge:15]},
+                    @{@"title": @"16 & Older", @"predicate": [HGChild predicateForAgeAtLeast:16]}
                 ]
             }
         ];
@@ -69,6 +70,7 @@ static int kNavigationBarHeight = 44;
     }
 }
 
+// When the done button is pressed, return a compound predicate to the delegate.
 - (void)done {
     NSMutableArray *predicates = [[NSMutableArray alloc] init];
     for (int section = 0; section < self.filters.count; section++) {
@@ -80,19 +82,23 @@ static int kNavigationBarHeight = 44;
     [self dismissModalViewControllerAnimated:YES];
 }
 
+// Calculate the number of sections to show from the filters array.
 -  (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.filters.count;
 }
 
+// Calculate the number of rows to show for each section from the filters array.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSArray *sectionFilters = self.filters[section][@"filters"];
     return sectionFilters.count;
 }
 
+// Find a title for each section from the filters array.
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return self.filters[section][@"title"];
 }
 
+// Create a cell for each row, adding a checkmark if the row is selected.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"FilterViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -107,6 +113,7 @@ static int kNavigationBarHeight = 44;
     return cell;
 }
 
+// Handle selection by unchecking the old row and checking the new row.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Uncheck old row.
     NSNumber *checkedRow = self.checkedRows[indexPath.section];

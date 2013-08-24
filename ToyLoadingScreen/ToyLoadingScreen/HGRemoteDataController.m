@@ -59,7 +59,6 @@ static NSString *kChildApiHostName = @"heartgalleryalabama.com";
 - (BOOL)isNewVersion:(NSString *)version {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGVersion class])];
     NSArray *versions = [self.managedObjectContext executeFetchRequest:request error:nil];
-    NSLog(@"Found %i versions", versions.count);
     if (versions.count == 0) {
         return YES;
     }
