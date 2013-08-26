@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4908A6C217CB845600CA503C /* hga-logo-57px.png in Resources */ = {isa = PBXBuildFile; fileRef = 4908A6C117CB845600CA503C /* hga-logo-57px.png */; };
+		4908A6C417CB854F00CA503C /* hga-logo-114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 4908A6C317CB854F00CA503C /* hga-logo-114px.png */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
 		495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064D117BFA2290085CA30 /* HGSlideShow.m */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		2E75A00E53CC4DD4BD9C95D1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		4908A6C117CB845600CA503C /* hga-logo-57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hga-logo-57px.png"; sourceTree = "<group>"; };
+		4908A6C317CB854F00CA503C /* hga-logo-114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hga-logo-114px.png"; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
 		495064CE17BFA2290085CA30 /* HGMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMovieView.h; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 		499EB5EE17B65B3600C3BE34 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				4908A6C317CB854F00CA503C /* hga-logo-114px.png */,
+				4908A6C117CB845600CA503C /* hga-logo-57px.png */,
 				49CC15CF17BBA45B001ECEF9 /* loading.pdf */,
 				499EB5FD17B6997F00C3BE34 /* title-iphone.png */,
 				49CC15C617BA8E62001ECEF9 /* title-ipad.png */,
@@ -310,6 +316,8 @@
 				49CC15CB17BAB6CB001ECEF9 /* well-background.png in Resources */,
 				49CC15D017BBA45B001ECEF9 /* loading.pdf in Resources */,
 				495064D717BFD1B10085CA30 /* play-button.png in Resources */,
+				4908A6C217CB845600CA503C /* hga-logo-57px.png in Resources */,
+				4908A6C417CB854F00CA503C /* hga-logo-114px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
