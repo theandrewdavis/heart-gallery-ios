@@ -9,13 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @protocol HGFilterViewControllerDelegate <NSObject>
-
 - (void)didChangePredicate:(NSPredicate *)predicate;
-
 @end
 
 @interface HGFilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
 @property (nonatomic, weak) id<HGFilterViewControllerDelegate> delegate;
-
 @end

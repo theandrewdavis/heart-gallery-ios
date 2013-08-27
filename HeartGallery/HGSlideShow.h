@@ -17,6 +17,5 @@
 @interface HGSlideShow : UIView <UIScrollViewDelegate>
 @property (weak, nonatomic) id<HGSlideShowDataSource> dataSource;
 @property (strong, nonatomic) UIPageControl *pageControl;
-
 - (void)changePage;
 @end

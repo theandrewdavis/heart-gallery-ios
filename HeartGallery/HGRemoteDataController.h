@@ -9,18 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @protocol HGRemoteDataControllerDelegate <NSObject>
-
 - (void)remoteRequestSuccess;
 - (void)remoteRequestFailure;
-
 @end
 
 @interface HGRemoteDataController : NSObject
-
 @property (weak, nonatomic) id <HGRemoteDataControllerDelegate> delegate;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
 - (void)fetchData;
 - (BOOL)isDataStale;
-
 @end

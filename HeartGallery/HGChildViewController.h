@@ -12,7 +12,5 @@
 @class HGChild;
 
 @interface HGChildViewController : UIViewController <HGSlideShowDataSource, UIWebViewDelegate>
-
 @property (strong, nonatomic) HGChild *child;
-
 @end

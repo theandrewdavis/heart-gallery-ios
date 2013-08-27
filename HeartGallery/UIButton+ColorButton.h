@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIButton (ColorButton)
-
 + (UIButton *)buttonWithColor:(UIColor *)color;
-
 @end

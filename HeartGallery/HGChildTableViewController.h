@@ -11,8 +11,6 @@
 #import "HGFilterViewController.h"
 
 @interface HGChildTableViewController : UITableViewController <HGRemoteDataControllerDelegate, HGFilterViewControllerDelegate, NSFetchedResultsControllerDelegate>
-
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) HGRemoteDataController *remoteDataController;
-
 @end

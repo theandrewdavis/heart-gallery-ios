@@ -9,10 +9,7 @@
 #import <CoreData/CoreData.h>
 
 @interface HGMediaItem : NSManagedObject
-
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *type;
-
 + (HGMediaItem *)addMediaItemFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
-
 @end
