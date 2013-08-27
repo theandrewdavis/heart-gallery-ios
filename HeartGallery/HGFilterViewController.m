@@ -9,7 +9,7 @@
 #import "HGFilterViewController.h"
 #import "HGChild.h"
 
-static int kNavigationBarHeight = 44;
+static NSInteger kNavigationBarHeight = 44;
 
 @interface HGFilterViewController ()
 @property (strong, nonatomic) UITableView *tableView;

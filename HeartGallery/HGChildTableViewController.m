@@ -15,12 +15,11 @@
 #import "HGWebImageView.h"
 #import "HGFilterViewController.h"
 
-static int kTableRowHeight = 90;
-static int kCellImageTag = 1;
-static int kCellLabelTag = 2;
-static int kCellLabelLeftMargin = 10;
-static int kCellLabelRightMargin = 20;
-
+static NSInteger kTableRowHeight = 90;
+static NSInteger kCellImageTag = 1;
+static NSInteger kCellLabelTag = 2;
+static NSInteger kCellLabelLeftMargin = 10;
+static NSInteger kCellLabelRightMargin = 20;
 static NSInteger kChildFetchRequestBatchSize = 40;
 
 @interface HGChildTableViewController ()

@@ -19,7 +19,6 @@
 @dynamic thumbnail;
 @dynamic media;
 
-
 // Add a child entity to the managed object context and populate it with data from a JSON dictionary.
 + (HGChild *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context {
     static NSDateFormatter *dateFormatter = nil;

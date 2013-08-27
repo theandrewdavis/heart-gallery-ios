@@ -13,7 +13,7 @@
 #import "HGMovieView.h"
 #import "UIScrollView+Resize.h"
 
-static int kPageControlHeight = 36;
+static NSInteger kPageControlHeight = 36;
 
 @interface HGChildViewController()
 @property (strong, nonatomic) UIScrollView *scrollView;

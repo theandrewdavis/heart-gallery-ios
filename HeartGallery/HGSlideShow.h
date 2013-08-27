@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @protocol HGSlideShowDataSource
 - (NSUInteger)numberOfViews;
 - (UIView *)viewForIndex:(NSUInteger)index;

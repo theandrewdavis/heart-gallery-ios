@@ -13,9 +13,9 @@
 #define kHomeScreenMargin 20.0
 #define kHomeScreenButtonHeight 60.0
 
-static int kBorderSize = 3;
-static int kButtonHeight = 60;
-static int kWellMargin = 10;
+static NSInteger kBorderSize = 3;
+static NSInteger kButtonHeight = 60;
+static NSInteger kWellMargin = 10;
 
 @implementation HGHomeViewController
 
