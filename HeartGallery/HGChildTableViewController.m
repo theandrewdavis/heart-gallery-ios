@@ -62,9 +62,6 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 
 // Fetch data from managed object context with a given predicate.
 - (void)fetchDataWithPredicate:(NSPredicate *)predicate {
-    // Test whether the fetched results controller had results prior to the new fetch.
-    NSInteger sectionsBeforeFetch = self.fetchedResultsController.sections.count;
-    
     // Create a new fetched results controller.
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
     NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
@@ -80,12 +77,8 @@ static NSInteger kChildFetchRequestBatchSize = 40;
         NSLog(@"Fetch request failed: %@, %@", error.localizedDescription, error.userInfo);
     }
     
-    // If the fetched results controller already had results, reload with animation. Otherwise, simply reload.
-    if (sectionsBeforeFetch > 0) {
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    } else {
-        [self.tableView reloadData];
-    }
+    // Reload the table to display results.
+    [self.tableView reloadData];
 }
 
 // Open a filter view to create a filter to pass to the fetched results controller.
