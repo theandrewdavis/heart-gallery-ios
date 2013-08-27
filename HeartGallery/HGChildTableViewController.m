@@ -86,10 +86,39 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     [self.navigationController presentModalViewController:self.filterViewController animated:YES];
 }
 
+// Hide the pull to refresh spinner.
+- (void)hidePullToRefresh {
+    [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil];
+}
+
+#pragma mark - HGRemoteDataControllerDelegate
+
+// Hide the spinner when a remote request completes successfully.
+- (void)remoteRequestSuccess {
+    [self hidePullToRefresh];
+}
+
+// Hide the spinner and show an error message when a remote request fails.
+- (void)remoteRequestFailure {
+    [self hidePullToRefresh];
+    [SVProgressHUD showErrorWithStatus:@"Could not connect"];
+}
+
+#pragma mark - HGFilterViewControllerDelegate
+
 // Reload table data when a new filter is selected.
 - (void)didChangePredicate:(NSPredicate *)predicate {
     [self fetchDataWithPredicate:predicate];
 }
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+// Update the table when data first loads.
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
+}
+
+#pragma mark - UITableViewDataSource
 
 // Set the number of sections in the table.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -101,10 +130,7 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     return [self.fetchedResultsController.sections[section] numberOfObjects];
 }
 
-// Update the table when data first loads.
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView reloadData];
-}
+#pragma mark - UITableViewDelegate
 
 // Create a cell for the given section and row.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -147,22 +173,6 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     HGChildViewController *childViewController = [[HGChildViewController alloc] init];
     childViewController.child = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self.navigationController pushViewController:childViewController animated:YES];
-}
-
-// Hide the spinner when a remote request completes successfully.
-- (void)remoteRequestSuccess {
-    [self hidePullToRefresh];
-}
-
-// Hide the spinner and show an error message when a remote request fails.
-- (void)remoteRequestFailure {
-    [self hidePullToRefresh];
-    [SVProgressHUD showErrorWithStatus:@"Could not connect"];
-}
-
-// Hide the pull to refresh spinner.
-- (void)hidePullToRefresh {
-    [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil];
 }
 
 @end
