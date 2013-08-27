@@ -24,8 +24,8 @@ static int kCellLabelRightMargin = 20;
 static NSInteger kChildFetchRequestBatchSize = 40;
 
 @interface HGChildTableViewController ()
-@property NSFetchedResultsController *fetchedResultsController;
-@property HGFilterViewController *filterViewController;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong) HGFilterViewController *filterViewController;
 @end
 
 @implementation HGChildTableViewController
@@ -63,6 +63,10 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 
 // Fetch data from managed object context with a given predicate.
 - (void)fetchDataWithPredicate:(NSPredicate *)predicate {
+    // Test whether the fetched results controller had results prior to the new fetch.
+    NSInteger sectionsBeforeFetch = self.fetchedResultsController.sections.count;
+    
+    // Create a new fetched results controller.
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
     NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortNameAscending];
@@ -71,11 +75,18 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController.delegate = self;
 
+    // Perform the fetch.
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Fetch request failed: %@, %@", error.localizedDescription, error.userInfo);
     }
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    
+    // If the fetched results controller already had results, reload with animation. Otherwise, simply reload.
+    if (sectionsBeforeFetch > 0) {
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView reloadData];
+    }
 }
 
 // Open a filter view to create a filter to pass to the fetched results controller.
