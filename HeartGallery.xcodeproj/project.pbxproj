@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4908A6C217CB845600CA503C /* hga-logo-57px.png in Resources */ = {isa = PBXBuildFile; fileRef = 4908A6C117CB845600CA503C /* hga-logo-57px.png */; };
-		4908A6C417CB854F00CA503C /* hga-logo-114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 4908A6C317CB854F00CA503C /* hga-logo-114px.png */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
 		495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064D117BFA2290085CA30 /* HGSlideShow.m */; };
@@ -33,6 +31,10 @@
 		49CC15CB17BAB6CB001ECEF9 /* well-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 49CC15CA17BAB6CB001ECEF9 /* well-background.png */; };
 		49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15CD17BBA434001ECEF9 /* HGWebImageView.m */; };
 		49CC15D017BBA45B001ECEF9 /* loading.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 49CC15CF17BBA45B001ECEF9 /* loading.pdf */; };
+		49D50E6517CE1BD6008ADB44 /* logo-57px.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D50E6417CE1BD6008ADB44 /* logo-57px.png */; };
+		49D50E6717CE1BE8008ADB44 /* logo-114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D50E6617CE1BE8008ADB44 /* logo-114px.png */; };
+		49D50E6917CE1BF6008ADB44 /* logo-72px.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D50E6817CE1BF6008ADB44 /* logo-72px.png */; };
+		49D50E6B17CE1BFA008ADB44 /* logo-144px.png in Resources */ = {isa = PBXBuildFile; fileRef = 49D50E6A17CE1BFA008ADB44 /* logo-144px.png */; };
 		49DAD02A1796BAC900893D33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DAD0291796BAC900893D33 /* SystemConfiguration.framework */; };
 		49F3E6F3178445BB002B66E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F2178445BB002B66E7 /* UIKit.framework */; };
 		49F3E6F5178445BB002B66E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E6F4178445BB002B66E7 /* Foundation.framework */; };
@@ -48,8 +50,6 @@
 
 /* Begin PBXFileReference section */
 		2E75A00E53CC4DD4BD9C95D1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		4908A6C117CB845600CA503C /* hga-logo-57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hga-logo-57px.png"; sourceTree = "<group>"; };
-		4908A6C317CB854F00CA503C /* hga-logo-114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hga-logo-114px.png"; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
 		495064CE17BFA2290085CA30 /* HGMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMovieView.h; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		495064D017BFA2290085CA30 /* HGSlideShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSlideShow.h; sourceTree = "<group>"; };
 		495064D117BFA2290085CA30 /* HGSlideShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGSlideShow.m; sourceTree = "<group>"; };
 		495064D417BFACE80085CA30 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		495064D617BFD1B10085CA30 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
+		495064D617BFD1B10085CA30 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play-button.png"; path = "Media/play-button.png"; sourceTree = "<group>"; };
 		495064D817C151340085CA30 /* UIScrollView+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Resize.h"; sourceTree = "<group>"; };
 		495064D917C151340085CA30 /* UIScrollView+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Resize.m"; sourceTree = "<group>"; };
 		496E849417C2FDF50093AE1E /* HGFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFilterViewController.h; sourceTree = "<group>"; };
@@ -72,8 +72,8 @@
 		499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utility.m"; sourceTree = "<group>"; };
 		499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGRemoteDataController.h; sourceTree = "<group>"; };
 		499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGRemoteDataController.m; sourceTree = "<group>"; };
-		499EB5FD17B6997F00C3BE34 /* title-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-iphone.png"; sourceTree = "<group>"; };
-		499EB60117B6A31500C3BE34 /* home-image-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-image-1.jpg"; sourceTree = "<group>"; };
+		499EB5FD17B6997F00C3BE34 /* title-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-iphone.png"; path = "Media/title-iphone.png"; sourceTree = "<group>"; };
+		499EB60117B6A31500C3BE34 /* home-image-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "home-image-1.jpg"; path = "Media/home-image-1.jpg"; sourceTree = "<group>"; };
 		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		49C4FC30178D7CEA00CA0DE2 /* HGManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGManagedObjectContext.h; sourceTree = "<group>"; };
 		49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGManagedObjectContext.m; sourceTree = "<group>"; };
@@ -83,12 +83,16 @@
 		49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
 		49CC15C317BA8374001ECEF9 /* UIButton+ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ColorButton.h"; sourceTree = "<group>"; };
 		49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ColorButton.m"; sourceTree = "<group>"; };
-		49CC15C617BA8E62001ECEF9 /* title-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title-ipad.png"; sourceTree = "<group>"; };
-		49CC15C817BAB676001ECEF9 /* home-image-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-image-2.jpg"; sourceTree = "<group>"; };
-		49CC15CA17BAB6CB001ECEF9 /* well-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "well-background.png"; sourceTree = "<group>"; };
+		49CC15C617BA8E62001ECEF9 /* title-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-ipad.png"; path = "Media/title-ipad.png"; sourceTree = "<group>"; };
+		49CC15C817BAB676001ECEF9 /* home-image-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "home-image-2.jpg"; path = "Media/home-image-2.jpg"; sourceTree = "<group>"; };
+		49CC15CA17BAB6CB001ECEF9 /* well-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "well-background.png"; path = "Media/well-background.png"; sourceTree = "<group>"; };
 		49CC15CC17BBA434001ECEF9 /* HGWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGWebImageView.h; sourceTree = "<group>"; };
 		49CC15CD17BBA434001ECEF9 /* HGWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGWebImageView.m; sourceTree = "<group>"; };
-		49CC15CF17BBA45B001ECEF9 /* loading.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = loading.pdf; sourceTree = "<group>"; };
+		49CC15CF17BBA45B001ECEF9 /* loading.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = loading.pdf; path = Media/loading.pdf; sourceTree = "<group>"; };
+		49D50E6417CE1BD6008ADB44 /* logo-57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-57px.png"; path = "../logo-57px.png"; sourceTree = "<group>"; };
+		49D50E6617CE1BE8008ADB44 /* logo-114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-114px.png"; path = "../logo-114px.png"; sourceTree = "<group>"; };
+		49D50E6817CE1BF6008ADB44 /* logo-72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-72px.png"; path = "../logo-72px.png"; sourceTree = "<group>"; };
+		49D50E6A17CE1BFA008ADB44 /* logo-144px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-144px.png"; path = "../logo-144px.png"; sourceTree = "<group>"; };
 		49DAD0291796BAC900893D33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49F3E6EF178445BB002B66E7 /* HGA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HGA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F3E6F2178445BB002B66E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -127,8 +131,10 @@
 		499EB5EE17B65B3600C3BE34 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				4908A6C317CB854F00CA503C /* hga-logo-114px.png */,
-				4908A6C117CB845600CA503C /* hga-logo-57px.png */,
+				49D50E6A17CE1BFA008ADB44 /* logo-144px.png */,
+				49D50E6817CE1BF6008ADB44 /* logo-72px.png */,
+				49D50E6617CE1BE8008ADB44 /* logo-114px.png */,
+				49D50E6417CE1BD6008ADB44 /* logo-57px.png */,
 				49CC15CF17BBA45B001ECEF9 /* loading.pdf */,
 				499EB5FD17B6997F00C3BE34 /* title-iphone.png */,
 				49CC15C617BA8E62001ECEF9 /* title-ipad.png */,
@@ -316,8 +322,10 @@
 				49CC15CB17BAB6CB001ECEF9 /* well-background.png in Resources */,
 				49CC15D017BBA45B001ECEF9 /* loading.pdf in Resources */,
 				495064D717BFD1B10085CA30 /* play-button.png in Resources */,
-				4908A6C217CB845600CA503C /* hga-logo-57px.png in Resources */,
-				4908A6C417CB854F00CA503C /* hga-logo-114px.png in Resources */,
+				49D50E6517CE1BD6008ADB44 /* logo-57px.png in Resources */,
+				49D50E6717CE1BE8008ADB44 /* logo-114px.png in Resources */,
+				49D50E6917CE1BF6008ADB44 /* logo-72px.png in Resources */,
+				49D50E6B17CE1BFA008ADB44 /* logo-144px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
