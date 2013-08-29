@@ -103,7 +103,7 @@
 		49DE454517CE24A8005D2FB5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		49DE454717CE24AB005D2FB5 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		49DE454917CE24FC005D2FB5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		49F3E6EF178445BB002B66E7 /* HGA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HGA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F3E6EF178445BB002B66E7 /* Heart Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Gallery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F3E6F2178445BB002B66E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		49F3E6F4178445BB002B66E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49F3E6F6178445BB002B66E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -224,7 +224,7 @@
 		49F3E6F0178445BB002B66E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49F3E6EF178445BB002B66E7 /* HGA.app */,
+				49F3E6EF178445BB002B66E7 /* Heart Gallery.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,7 +285,7 @@
 			);
 			name = HeartGallery;
 			productName = HeartGallery;
-			productReference = 49F3E6EF178445BB002B66E7 /* HGA.app */;
+			productReference = 49F3E6EF178445BB002B66E7 /* Heart Gallery.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -481,7 +481,7 @@
 				GCC_PREFIX_HEADER = "HeartGallery/HeartGallery-Prefix.pch";
 				INFOPLIST_FILE = "HeartGallery/HeartGallery-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = HGA;
+				PRODUCT_NAME = "Heart Gallery";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CEEF17D6-8007-41E7-82EB-E3DC88105807";
 				WRAPPER_EXTENSION = app;
@@ -498,7 +498,7 @@
 				GCC_PREFIX_HEADER = "HeartGallery/HeartGallery-Prefix.pch";
 				INFOPLIST_FILE = "HeartGallery/HeartGallery-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = HGA;
+				PRODUCT_NAME = "Heart Gallery";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CEEF17D6-8007-41E7-82EB-E3DC88105807";
 				WRAPPER_EXTENSION = app;
