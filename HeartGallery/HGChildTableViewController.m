@@ -21,6 +21,7 @@ static NSInteger kCellLabelTag = 2;
 static NSInteger kCellLabelLeftMargin = 10;
 static NSInteger kCellLabelRightMargin = 20;
 static NSInteger kChildFetchRequestBatchSize = 40;
+static NSInteger kSearchBarHeight = 44;
 
 @interface HGChildTableViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -44,6 +45,10 @@ static NSInteger kChildFetchRequestBatchSize = 40;
     // Save a filter view controller so that it's lifecycle will be tied to the lifecycle of this view controller.
     self.filterViewController = [[HGFilterViewController alloc] init];
     self.filterViewController.delegate = self;
+  
+    // Add a search bar to the table header.
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, kSearchBarHeight)];
+    self.tableView.tableHeaderView = searchBar;
     
     // Display the children stored on the device.
     [self fetchDataWithPredicate:nil];
@@ -116,6 +121,12 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 // Update the table when data first loads.
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView reloadData];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"textDidChange");
 }
 
 #pragma mark - UITableViewDataSource
