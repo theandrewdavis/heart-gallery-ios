@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4943DC6417D207390090FE11 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4943DC6317D207390090FE11 /* background.jpeg */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
 		495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064D117BFA2290085CA30 /* HGSlideShow.m */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		2E75A00E53CC4DD4BD9C95D1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		4943DC6317D207390090FE11 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
 		495064CE17BFA2290085CA30 /* HGMovieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMovieView.h; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		49DE452E17CE23EC005D2FB5 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				4943DC6317D207390090FE11 /* background.jpeg */,
 				49DE454117CE2494005D2FB5 /* Icon.png */,
 				49DE454317CE249D005D2FB5 /* Icon@2x.png */,
 				49DE454517CE24A8005D2FB5 /* Icon-72.png */,
@@ -338,6 +341,7 @@
 				49531E7B17CF6CFD00EE8210 /* Icon-Small-50.png in Resources */,
 				49531E7C17CF6CFD00EE8210 /* Icon-Small-50@2x.png in Resources */,
 				49531E7D17CF6CFD00EE8210 /* Icon-Small@2x.png in Resources */,
+				4943DC6417D207390090FE11 /* background.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
