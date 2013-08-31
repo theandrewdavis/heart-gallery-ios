@@ -13,10 +13,9 @@
 #define kHomeScreenMargin 20.0
 #define kHomeScreenButtonHeight 60.0
 
-static NSInteger kMarginHorizontal = 8;
-static NSInteger kMarginVertical = 8;
-static NSInteger kButtonHeight = 50;
+static NSInteger kButtonMargin = 6;
 static NSInteger kButtonPadding = 4;
+static NSInteger kButtonHeight = 50;
 
 @implementation HGHomeViewController
 
@@ -28,21 +27,21 @@ static NSInteger kButtonPadding = 4;
     background.image = [UIImage imageNamed:@"background.jpeg"];
     [self.view addSubview:background];
     
-    // Add a "Children" button.
-    UIButton *childrenButton = [UIButton buttonWithColor:[UIColor redColor]];
-    CGFloat buttonWidth = self.view.bounds.size.width - 2 * kMarginHorizontal;
-    childrenButton.frame = CGRectMake(kMarginHorizontal, self.view.bounds.size.height - kMarginVertical - kButtonHeight, buttonWidth, kButtonHeight);
-    [childrenButton setTitle:@"Children" forState:UIControlStateNormal];
-    [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:childrenButton];
-
     // Add a "Donate" button.
+    CGFloat buttonWidth = (self.view.bounds.size.width - 2 * kButtonMargin - kButtonPadding) / 2;
     UIButton *donateButton = [UIButton buttonWithColor:[UIColor colorWithRed:90.0f/255.0f green:124.0f/255.0f blue:194.0f/255.0f alpha:1.0f]];
-    donateButton.frame = CGRectMake(kMarginHorizontal, childrenButton.frame.origin.y - kButtonPadding - kButtonHeight, buttonWidth, kButtonHeight);
+    donateButton.frame = CGRectMake(kButtonMargin, self.view.bounds.size.height - kButtonMargin - kButtonHeight, buttonWidth, kButtonHeight);
     [donateButton setTitle:@"Donate" forState:UIControlStateNormal];
     [donateButton addTarget:self action:@selector(donate) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:donateButton];
     
+    // Add a "Children" button.
+    UIButton *childrenButton = [UIButton buttonWithColor:[UIColor redColor]];
+    childrenButton.frame = CGRectMake(kButtonMargin + buttonWidth + kButtonPadding, self.view.bounds.size.height - kButtonMargin - kButtonHeight, buttonWidth, kButtonHeight);
+    [childrenButton setTitle:@"Children" forState:UIControlStateNormal];
+    [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:childrenButton];
+
     // Add the title text.
     NSString *titleText = @"Heart Gallery of Alabama";
     CGFloat minFontSize = 1;
