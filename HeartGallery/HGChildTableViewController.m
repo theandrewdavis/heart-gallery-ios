@@ -26,6 +26,7 @@ static NSInteger kSearchBarHeight = 44;
 @interface HGChildTableViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) HGFilterViewController *filterViewController;
+@property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) NSPredicate *filterPredicate;
 @property (nonatomic, strong) NSPredicate *searchPredicate;
 @end
@@ -49,10 +50,10 @@ static NSInteger kSearchBarHeight = 44;
     self.filterViewController.delegate = self;
   
     // Add a search bar to the table header.
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, kSearchBarHeight)];
-    self.tableView.tableHeaderView = searchBar;
-    searchBar.delegate = self;
-    for(UIView *subView in searchBar.subviews) {
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, kSearchBarHeight)];
+    self.tableView.tableHeaderView = self.searchBar;
+    self.searchBar.delegate = self;
+    for(UIView *subView in self.searchBar.subviews) {
         if([subView conformsToProtocol:@protocol(UITextInputTraits)]) {
             [(UITextField *)subView setEnablesReturnKeyAutomatically:NO];
             [(UITextField *)subView setReturnKeyType:UIReturnKeyDone];
@@ -201,6 +202,7 @@ static NSInteger kSearchBarHeight = 44;
 
 // On selection, show a detail view of the child.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.searchBar resignFirstResponder];
     HGChildViewController *childViewController = [[HGChildViewController alloc] init];
     childViewController.child = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self.navigationController pushViewController:childViewController animated:YES];
