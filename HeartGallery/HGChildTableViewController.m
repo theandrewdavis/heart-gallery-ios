@@ -29,6 +29,7 @@ static NSInteger kSearchBarHeight = 44;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) NSPredicate *filterPredicate;
 @property (nonatomic, strong) NSPredicate *searchPredicate;
+@property (nonatomic) BOOL clearButtonClicked;
 @end
 
 @implementation HGChildTableViewController
@@ -61,6 +62,7 @@ static NSInteger kSearchBarHeight = 44;
     }
     
     // Display the children stored on the device. Show all children by default.
+    self.clearButtonClicked = NO;
     self.filterPredicate = [NSPredicate predicateWithValue:YES];
     self.searchPredicate = [NSPredicate predicateWithValue:YES];
     [self updateTable];
@@ -140,6 +142,11 @@ static NSInteger kSearchBarHeight = 44;
 
 // Filter the children by name when the search text changes.
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    // If the text changes while the search bar is not the first responder, the clear button has been clicked.
+    if (![searchBar isFirstResponder]) {
+        self.clearButtonClicked = YES;
+    }
+    
     NSPredicate *textPredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", searchText];
     self.searchPredicate = ([searchText isEqualToString:@""]) ? [NSPredicate predicateWithValue:YES] : textPredicate;
     [self updateTable];
@@ -148,6 +155,13 @@ static NSInteger kSearchBarHeight = 44;
 // Hide the keyboard when the "Done" button is pressed.
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+}
+
+// Don't open the keyboard if the clear button has been clicked.
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    BOOL shouldShowKeyboard = !self.clearButtonClicked;
+    self.clearButtonClicked = NO;
+    return shouldShowKeyboard;
 }
 
 #pragma mark - UITableViewDataSource
