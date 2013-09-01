@@ -15,6 +15,8 @@
 
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 static NSString *kChildApiHostName = @"heartgalleryalabama.com";
+static NSString *kLastUpdateKey = @"LastUpdate";
+static NSInteger kUpdateInterval = 60 * 60 * 24;
 
 @implementation HGRemoteDataController
 
@@ -68,20 +70,14 @@ static NSString *kChildApiHostName = @"heartgalleryalabama.com";
 
 // Check if data has not been updated in one day.
 - (BOOL)isDataStale {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGVersion class])];
-    NSArray *versions = [self.managedObjectContext executeFetchRequest:request error:nil];
-    if (versions.count == 0) {
-        return YES;
-    }
-    HGVersion *storedVersion = (HGVersion *)versions[0];
-    return [storedVersion.date timeIntervalSinceNow] < -(60 * 60 * 24);
+    NSDate *lastUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:kLastUpdateKey];
+    return !lastUpdate || [lastUpdate timeIntervalSinceNow] < -kUpdateInterval;
 }
 
 // Clear all children in the store and replace them with the children in the given JSON object.
 - (void)update:(NSDictionary *)data version:(NSString *)version  {
     // Don't update the store if the version has already been saved.
     if (![self isNewVersion:version]) {
-        NSLog(@"Not a new version, aborting");
         return;
     }
 
@@ -106,6 +102,9 @@ static NSString *kChildApiHostName = @"heartgalleryalabama.com";
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Context save failed: %@, %@", error.localizedDescription, error.userInfo);
     };
+    
+    // Reset the time the database was last updated.
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kLastUpdateKey];
 }
 
 @end

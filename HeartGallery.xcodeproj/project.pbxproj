@@ -131,6 +131,8 @@
 			children = (
 				49F3E701178445BB002B66E7 /* HGAppDelegate.h */,
 				49F3E702178445BB002B66E7 /* HGAppDelegate.m */,
+				499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */,
+				499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */,
 				4945A023178446D500B116F1 /* HGHomeViewController.h */,
 				4945A024178446D500B116F1 /* HGHomeViewController.m */,
 				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
@@ -165,8 +167,6 @@
 			children = (
 				49C4FC30178D7CEA00CA0DE2 /* HGManagedObjectContext.h */,
 				49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */,
-				499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */,
-				499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */,
 				499EB5E817AE779900C3BE34 /* NSDictionary+Utility.h */,
 				499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */,
 				49C4FC3F178ED03E00CA0DE2 /* HGChild.h */,
