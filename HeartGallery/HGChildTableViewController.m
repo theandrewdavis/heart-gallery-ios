@@ -26,6 +26,8 @@ static NSInteger kSearchBarHeight = 44;
 @interface HGChildTableViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) HGFilterViewController *filterViewController;
+@property (nonatomic, strong) NSPredicate *filterPredicate;
+@property (nonatomic, strong) NSPredicate *searchPredicate;
 @end
 
 @implementation HGChildTableViewController
@@ -49,9 +51,18 @@ static NSInteger kSearchBarHeight = 44;
     // Add a search bar to the table header.
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, kSearchBarHeight)];
     self.tableView.tableHeaderView = searchBar;
+    searchBar.delegate = self;
+    for(UIView *subView in searchBar.subviews) {
+        if([subView conformsToProtocol:@protocol(UITextInputTraits)]) {
+            [(UITextField *)subView setEnablesReturnKeyAutomatically:NO];
+            [(UITextField *)subView setReturnKeyType:UIReturnKeyDone];
+        }
+    }
     
-    // Display the children stored on the device.
-    [self fetchDataWithPredicate:nil];
+    // Display the children stored on the device. Show all children by default.
+    self.filterPredicate = [NSPredicate predicateWithValue:YES];
+    self.searchPredicate = [NSPredicate predicateWithValue:YES];
+    [self updateTable];
 
     // Set up pull to refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -65,13 +76,13 @@ static NSInteger kSearchBarHeight = 44;
     }
 }
 
-// Fetch data from managed object context with a given predicate.
-- (void)fetchDataWithPredicate:(NSPredicate *)predicate {
+// Update table view to display children that pass the filter and search predicates.
+- (void)updateTable {
     // Create a new fetched results controller.
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGChild class])];
     NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortNameAscending];
-    request.predicate = predicate;
+    request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[self.searchPredicate, self.filterPredicate]];
     request.fetchBatchSize = kChildFetchRequestBatchSize;
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     self.fetchedResultsController.delegate = self;
@@ -113,7 +124,8 @@ static NSInteger kSearchBarHeight = 44;
 
 // Reload table data when a new filter is selected.
 - (void)didChangePredicate:(NSPredicate *)predicate {
-    [self fetchDataWithPredicate:predicate];
+    self.filterPredicate = predicate;
+    [self updateTable];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
@@ -125,8 +137,16 @@ static NSInteger kSearchBarHeight = 44;
 
 #pragma mark - UISearchBarDelegate
 
+// Filter the children by name when the search text changes.
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"textDidChange");
+    NSPredicate *textPredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", searchText];
+    self.searchPredicate = ([searchText isEqualToString:@""]) ? [NSPredicate predicateWithValue:YES] : textPredicate;
+    [self updateTable];
+}
+
+// Hide the keyboard when the "Done" button is pressed.
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - UITableViewDataSource
