@@ -16,7 +16,7 @@
     button.backgroundColor = color;
     button.layer.borderColor = [UIColor blackColor].CGColor;
     button.layer.borderWidth = 0.5f;
-    button.layer.cornerRadius = 5.0f; //10.0f;
+    button.layer.cornerRadius = 5.0f;
     button.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
     return button;
 }

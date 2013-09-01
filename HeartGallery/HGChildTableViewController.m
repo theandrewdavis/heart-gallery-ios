@@ -36,20 +36,20 @@ static NSInteger kSearchBarHeight = 44;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.tableView.rowHeight = kTableRowHeight;
-    
+
     // Set the title of the navigation controller.
     self.navigationItem.title = @"Children";
-    
+
     // Add a filter button to the navigation bar.
     UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStylePlain target:self action:@selector(filter)];
     self.navigationItem.rightBarButtonItem = filterButton;
-    
+
     // Save a filter view controller so that it's lifecycle will be tied to the lifecycle of this view controller.
     self.filterViewController = [[HGFilterViewController alloc] init];
     self.filterViewController.delegate = self;
-  
+
     // Add a search bar to the table header.
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, kSearchBarHeight)];
     self.tableView.tableHeaderView = self.searchBar;
@@ -60,7 +60,7 @@ static NSInteger kSearchBarHeight = 44;
             [(UITextField *)subView setReturnKeyType:UIReturnKeyDone];
         }
     }
-    
+
     // Display the children stored on the device. Show all children by default.
     self.clearButtonClicked = NO;
     self.filterPredicate = [NSPredicate predicateWithValue:YES];
@@ -71,7 +71,7 @@ static NSInteger kSearchBarHeight = 44;
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.remoteDataController.delegate = self;
     [self.refreshControl addTarget:self.remoteDataController action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
-    
+
     // If data is more than a day old, get updates from the web and start the pull to refresh spinner.
     if ([self.remoteDataController isDataStale]) {
         [self.refreshControl beginRefreshing];
@@ -95,7 +95,7 @@ static NSInteger kSearchBarHeight = 44;
     if (![self.fetchedResultsController performFetch:&error]) {
         NSLog(@"Fetch request failed: %@, %@", error.localizedDescription, error.userInfo);
     }
-    
+
     // Reload the table to display results.
     [self.tableView reloadData];
 }
@@ -146,7 +146,7 @@ static NSInteger kSearchBarHeight = 44;
     if (![searchBar isFirstResponder]) {
         self.clearButtonClicked = YES;
     }
-    
+
     NSPredicate *textPredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", searchText];
     self.searchPredicate = ([searchText isEqualToString:@""]) ? [NSPredicate predicateWithValue:YES] : textPredicate;
     [self updateTable];
@@ -194,7 +194,7 @@ static NSInteger kSearchBarHeight = 44;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         [imageView setClipsToBounds:YES];
         [cell.contentView addSubview:imageView];
-        
+
         // Create label for child name.
         CGFloat labelWidth = tableView.bounds.size.width - tableView.rowHeight - kCellLabelLeftMargin - kCellLabelRightMargin;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(tableView.rowHeight + kCellLabelLeftMargin, 0, labelWidth, tableView.rowHeight)];
@@ -203,7 +203,7 @@ static NSInteger kSearchBarHeight = 44;
         label.numberOfLines = 0;
         [cell.contentView addSubview:label];
     }
-    
+
     // Fill out the cached cell with the child's name and image.
     HGChild *child = (HGChild *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
