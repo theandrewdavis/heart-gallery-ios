@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4933D78517D4B6AB003F2CC6 /* MediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78417D4B6AB003F2CC6 /* MediaItem.m */; };
+		4933D78B17D4B6AB003F2CC6 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78A17D4B6AB003F2CC6 /* Child.m */; };
+		4933D78E17D4B71D003F2CC6 /* Child+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78D17D4B71D003F2CC6 /* Child+Utility.m */; };
+		4933D79117D4B78B003F2CC6 /* MediaItem+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D79017D4B78B003F2CC6 /* MediaItem+Utility.m */; };
+		4933D79417D4B800003F2CC6 /* Version+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D79317D4B800003F2CC6 /* Version+Utility.m */; };
+		4933D79717D4B85B003F2CC6 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D79617D4B85B003F2CC6 /* Version.m */; };
 		4943DC6417D207390090FE11 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4943DC6317D207390090FE11 /* background.jpeg */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
@@ -18,14 +24,10 @@
 		49531E7C17CF6CFD00EE8210 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49531E7817CF6CFD00EE8210 /* Icon-Small-50@2x.png */; };
 		49531E7D17CF6CFD00EE8210 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49531E7917CF6CFD00EE8210 /* Icon-Small@2x.png */; };
 		496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496E849517C2FDF50093AE1E /* HGFilterViewController.m */; };
-		499EB5DE179FF6F100C3BE34 /* HGMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5DD179FF6F100C3BE34 /* HGMediaItem.m */; };
 		499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildViewController.m */; };
-		499EB5E417AE6D9C00C3BE34 /* HGVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E317AE6D9C00C3BE34 /* HGVersion.m */; };
 		499EB5EA17AE779A00C3BE34 /* NSDictionary+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */; };
 		499EB5ED17AE7F5F00C3BE34 /* HGRemoteDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */; };
 		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
-		49C4FC32178D7CEA00CA0DE2 /* HGManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */; };
-		49C4FC41178ED03E00CA0DE2 /* HGChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC40178ED03E00CA0DE2 /* HGChild.m */; };
 		49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */; };
 		49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */; };
 		49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15CD17BBA434001ECEF9 /* HGWebImageView.m */; };
@@ -44,11 +46,24 @@
 		49F3E6FD178445BB002B66E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49F3E6FB178445BB002B66E7 /* InfoPlist.strings */; };
 		49F3E6FF178445BB002B66E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F3E6FE178445BB002B66E7 /* main.m */; };
 		49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F3E702178445BB002B66E7 /* HGAppDelegate.m */; };
+		49F6B60717D557DE004B3048 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F6B60517D557DE004B3048 /* Model.xcdatamodeld */; };
 		AB3F917E4B0047889E3D44FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9420B9594BB473DA47667A5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E75A00E53CC4DD4BD9C95D1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		4933D78317D4B6AB003F2CC6 /* MediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaItem.h; sourceTree = "<group>"; };
+		4933D78417D4B6AB003F2CC6 /* MediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaItem.m; sourceTree = "<group>"; };
+		4933D78917D4B6AB003F2CC6 /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
+		4933D78A17D4B6AB003F2CC6 /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
+		4933D78C17D4B71D003F2CC6 /* Child+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Child+Utility.h"; sourceTree = "<group>"; };
+		4933D78D17D4B71D003F2CC6 /* Child+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Child+Utility.m"; sourceTree = "<group>"; };
+		4933D78F17D4B78B003F2CC6 /* MediaItem+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MediaItem+Utility.h"; sourceTree = "<group>"; };
+		4933D79017D4B78B003F2CC6 /* MediaItem+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MediaItem+Utility.m"; sourceTree = "<group>"; };
+		4933D79217D4B800003F2CC6 /* Version+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Version+Utility.h"; sourceTree = "<group>"; };
+		4933D79317D4B800003F2CC6 /* Version+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Version+Utility.m"; sourceTree = "<group>"; };
+		4933D79517D4B85B003F2CC6 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		4933D79617D4B85B003F2CC6 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		4943DC6317D207390090FE11 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
@@ -65,21 +80,13 @@
 		49531E7917CF6CFD00EE8210 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		496E849417C2FDF50093AE1E /* HGFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFilterViewController.h; sourceTree = "<group>"; };
 		496E849517C2FDF50093AE1E /* HGFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFilterViewController.m; sourceTree = "<group>"; };
-		499EB5DC179FF6F100C3BE34 /* HGMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMediaItem.h; sourceTree = "<group>"; };
-		499EB5DD179FF6F100C3BE34 /* HGMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMediaItem.m; sourceTree = "<group>"; };
 		499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildViewController.h; sourceTree = "<group>"; };
 		499EB5E017A7E47500C3BE34 /* HGChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildViewController.m; sourceTree = "<group>"; };
-		499EB5E217AE6D9C00C3BE34 /* HGVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGVersion.h; sourceTree = "<group>"; };
-		499EB5E317AE6D9C00C3BE34 /* HGVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGVersion.m; sourceTree = "<group>"; };
 		499EB5E817AE779900C3BE34 /* NSDictionary+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Utility.h"; sourceTree = "<group>"; };
 		499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Utility.m"; sourceTree = "<group>"; };
 		499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGRemoteDataController.h; sourceTree = "<group>"; };
 		499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGRemoteDataController.m; sourceTree = "<group>"; };
 		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		49C4FC30178D7CEA00CA0DE2 /* HGManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGManagedObjectContext.h; sourceTree = "<group>"; };
-		49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGManagedObjectContext.m; sourceTree = "<group>"; };
-		49C4FC3F178ED03E00CA0DE2 /* HGChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChild.h; sourceTree = "<group>"; };
-		49C4FC40178ED03E00CA0DE2 /* HGChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChild.m; sourceTree = "<group>"; };
 		49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
 		49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
 		49CC15C317BA8374001ECEF9 /* UIButton+ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ColorButton.h"; sourceTree = "<group>"; };
@@ -105,6 +112,7 @@
 		49F3E700178445BB002B66E7 /* HeartGallery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeartGallery-Prefix.pch"; sourceTree = "<group>"; };
 		49F3E701178445BB002B66E7 /* HGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAppDelegate.h; sourceTree = "<group>"; };
 		49F3E702178445BB002B66E7 /* HGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGAppDelegate.m; sourceTree = "<group>"; };
+		49F6B60617D557DE004B3048 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C9420B9594BB473DA47667A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -165,16 +173,21 @@
 		49C4FC43178ED18200CA0DE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				49C4FC30178D7CEA00CA0DE2 /* HGManagedObjectContext.h */,
-				49C4FC31178D7CEA00CA0DE2 /* HGManagedObjectContext.m */,
+				49F6B60517D557DE004B3048 /* Model.xcdatamodeld */,
+				4933D79517D4B85B003F2CC6 /* Version.h */,
+				4933D79617D4B85B003F2CC6 /* Version.m */,
+				4933D78917D4B6AB003F2CC6 /* Child.h */,
+				4933D78A17D4B6AB003F2CC6 /* Child.m */,
+				4933D78317D4B6AB003F2CC6 /* MediaItem.h */,
+				4933D78417D4B6AB003F2CC6 /* MediaItem.m */,
 				499EB5E817AE779900C3BE34 /* NSDictionary+Utility.h */,
 				499EB5E917AE779900C3BE34 /* NSDictionary+Utility.m */,
-				49C4FC3F178ED03E00CA0DE2 /* HGChild.h */,
-				49C4FC40178ED03E00CA0DE2 /* HGChild.m */,
-				499EB5DC179FF6F100C3BE34 /* HGMediaItem.h */,
-				499EB5DD179FF6F100C3BE34 /* HGMediaItem.m */,
-				499EB5E217AE6D9C00C3BE34 /* HGVersion.h */,
-				499EB5E317AE6D9C00C3BE34 /* HGVersion.m */,
+				4933D78C17D4B71D003F2CC6 /* Child+Utility.h */,
+				4933D78D17D4B71D003F2CC6 /* Child+Utility.m */,
+				4933D78F17D4B78B003F2CC6 /* MediaItem+Utility.h */,
+				4933D79017D4B78B003F2CC6 /* MediaItem+Utility.m */,
+				4933D79217D4B800003F2CC6 /* Version+Utility.h */,
+				4933D79317D4B800003F2CC6 /* Version+Utility.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -366,12 +379,8 @@
 				49F3E6FF178445BB002B66E7 /* main.m in Sources */,
 				49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */,
 				4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */,
-				49C4FC32178D7CEA00CA0DE2 /* HGManagedObjectContext.m in Sources */,
-				49C4FC41178ED03E00CA0DE2 /* HGChild.m in Sources */,
 				49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */,
-				499EB5DE179FF6F100C3BE34 /* HGMediaItem.m in Sources */,
 				499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */,
-				499EB5E417AE6D9C00C3BE34 /* HGVersion.m in Sources */,
 				499EB5EA17AE779A00C3BE34 /* NSDictionary+Utility.m in Sources */,
 				499EB5ED17AE7F5F00C3BE34 /* HGRemoteDataController.m in Sources */,
 				49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */,
@@ -380,6 +389,13 @@
 				495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */,
 				495064DA17C151350085CA30 /* UIScrollView+Resize.m in Sources */,
 				496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */,
+				4933D78517D4B6AB003F2CC6 /* MediaItem.m in Sources */,
+				4933D78B17D4B6AB003F2CC6 /* Child.m in Sources */,
+				4933D78E17D4B71D003F2CC6 /* Child+Utility.m in Sources */,
+				4933D79117D4B78B003F2CC6 /* MediaItem+Utility.m in Sources */,
+				4933D79417D4B800003F2CC6 /* Version+Utility.m in Sources */,
+				4933D79717D4B85B003F2CC6 /* Version.m in Sources */,
+				49F6B60717D557DE004B3048 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +527,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		49F6B60517D557DE004B3048 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				49F6B60617D557DE004B3048 /* Model.xcdatamodel */,
+			);
+			currentVersion = 49F6B60617D557DE004B3048 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 49F3E6E7178445BB002B66E7 /* Project object */;
 }

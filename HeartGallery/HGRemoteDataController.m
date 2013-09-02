@@ -9,9 +9,12 @@
 #import "HGRemoteDataController.h"
 #import "AFJSONRequestOperation.h"
 #import "Reachability.h"
-#import "HGChild.h"
-#import "HGVersion.h"
-#import "HGMediaItem.h"
+#import "Child.h"
+#import "Version.h"
+#import "MediaItem.h"
+#import "Child+Utility.h"
+#import "MediaItem+Utility.h"
+#import "Version+Utility.h"
 
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 static NSString *kChildApiHostName = @"heartgalleryalabama.com";
@@ -59,12 +62,12 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
 
 // Check if the supplied version matches the version saved in the managed object context.
 - (BOOL)isNewVersion:(NSString *)version {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([HGVersion class])];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([Version class])];
     NSArray *versions = [self.managedObjectContext executeFetchRequest:request error:nil];
     if (versions.count == 0) {
         return YES;
     }
-    HGVersion *storedVersion = (HGVersion *)versions[0];
+    Version *storedVersion = (Version *)versions[0];
     return ![storedVersion.value isEqualToString:version];
 }
 
@@ -82,16 +85,16 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
     }
 
     // Remove all children from the store.
-    [self deleteAllEntitiesOfName:NSStringFromClass([HGVersion class])];
-    [self deleteAllEntitiesOfName:NSStringFromClass([HGChild class])];
+    [self deleteAllEntitiesOfName:NSStringFromClass([Version class])];
+    [self deleteAllEntitiesOfName:NSStringFromClass([Child class])];
     
     // Add children from the web response.
-    [HGVersion addVersion:version toContext:self.managedObjectContext];
+    [Version addVersion:version toContext:self.managedObjectContext];
     for (NSDictionary *childData in data[@"children"]) {
-        HGChild *child = [HGChild addChildFromData:childData toContext:self.managedObjectContext];
+        Child *child = [Child addChildFromData:childData toContext:self.managedObjectContext];
         NSMutableOrderedSet *media = [[NSMutableOrderedSet alloc] init];
         for (NSDictionary *mediaItemData in childData[@"media"]) {
-            HGMediaItem *mediaItem = [HGMediaItem addMediaItemFromData:mediaItemData toContext:self.managedObjectContext];
+            MediaItem *mediaItem = [MediaItem addMediaItemFromData:mediaItemData toContext:self.managedObjectContext];
             [media addObject:mediaItem];
         }
         child.media = media;

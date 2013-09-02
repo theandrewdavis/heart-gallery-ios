@@ -77,7 +77,7 @@ static NSInteger kButtonHeight = 50;
 - (void)showChildren {
     HGChildTableViewController *childTable = [[HGChildTableViewController alloc] init];
     childTable.managedObjectContext = self.managedObjectContext;
-    childTable.remoteDataController = self.dataController;
+    childTable.remoteDataController = self.remoteDataController;
     [self.navigationController pushViewController:childTable animated:YES];
 }
 

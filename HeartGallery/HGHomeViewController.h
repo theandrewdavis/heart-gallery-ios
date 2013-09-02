@@ -12,5 +12,5 @@
 
 @interface HGHomeViewController : UIViewController
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, strong) HGRemoteDataController *dataController;
+@property (nonatomic, strong) HGRemoteDataController *remoteDataController;
 @end

@@ -7,8 +7,8 @@
 //
 
 #import "HGChildViewController.h"
-#import "HGChild.h"
-#import "HGMediaItem.h"
+#import "Child.h"
+#import "MediaItem.h"
 #import "HGWebImageView.h"
 #import "HGMovieView.h"
 #import "UIScrollView+Resize.h"
@@ -65,7 +65,7 @@ static NSInteger kPageControlHeight = 36;
 
 // Create a view for each media item in the slide show.
 - (UIView *)viewForIndex:(NSUInteger)index {
-    HGMediaItem *mediaItem = self.child.media.array[index];
+    MediaItem *mediaItem = self.child.media.array[index];
     if ([mediaItem.type isEqualToString:@"image"]) {
         HGWebImageView *view = [[HGWebImageView alloc] init];
         view.url = [NSURL URLWithString:mediaItem.url];

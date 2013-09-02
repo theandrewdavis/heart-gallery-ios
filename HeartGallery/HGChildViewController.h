@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "HGSlideShow.h"
 
-@class HGChild;
+@class Child;
 
 @interface HGChildViewController : UIViewController <HGSlideShowDataSource, UIWebViewDelegate>
-@property (strong, nonatomic) HGChild *child;
+@property (strong, nonatomic) Child *child;
 @end
