@@ -7,33 +7,8 @@
 //
 
 #import "Child+Utility.h"
-#import "NSDictionary+Utility.h"
 
 @implementation Child (Utility)
-
-// Add a child entity to the managed object context and populate it with data from a JSON dictionary.
-+ (Child *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context {
-    static NSDateFormatter *dateFormatter = nil;
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"YYYY-MM-dd";
-    }
-    
-    // Store child attributes replacing NSNull attributes with nil.
-    Child *child = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([self class]) inManagedObjectContext:context];
-    child.name = [data objectForKeyNotNull:@"name"];
-    child.category = [data objectForKeyNotNull:@"category"];
-    child.biography = [data objectForKeyNotNull:@"description"];
-    child.gender = [data objectForKeyNotNull:@"gender"];
-    child.thumbnail = [data objectForKeyNotNull:@"thumbnail"];
-    
-    // Store birthday without time.
-    NSDate *birthdayWithTime = [dateFormatter dateFromString:[data objectForKeyNotNull:@"birthday"]];
-    NSDateComponents *birthdayComponentsNoTime = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:birthdayWithTime];
-    child.birthday = [[NSCalendar currentCalendar] dateFromComponents:birthdayComponentsNoTime];
-    
-    return child;
-}
 
 // Find the date of today, without time, a given number of years ago.
 + (NSDate *)findDate:(NSUInteger)yearsAgo {

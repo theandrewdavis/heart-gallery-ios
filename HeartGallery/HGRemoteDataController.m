@@ -11,8 +11,9 @@
 #import "Reachability.h"
 #import "Child.h"
 #import "MediaItem.h"
-#import "Child+Utility.h"
-#import "MediaItem+Utility.h"
+//#import "Child+Utility.h"
+//#import "MediaItem+Utility.h"
+#import "NSManagedObjectContext+JSON.h"
 
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 static NSString *kChildApiHostName = @"heartgalleryalabama.com";
@@ -87,11 +88,10 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
     // Replace all children from the web response.
     [self deleteAllEntitiesOfName:NSStringFromClass([Child class])];
     for (NSDictionary *childData in data[@"children"]) {
-        Child *child = [Child addChildFromData:childData toContext:self.managedObjectContext];
+        Child *child = (Child*)[self.managedObjectContext addEntity:NSStringFromClass([Child class]) fromJSON:childData];
         NSMutableOrderedSet *media = [[NSMutableOrderedSet alloc] init];
         for (NSDictionary *mediaItemData in childData[@"media"]) {
-            MediaItem *mediaItem = [MediaItem addMediaItemFromData:mediaItemData toContext:self.managedObjectContext];
-            [media addObject:mediaItem];
+            [media addObject:[self.managedObjectContext addEntity:NSStringFromClass([MediaItem class]) fromJSON:mediaItemData]];
         }
         child.media = media;
     }

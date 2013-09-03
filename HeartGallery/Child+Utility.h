@@ -9,7 +9,6 @@
 #import "Child.h"
 
 @interface Child (Utility)
-+ (Child *)addChildFromData:(NSDictionary *)data toContext:(NSManagedObjectContext *)context;
 + (NSPredicate *)predicateForAgeAtMost:(NSUInteger)age;
 + (NSPredicate *)predicateForAgeAtLeast:(NSUInteger)age;
 + (NSPredicate *)predicateForAgeBetween:(NSUInteger)minAge maxAge:(NSUInteger)maxAge;
