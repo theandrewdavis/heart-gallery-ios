@@ -11,8 +11,6 @@
 		4933D78B17D4B6AB003F2CC6 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78A17D4B6AB003F2CC6 /* Child.m */; };
 		4933D78E17D4B71D003F2CC6 /* Child+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78D17D4B71D003F2CC6 /* Child+Utility.m */; };
 		4933D79117D4B78B003F2CC6 /* MediaItem+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D79017D4B78B003F2CC6 /* MediaItem+Utility.m */; };
-		4933D79417D4B800003F2CC6 /* Version+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D79317D4B800003F2CC6 /* Version+Utility.m */; };
-		4933D79717D4B85B003F2CC6 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D79617D4B85B003F2CC6 /* Version.m */; };
 		4943DC6417D207390090FE11 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4943DC6317D207390090FE11 /* background.jpeg */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
@@ -60,10 +58,6 @@
 		4933D78D17D4B71D003F2CC6 /* Child+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Child+Utility.m"; sourceTree = "<group>"; };
 		4933D78F17D4B78B003F2CC6 /* MediaItem+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MediaItem+Utility.h"; sourceTree = "<group>"; };
 		4933D79017D4B78B003F2CC6 /* MediaItem+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MediaItem+Utility.m"; sourceTree = "<group>"; };
-		4933D79217D4B800003F2CC6 /* Version+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Version+Utility.h"; sourceTree = "<group>"; };
-		4933D79317D4B800003F2CC6 /* Version+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Version+Utility.m"; sourceTree = "<group>"; };
-		4933D79517D4B85B003F2CC6 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
-		4933D79617D4B85B003F2CC6 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		4943DC6317D207390090FE11 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
@@ -174,8 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				49F6B60517D557DE004B3048 /* Model.xcdatamodeld */,
-				4933D79517D4B85B003F2CC6 /* Version.h */,
-				4933D79617D4B85B003F2CC6 /* Version.m */,
 				4933D78917D4B6AB003F2CC6 /* Child.h */,
 				4933D78A17D4B6AB003F2CC6 /* Child.m */,
 				4933D78317D4B6AB003F2CC6 /* MediaItem.h */,
@@ -186,8 +178,6 @@
 				4933D78D17D4B71D003F2CC6 /* Child+Utility.m */,
 				4933D78F17D4B78B003F2CC6 /* MediaItem+Utility.h */,
 				4933D79017D4B78B003F2CC6 /* MediaItem+Utility.m */,
-				4933D79217D4B800003F2CC6 /* Version+Utility.h */,
-				4933D79317D4B800003F2CC6 /* Version+Utility.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -393,8 +383,6 @@
 				4933D78B17D4B6AB003F2CC6 /* Child.m in Sources */,
 				4933D78E17D4B71D003F2CC6 /* Child+Utility.m in Sources */,
 				4933D79117D4B78B003F2CC6 /* MediaItem+Utility.m in Sources */,
-				4933D79417D4B800003F2CC6 /* Version+Utility.m in Sources */,
-				4933D79717D4B85B003F2CC6 /* Version.m in Sources */,
 				49F6B60717D557DE004B3048 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

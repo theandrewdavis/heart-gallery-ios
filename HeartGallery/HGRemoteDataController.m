@@ -10,15 +10,14 @@
 #import "AFJSONRequestOperation.h"
 #import "Reachability.h"
 #import "Child.h"
-#import "Version.h"
 #import "MediaItem.h"
 #import "Child+Utility.h"
 #import "MediaItem+Utility.h"
-#import "Version+Utility.h"
 
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 static NSString *kChildApiHostName = @"heartgalleryalabama.com";
-static NSString *kLastUpdateKey = @"LastUpdate";
+static NSString *kLastUpdateTimeKey = @"LastUpdateTime";
+static NSString *kLastUpdateVersionKey = @"LastUpdateVersion";
 static NSInteger kUpdateInterval = 60 * 60 * 24;
 
 @implementation HGRemoteDataController
@@ -60,20 +59,21 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
     }
 }
 
-// Check if the supplied version matches the version saved in the managed object context.
+// Save the details of the last access of remote data.
+- (void)updateVersion:(NSString *)version {
+    [[NSUserDefaults standardUserDefaults] setObject:version forKey:kLastUpdateVersionKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kLastUpdateTimeKey];
+}
+
+// Check if the supplied version matches the last version seen.
 - (BOOL)isNewVersion:(NSString *)version {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([Version class])];
-    NSArray *versions = [self.managedObjectContext executeFetchRequest:request error:nil];
-    if (versions.count == 0) {
-        return YES;
-    }
-    Version *storedVersion = (Version *)versions[0];
-    return ![storedVersion.value isEqualToString:version];
+    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:kLastUpdateVersionKey];
+    return !lastVersion || ![lastVersion isEqualToString:version];
 }
 
 // Check if data has not been updated in one day.
 - (BOOL)isDataStale {
-    NSDate *lastUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:kLastUpdateKey];
+    NSDate *lastUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:kLastUpdateTimeKey];
     return !lastUpdate || [lastUpdate timeIntervalSinceNow] < -kUpdateInterval;
 }
 
@@ -84,12 +84,8 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
         return;
     }
 
-    // Remove all children from the store.
-    [self deleteAllEntitiesOfName:NSStringFromClass([Version class])];
+    // Replace all children from the web response.
     [self deleteAllEntitiesOfName:NSStringFromClass([Child class])];
-    
-    // Add children from the web response.
-    [Version addVersion:version toContext:self.managedObjectContext];
     for (NSDictionary *childData in data[@"children"]) {
         Child *child = [Child addChildFromData:childData toContext:self.managedObjectContext];
         NSMutableOrderedSet *media = [[NSMutableOrderedSet alloc] init];
@@ -106,8 +102,8 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
         NSLog(@"Context save failed: %@, %@", error.localizedDescription, error.userInfo);
     };
     
-    // Reset the time the database was last updated.
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kLastUpdateKey];
+    // Save the time and version number of the last remote data access.
+    [self updateVersion:version];
 }
 
 @end

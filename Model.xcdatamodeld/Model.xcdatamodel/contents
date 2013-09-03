@@ -14,12 +14,8 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="child" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="media" inverseEntity="Child" syncable="YES"/>
     </entity>
-    <entity name="Version" syncable="YES">
-        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <elements>
         <element name="Child" positionX="160" positionY="192" width="128" height="150"/>
         <element name="MediaItem" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Version" positionX="160" positionY="192" width="128" height="60"/>
     </elements>
 </model>
