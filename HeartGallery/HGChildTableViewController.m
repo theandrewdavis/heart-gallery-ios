@@ -11,7 +11,6 @@
 #import "HGChildViewController.h"
 #import "SVProgressHUD.h"
 #import "CKRefreshControl.h"
-#import "Child.h"
 #import "HGWebImageView.h"
 #import "HGFilterViewController.h"
 
@@ -82,7 +81,7 @@ static NSInteger kSearchBarHeight = 44;
 // Update table view to display children that pass the filter and search predicates.
 - (void)updateTable {
     // Create a new fetched results controller.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([Child class])];
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
     NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     request.sortDescriptors = @[sortNameAscending];
     request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[self.searchPredicate, self.filterPredicate]];
@@ -205,11 +204,11 @@ static NSInteger kSearchBarHeight = 44;
     }
 
     // Fill out the cached cell with the child's name and image.
-    Child *child = (Child *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSManagedObject *child = [self.fetchedResultsController objectAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
     HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
-    label.text = child.name;
-    imageView.url = [NSURL URLWithString:child.thumbnail];
+    label.text = [child valueForKey:@"name"];
+    imageView.url = [NSURL URLWithString:[child valueForKey:@"thumbnail"]];
 
     return cell;
 }

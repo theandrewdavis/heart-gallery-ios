@@ -7,8 +7,6 @@
 //
 
 #import "HGChildViewController.h"
-#import "Child.h"
-#import "MediaItem.h"
 #import "HGWebImageView.h"
 #import "HGMovieView.h"
 #import "UIScrollView+Resize.h"
@@ -27,7 +25,7 @@ static NSInteger kPageControlHeight = 36;
     [super viewDidLoad];
 
     // Set the title to the child's name
-    self.navigationItem.title = self.child.name;
+    self.navigationItem.title = [self.child valueForKey:@"name"];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
@@ -54,31 +52,32 @@ static NSInteger kPageControlHeight = 36;
     [self.scrollView addSubview:biographyView];
 
     // The content height of the UIWebView is off by about 3 lines. Add a margin to the bottom of the scroll view to work around this issue.
-    NSString *htmlDoc = [NSString stringWithFormat:@"<html><body style='margin-bottom: 3em;'>%@</body></html>", self.child.biography];
+    NSString *htmlDoc = [NSString stringWithFormat:@"<html><body style='margin-bottom: 3em;'>%@</body></html>", [self.child valueForKey:@"biography"]];
     [biographyView loadHTMLString:htmlDoc baseURL:nil];
 }
 
 // Find the number of views in the slide show.
 - (NSUInteger)numberOfViews {
-    return self.child.media.count;
+    return [(NSOrderedSet *)[self.child valueForKey:@"media"] count];
 }
 
 // Create a view for each media item in the slide show.
 - (UIView *)viewForIndex:(NSUInteger)index {
-    MediaItem *mediaItem = self.child.media.array[index];
-    if ([mediaItem.type isEqualToString:@"image"]) {
+    NSManagedObject *mediaItem = [(NSOrderedSet *)[self.child valueForKey:@"media"] array][index];
+    NSString *mediaItemType = [mediaItem valueForKey:@"type"];
+    if ([mediaItemType isEqualToString:@"image"]) {
         HGWebImageView *view = [[HGWebImageView alloc] init];
-        view.url = [NSURL URLWithString:mediaItem.url];
+        view.url = [NSURL URLWithString:[mediaItem valueForKey:@"url"]];
         view.contentMode = UIViewContentModeScaleAspectFit;
         return view;
-    } else if ([mediaItem.type isEqualToString:@"video"] || [mediaItem.type isEqualToString:@"audio"]) {
+    } else if ([mediaItemType isEqualToString:@"video"] || [mediaItemType isEqualToString:@"audio"]) {
         HGMovieView *movieView = [[HGMovieView alloc] init];
-        movieView.movieURL = [NSURL URLWithString:mediaItem.url];
+        movieView.movieURL = [NSURL URLWithString:[mediaItem valueForKey:@"url"]];
         movieView.rootViewController = self;
         return movieView;
     } else {
         HGWebImageView *view = [[HGWebImageView alloc] init];
-        view.url = [NSURL URLWithString:self.child.thumbnail];
+        view.url = [NSURL URLWithString:[self.child valueForKey:@"thumbnail"]];
         view.contentMode = UIViewContentModeScaleAspectFit;
         return view;
     }

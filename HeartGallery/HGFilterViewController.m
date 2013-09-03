@@ -7,7 +7,6 @@
 //
 
 #import "HGFilterViewController.h"
-#import "Child.h"
 #import "BirthdayPredicate.h"
 
 static NSInteger kNavigationBarHeight = 44;

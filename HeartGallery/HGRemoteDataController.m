@@ -9,10 +9,6 @@
 #import "HGRemoteDataController.h"
 #import "AFJSONRequestOperation.h"
 #import "Reachability.h"
-#import "Child.h"
-#import "MediaItem.h"
-//#import "Child+Utility.h"
-//#import "MediaItem+Utility.h"
 #import "NSManagedObjectContext+JSON.h"
 
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
@@ -86,14 +82,14 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
     }
 
     // Replace all children from the web response.
-    [self deleteAllEntitiesOfName:NSStringFromClass([Child class])];
+    [self deleteAllEntitiesOfName:@"Child"];
     for (NSDictionary *childData in data[@"children"]) {
-        Child *child = (Child*)[self.managedObjectContext addEntity:NSStringFromClass([Child class]) fromJSON:childData];
+        NSManagedObject *child = [self.managedObjectContext addEntity:@"Child" fromJSON:childData];
         NSMutableOrderedSet *media = [[NSMutableOrderedSet alloc] init];
         for (NSDictionary *mediaItemData in childData[@"media"]) {
-            [media addObject:[self.managedObjectContext addEntity:NSStringFromClass([MediaItem class]) fromJSON:mediaItemData]];
+            [media addObject:[self.managedObjectContext addEntity:@"MediaItem" fromJSON:mediaItemData]];
         }
-        child.media = media;
+        [child setValue:media forKey:@"media"];
     }
 
     // Save the context.
