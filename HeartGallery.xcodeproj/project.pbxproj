@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		491752C317D603040057BFE2 /* NSManagedObjectContext+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 491752C217D603040057BFE2 /* NSManagedObjectContext+JSON.m */; };
+		491752C617D60D080057BFE2 /* BirthdayPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491752C517D60D080057BFE2 /* BirthdayPredicate.m */; };
 		4933D78517D4B6AB003F2CC6 /* MediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78417D4B6AB003F2CC6 /* MediaItem.m */; };
 		4933D78B17D4B6AB003F2CC6 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78A17D4B6AB003F2CC6 /* Child.m */; };
-		4933D78E17D4B71D003F2CC6 /* Child+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4933D78D17D4B71D003F2CC6 /* Child+Utility.m */; };
 		4943DC6417D207390090FE11 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4943DC6317D207390090FE11 /* background.jpeg */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
@@ -51,12 +51,12 @@
 		2E75A00E53CC4DD4BD9C95D1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		491752C117D603040057BFE2 /* NSManagedObjectContext+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+JSON.h"; sourceTree = "<group>"; };
 		491752C217D603040057BFE2 /* NSManagedObjectContext+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+JSON.m"; sourceTree = "<group>"; };
+		491752C417D60D080057BFE2 /* BirthdayPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayPredicate.h; sourceTree = "<group>"; };
+		491752C517D60D080057BFE2 /* BirthdayPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayPredicate.m; sourceTree = "<group>"; };
 		4933D78317D4B6AB003F2CC6 /* MediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaItem.h; sourceTree = "<group>"; };
 		4933D78417D4B6AB003F2CC6 /* MediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaItem.m; sourceTree = "<group>"; };
 		4933D78917D4B6AB003F2CC6 /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
 		4933D78A17D4B6AB003F2CC6 /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
-		4933D78C17D4B71D003F2CC6 /* Child+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Child+Utility.h"; sourceTree = "<group>"; };
-		4933D78D17D4B71D003F2CC6 /* Child+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Child+Utility.m"; sourceTree = "<group>"; };
 		4943DC6317D207390090FE11 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
@@ -169,8 +169,8 @@
 				4933D78A17D4B6AB003F2CC6 /* Child.m */,
 				4933D78317D4B6AB003F2CC6 /* MediaItem.h */,
 				4933D78417D4B6AB003F2CC6 /* MediaItem.m */,
-				4933D78C17D4B71D003F2CC6 /* Child+Utility.h */,
-				4933D78D17D4B71D003F2CC6 /* Child+Utility.m */,
+				491752C417D60D080057BFE2 /* BirthdayPredicate.h */,
+				491752C517D60D080057BFE2 /* BirthdayPredicate.m */,
 				491752C117D603040057BFE2 /* NSManagedObjectContext+JSON.h */,
 				491752C217D603040057BFE2 /* NSManagedObjectContext+JSON.m */,
 			);
@@ -375,9 +375,9 @@
 				496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */,
 				4933D78517D4B6AB003F2CC6 /* MediaItem.m in Sources */,
 				4933D78B17D4B6AB003F2CC6 /* Child.m in Sources */,
-				4933D78E17D4B71D003F2CC6 /* Child+Utility.m in Sources */,
 				49F6B60717D557DE004B3048 /* Model.xcdatamodeld in Sources */,
 				491752C317D603040057BFE2 /* NSManagedObjectContext+JSON.m in Sources */,
+				491752C617D60D080057BFE2 /* BirthdayPredicate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,14 @@
 //
-//  Child+Utility.h
+//  BirthdayPredicate.h
 //  HeartGallery
 //
-//  Created by Andrew Davis on 9/2/13.
+//  Created by Andrew Davis on 9/3/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "Child.h"
+#import <Foundation/Foundation.h>
 
-@interface Child (Utility)
+@interface BirthdayPredicate : NSObject
 + (NSPredicate *)predicateForAgeAtMost:(NSUInteger)age;
 + (NSPredicate *)predicateForAgeAtLeast:(NSUInteger)age;
 + (NSPredicate *)predicateForAgeBetween:(NSUInteger)minAge maxAge:(NSUInteger)maxAge;

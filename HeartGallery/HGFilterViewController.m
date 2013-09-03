@@ -8,7 +8,7 @@
 
 #import "HGFilterViewController.h"
 #import "Child.h"
-#import "Child+Utility.h"
+#import "BirthdayPredicate.h"
 
 static NSInteger kNavigationBarHeight = 44;
 
@@ -61,9 +61,9 @@ static NSInteger kNavigationBarHeight = 44;
                 @"title": @"Filter by age",
                 @"filters": @[
                     @{@"title": @"All ages", @"predicate": [NSPredicate predicateWithValue:YES]},
-                    @{@"title": @"12 & Younger", @"predicate": [Child predicateForAgeAtMost:12]},
-                    @{@"title": @"13 - 15", @"predicate": [Child predicateForAgeBetween:13 maxAge:15]},
-                    @{@"title": @"16 & Older", @"predicate": [Child predicateForAgeAtLeast:16]}
+                    @{@"title": @"12 & Younger", @"predicate": [BirthdayPredicate predicateForAgeAtMost:12]},
+                    @{@"title": @"13 - 15", @"predicate": [BirthdayPredicate predicateForAgeBetween:13 maxAge:15]},
+                    @{@"title": @"16 & Older", @"predicate": [BirthdayPredicate predicateForAgeAtLeast:16]}
                 ]
             }
         ];

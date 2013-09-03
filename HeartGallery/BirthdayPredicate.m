@@ -1,14 +1,14 @@
 //
-//  Child+Utility.m
+//  BirthdayPredicate.m
 //  HeartGallery
 //
-//  Created by Andrew Davis on 9/2/13.
+//  Created by Andrew Davis on 9/3/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "Child+Utility.h"
+#import "BirthdayPredicate.h"
 
-@implementation Child (Utility)
+@implementation BirthdayPredicate
 
 // Find the date of today, without time, a given number of years ago.
 + (NSDate *)findDate:(NSUInteger)yearsAgo {
@@ -25,17 +25,17 @@
 
 // Create a predicate to capture all children born after today (age + 1) years ago, meaning they're at most the given age.
 + (NSPredicate *)predicateForAgeAtMost:(NSUInteger)age {
-    return [NSPredicate predicateWithFormat:@"birthday > %@", [Child findDate:age + 1]];
+    return [NSPredicate predicateWithFormat:@"birthday > %@", [BirthdayPredicate findDate:age + 1]];
 }
 
 // Create a predicate to capture all children born before or on today age years ago, meaning they're at least the given age.
 + (NSPredicate *)predicateForAgeAtLeast:(NSUInteger)age {
-    return [NSPredicate predicateWithFormat:@"birthday <= %@", [Child findDate:age]];
+    return [NSPredicate predicateWithFormat:@"birthday <= %@", [BirthdayPredicate findDate:age]];
 }
 
 // Create a predicate to capture all children born before or on today age years ago, meaning they're at least the given age.
 + (NSPredicate *)predicateForAgeBetween:(NSUInteger)minAge maxAge:(NSUInteger)maxAge {
-    NSArray *predicates = @[[Child predicateForAgeAtLeast:minAge], [Child predicateForAgeAtMost:maxAge]];
+    NSArray *predicates = @[[BirthdayPredicate predicateForAgeAtLeast:minAge], [BirthdayPredicate predicateForAgeAtMost:maxAge]];
     return [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
 }
 
