@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HGWebImageView : UIView
+@interface HGWebImageView : UIImageView
 @property (strong, nonatomic) NSURL *url;
 @end

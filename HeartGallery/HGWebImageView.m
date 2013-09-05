@@ -11,29 +11,39 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface HGWebImageView ()
-@property (strong, nonatomic) UIImageView *placeholder;
-@property (strong, nonatomic) UIImageView *content;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation HGWebImageView
 
-- (void)layoutSubviews {
-    // Add a "loading" indicator as a placeholder while the image loads.
-    self.placeholder = [[UIImageView alloc] initWithFrame:self.bounds];
-    self.placeholder.contentMode = UIViewContentModeCenter;
-    self.placeholder.image = [UIImage imageWithPDFNamed:@"loading.pdf" atHeight:self.bounds.size.width / 6];
-    [self addSubview:self.placeholder];
-    
-    // Add the content image asynchronously from the web if URL is already set.
-    self.content = [[UIImageView alloc] initWithFrame:self.bounds];
-    self.content.contentMode = self.contentMode;
-    [self addSubview:self.content];
-    [self.content setImageWithURL:self.url];
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Add an activity indicator to show then the image is loading.
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.activityIndicator.center = self.center;
+        self.activityIndicator.hidden = YES;
+        [self addSubview:self.activityIndicator];
+    }
+    return self;
 }
 
 - (void)setUrl:(NSURL *)url {
     _url = url;
-    [self.content setImageWithURL:self.url];
+
+    // Start the activity indicator.
+    [self.activityIndicator startAnimating];
+    self.activityIndicator.hidden = NO;
+
+    // Load a remote image.
+    __weak typeof(self) weakSelf = self;
+    NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:url];
+    [self setImageWithURLRequest:imageRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        // Stop the activity indicator when the image is done loading.
+        weakSelf.activityIndicator.hidden = YES;
+        [weakSelf.activityIndicator stopAnimating];
+        weakSelf.image = image;
+    } failure:nil];
 }
 
 @end

@@ -27,7 +27,6 @@
 		49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */; };
 		49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15CD17BBA434001ECEF9 /* HGWebImageView.m */; };
 		49DAD02A1796BAC900893D33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DAD0291796BAC900893D33 /* SystemConfiguration.framework */; };
-		49DE453417CE2424005D2FB5 /* loading.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 49DE453117CE2424005D2FB5 /* loading.pdf */; };
 		49DE453817CE2432005D2FB5 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 49DE453517CE2432005D2FB5 /* play-button.png */; };
 		49DE453E17CE244B005D2FB5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 49DE453D17CE244B005D2FB5 /* Default.png */; };
 		49DE454217CE2494005D2FB5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49DE454117CE2494005D2FB5 /* Icon.png */; };
@@ -79,7 +78,6 @@
 		49CC15CC17BBA434001ECEF9 /* HGWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGWebImageView.h; sourceTree = "<group>"; };
 		49CC15CD17BBA434001ECEF9 /* HGWebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGWebImageView.m; sourceTree = "<group>"; };
 		49DAD0291796BAC900893D33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		49DE453117CE2424005D2FB5 /* loading.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = loading.pdf; sourceTree = "<group>"; };
 		49DE453517CE2432005D2FB5 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		49DE453D17CE244B005D2FB5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		49DE454117CE2494005D2FB5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				49DE453D17CE244B005D2FB5 /* Default.png */,
 				49DE454917CE24FC005D2FB5 /* Default-568h@2x.png */,
 				49DE453517CE2432005D2FB5 /* play-button.png */,
-				49DE453117CE2424005D2FB5 /* loading.pdf */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -297,7 +294,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F3E6FD178445BB002B66E7 /* InfoPlist.strings in Resources */,
-				49DE453417CE2424005D2FB5 /* loading.pdf in Resources */,
 				49DE453817CE2432005D2FB5 /* play-button.png in Resources */,
 				49DE453E17CE244B005D2FB5 /* Default.png in Resources */,
 				49DE454217CE2494005D2FB5 /* Icon.png in Resources */,
