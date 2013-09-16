@@ -11,6 +11,9 @@
 #import "HGHomeViewController.h"
 
 static NSString *kStoreFile = @"HGCoreDataStore.sqlite";
+static NSString *kUrlCache = @"HGUrlCache";
+static NSInteger kUrlCacheMemorySize = 20;
+static NSInteger kUrlCacheDiskSize = 20;
 
 @implementation HGAppDelegate
 
@@ -18,6 +21,10 @@ static NSString *kStoreFile = @"HGCoreDataStore.sqlite";
     // Create the main window.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    // Initialize the URL cache.
+    NSURLCache *urlCache = [[NSURLCache alloc] initWithMemoryCapacity:1024 * 1024 * kUrlCacheMemorySize diskCapacity:1024 * 1024 * kUrlCacheDiskSize diskPath:kUrlCache];
+    [NSURLCache setSharedURLCache:urlCache];
     
     // Create a remote data controller to manage fetching children from the web.
     NSManagedObjectContext *managedObjectContext = [self createManagedObjectContext];
@@ -40,10 +47,6 @@ static NSString *kStoreFile = @"HGCoreDataStore.sqlite";
     NSURL *modelFileURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
     NSManagedObjectModel *managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelFileURL];
 
-//    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"MyApp" withExtension:@"momd"];
-//    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-
-    
     // Create a persistent store in the documents directory.
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
     NSURL *documentDir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];

@@ -37,7 +37,7 @@
 
     // Load a remote image.
     __weak typeof(self) weakSelf = self;
-    NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:url];
+    NSURLRequest *imageRequest = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60];
     [self setImageWithURLRequest:imageRequest placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         // Stop the activity indicator when the image is done loading.
         weakSelf.activityIndicator.hidden = YES;

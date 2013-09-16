@@ -40,7 +40,7 @@
 		49F3E6FD178445BB002B66E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49F3E6FB178445BB002B66E7 /* InfoPlist.strings */; };
 		49F3E6FF178445BB002B66E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F3E6FE178445BB002B66E7 /* main.m */; };
 		49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F3E702178445BB002B66E7 /* HGAppDelegate.m */; };
-		49F6B60717D557DE004B3048 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49F6B60517D557DE004B3048 /* Model.xcdatamodeld */; };
+		49FA1E4817E72B6B00FA88DD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49FA1E4617E72B6B00FA88DD /* Model.xcdatamodeld */; };
 		AB3F917E4B0047889E3D44FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9420B9594BB473DA47667A5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +95,7 @@
 		49F3E700178445BB002B66E7 /* HeartGallery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HeartGallery-Prefix.pch"; sourceTree = "<group>"; };
 		49F3E701178445BB002B66E7 /* HGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGAppDelegate.h; sourceTree = "<group>"; };
 		49F3E702178445BB002B66E7 /* HGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGAppDelegate.m; sourceTree = "<group>"; };
-		49F6B60617D557DE004B3048 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		49FA1E4717E72B6B00FA88DD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C9420B9594BB473DA47667A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,7 @@
 		49C4FC43178ED18200CA0DE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				49F6B60517D557DE004B3048 /* Model.xcdatamodeld */,
+				49FA1E4617E72B6B00FA88DD /* Model.xcdatamodeld */,
 				491752C417D60D080057BFE2 /* BirthdayPredicate.h */,
 				491752C517D60D080057BFE2 /* BirthdayPredicate.m */,
 				491752C117D603040057BFE2 /* NSManagedObjectContext+JSON.h */,
@@ -359,9 +359,9 @@
 				495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */,
 				495064DA17C151350085CA30 /* UIScrollView+Resize.m in Sources */,
 				496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */,
-				49F6B60717D557DE004B3048 /* Model.xcdatamodeld in Sources */,
 				491752C317D603040057BFE2 /* NSManagedObjectContext+JSON.m in Sources */,
 				491752C617D60D080057BFE2 /* BirthdayPredicate.m in Sources */,
+				49FA1E4817E72B6B00FA88DD /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,14 +495,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		49F6B60517D557DE004B3048 /* Model.xcdatamodeld */ = {
+		49FA1E4617E72B6B00FA88DD /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				49F6B60617D557DE004B3048 /* Model.xcdatamodel */,
+				49FA1E4717E72B6B00FA88DD /* Model.xcdatamodel */,
 			);
-			currentVersion = 49F6B60617D557DE004B3048 /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = ../Model.xcdatamodeld;
+			currentVersion = 49FA1E4717E72B6B00FA88DD /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
