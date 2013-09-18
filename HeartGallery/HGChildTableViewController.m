@@ -13,6 +13,7 @@
 #import "CKRefreshControl.h"
 #import "HGWebImageView.h"
 #import "HGFilterViewController.h"
+#import "UITableViewController+Refresh.h"
 
 static NSInteger kTableRowHeight = 90;
 static NSInteger kCellImageTag = 1;
@@ -73,7 +74,7 @@ static NSInteger kSearchBarHeight = 44;
 
     // If data is more than a day old, get updates from the web and start the pull to refresh spinner.
     if ([self.remoteDataController isDataStale]) {
-        [self.refreshControl beginRefreshing];
+        [self beginVisualRefreshing];
         [self.remoteDataController fetchData];
     }
 }
@@ -104,21 +105,16 @@ static NSInteger kSearchBarHeight = 44;
     [self.navigationController presentModalViewController:self.filterViewController animated:YES];
 }
 
-// Hide the pull to refresh spinner.
-- (void)hidePullToRefresh {
-    [self.refreshControl performSelector:@selector(endRefreshing) withObject:nil];
-}
-
 #pragma mark - HGRemoteDataControllerDelegate
 
 // Hide the spinner when a remote request completes successfully.
 - (void)remoteRequestSuccess {
-    [self hidePullToRefresh];
+    [self.refreshControl endRefreshing];
 }
 
 // Hide the spinner and show an error message when a remote request fails.
 - (void)remoteRequestFailure {
-    [self hidePullToRefresh];
+    [self.refreshControl endRefreshing];
     [SVProgressHUD showErrorWithStatus:@"Could not connect"];
 }
 

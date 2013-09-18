@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		491752C317D603040057BFE2 /* NSManagedObjectContext+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 491752C217D603040057BFE2 /* NSManagedObjectContext+JSON.m */; };
 		491752C617D60D080057BFE2 /* BirthdayPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491752C517D60D080057BFE2 /* BirthdayPredicate.m */; };
+		491F51A117E9D6A400CB5940 /* UITableViewController+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */; };
 		4943DC6417D207390090FE11 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4943DC6317D207390090FE11 /* background.jpeg */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
@@ -50,6 +51,8 @@
 		491752C217D603040057BFE2 /* NSManagedObjectContext+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+JSON.m"; sourceTree = "<group>"; };
 		491752C417D60D080057BFE2 /* BirthdayPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayPredicate.h; sourceTree = "<group>"; };
 		491752C517D60D080057BFE2 /* BirthdayPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayPredicate.m; sourceTree = "<group>"; };
+		491F519F17E9D6A400CB5940 /* UITableViewController+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Refresh.h"; sourceTree = "<group>"; };
+		491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Refresh.m"; sourceTree = "<group>"; };
 		4943DC6317D207390090FE11 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */,
 				495064D817C151340085CA30 /* UIScrollView+Resize.h */,
 				495064D917C151340085CA30 /* UIScrollView+Resize.m */,
+				491F519F17E9D6A400CB5940 /* UITableViewController+Refresh.h */,
+				491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 				491752C317D603040057BFE2 /* NSManagedObjectContext+JSON.m in Sources */,
 				491752C617D60D080057BFE2 /* BirthdayPredicate.m in Sources */,
 				49FA1E4817E72B6B00FA88DD /* Model.xcdatamodeld in Sources */,
+				491F51A117E9D6A400CB5940 /* UITableViewController+Refresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
