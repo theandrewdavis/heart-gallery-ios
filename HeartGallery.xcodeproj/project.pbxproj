@@ -10,6 +10,7 @@
 		491752C317D603040057BFE2 /* NSManagedObjectContext+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 491752C217D603040057BFE2 /* NSManagedObjectContext+JSON.m */; };
 		491752C617D60D080057BFE2 /* BirthdayPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491752C517D60D080057BFE2 /* BirthdayPredicate.m */; };
 		491F51A117E9D6A400CB5940 /* UITableViewController+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */; };
+		491F51A317EB257F00CB5940 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491F51A217EB257F00CB5940 /* Twitter.framework */; };
 		4943DC6417D207390090FE11 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4943DC6317D207390090FE11 /* background.jpeg */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
@@ -53,6 +54,7 @@
 		491752C517D60D080057BFE2 /* BirthdayPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayPredicate.m; sourceTree = "<group>"; };
 		491F519F17E9D6A400CB5940 /* UITableViewController+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+Refresh.h"; sourceTree = "<group>"; };
 		491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Refresh.m"; sourceTree = "<group>"; };
+		491F51A217EB257F00CB5940 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		4943DC6317D207390090FE11 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491F51A317EB257F00CB5940 /* Twitter.framework in Frameworks */,
 				495064D517BFACE80085CA30 /* MediaPlayer.framework in Frameworks */,
 				49DAD02A1796BAC900893D33 /* SystemConfiguration.framework in Frameworks */,
 				49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */,
@@ -210,6 +213,7 @@
 		49F3E6F1178445BB002B66E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				491F51A217EB257F00CB5940 /* Twitter.framework */,
 				495064D417BFACE80085CA30 /* MediaPlayer.framework */,
 				49DAD0291796BAC900893D33 /* SystemConfiguration.framework */,
 				49C4FC2E178C351C00CA0DE2 /* CoreData.framework */,
