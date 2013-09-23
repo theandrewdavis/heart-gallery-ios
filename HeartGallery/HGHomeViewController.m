@@ -58,7 +58,7 @@ static NSInteger kButtonHeight = 50;
     CGFloat titleFontSize;
     UIFont *titleFont = [UIFont fontWithName:@"GillSans-Light" size:maxFontSize];
     CGFloat titleWidth = self.view.bounds.size.width * 0.8;
-    [titleText sizeWithFont:titleFont minFontSize:minFontSize actualFontSize:&titleFontSize forWidth:titleWidth lineBreakMode:UILineBreakModeWordWrap];
+    [titleText sizeWithFont:titleFont minFontSize:minFontSize actualFontSize:&titleFontSize forWidth:titleWidth lineBreakMode:NSLineBreakByWordWrapping];
     titleFont = [titleFont fontWithSize:titleFontSize];
     CGFloat titleHeight = [titleText sizeWithFont:titleFont].height;
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, titleWidth, titleHeight)];
