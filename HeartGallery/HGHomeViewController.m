@@ -9,7 +9,8 @@
 #import "HGHomeViewController.h"
 #import "HGChildTableViewController.h"
 #import "UIButton+ColorButton.h"
-#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 #define kHomeScreenMargin 20.0
 #define kHomeScreenButtonHeight 60.0
@@ -96,13 +97,10 @@ static NSInteger kButtonHeight = 50;
 
 // Open the twitter dialog box.
 - (void)tweet {
-    if ([TWTweetComposeViewController canSendTweet]) {
-        TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
-        [tweetSheet setInitialText: @"#heartgallery"];
-	    [self presentModalViewController:tweetSheet animated:YES];
-    } else {
-        
-        NSLog(@"Can't send tweet!");
+    if ([SLComposeViewController class]) {
+        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [tweetSheet setInitialText:@"#heartgalleryalabama"];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
     }
 }
 
