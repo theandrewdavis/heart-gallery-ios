@@ -9,8 +9,6 @@
 #import "HGHomeViewController.h"
 #import "HGChildTableViewController.h"
 #import "UIButton+ColorButton.h"
-#import <Accounts/Accounts.h>
-#import <Social/Social.h>
 
 #define kHomeScreenMargin 20.0
 #define kHomeScreenButtonHeight 60.0
@@ -44,13 +42,6 @@ static NSInteger kButtonHeight = 50;
     [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:childrenButton];
 
-    // Add a Twitter button.
-    UIButton *twitterButton = [UIButton buttonWithColor:[UIColor blueColor]];
-    twitterButton.frame = CGRectMake(kButtonMargin, self.view.bounds.size.height - kButtonMargin - 2 * kButtonHeight - kButtonPadding, buttonWidth, kButtonHeight);
-    [twitterButton setTitle:@"Tweet" forState:UIControlStateNormal];
-    [twitterButton addTarget:self action:@selector(tweet) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:twitterButton];
-    
     // Add the title text.
     NSString *titleText = @"Heart Gallery of Alabama";
     CGFloat minFontSize = 1;
@@ -93,15 +84,6 @@ static NSInteger kButtonHeight = 50;
 // Open the donate page of the Heart Gallery website in Safari.
 - (void)donate {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.heartgalleryalabama.com/support.php"]];
-}
-
-// Open the twitter dialog box.
-- (void)tweet {
-    if ([SLComposeViewController class]) {
-        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:@"#heartgalleryalabama"];
-        [self presentViewController:tweetSheet animated:YES completion:nil];
-    }
 }
 
 @end

@@ -11,6 +11,6 @@
 
 @class Child;
 
-@interface HGChildViewController : UIViewController <HGSlideShowDataSource, UIWebViewDelegate>
+@interface HGChildViewController : UIViewController <HGSlideShowDataSource, UIWebViewDelegate, UIActionSheetDelegate>
 @property (strong, nonatomic) NSManagedObject *child;
 @end

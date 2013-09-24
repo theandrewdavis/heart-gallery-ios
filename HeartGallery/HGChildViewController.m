@@ -10,8 +10,13 @@
 #import "HGWebImageView.h"
 #import "HGMovieView.h"
 #import "UIScrollView+Resize.h"
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
 
 static NSInteger kPageControlHeight = 36;
+static NSString *kTwitterTitle = @"Share with Twitter";
+static NSString *kFacebookTitle = @"Share with Facebook";
+static NSString *kHeartGalleryHome = @"http://www.heartgalleryalabama.com";
 
 @interface HGChildViewController()
 @property (strong, nonatomic) UIScrollView *scrollView;
@@ -27,6 +32,11 @@ static NSInteger kPageControlHeight = 36;
     // Set the title to the child's name
     self.navigationItem.title = [self.child valueForKey:@"name"];
     
+    // Add a misc. functions button to the title bar.
+    UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActionsDialog)];
+    self.navigationItem.rightBarButtonItem = actionButton;
+    
+    // Add all content to a scroll view.
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
     
@@ -87,6 +97,35 @@ static NSInteger kPageControlHeight = 36;
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     webView.frame = CGRectMake(webView.frame.origin.x, webView.frame.origin.y, webView.frame.size.width, webView.scrollView.contentSize.height);
     [self.scrollView resizeToFitContent];
+}
+
+// Show the actions dialog including the print button. If the Social Framework is available, also show Twitter and Facebook buttons.
+- (void)showActionsDialog {
+    static NSString *kCancelButton = @"Cancel";
+    UIActionSheet *actionSheet;
+    if ([SLComposeViewController class]) {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:kCancelButton destructiveButtonTitle:nil otherButtonTitles:kTwitterTitle, kFacebookTitle, nil];
+    } else {
+        actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:kCancelButton destructiveButtonTitle:nil otherButtonTitles:nil];
+    }
+    [actionSheet showInView:self.view];
+}
+
+// Called when an action sheet button is pressed.
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:kTwitterTitle]) {
+        [self openSocialDialog:SLServiceTypeTwitter];
+    } else if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:kFacebookTitle]) {
+        [self openSocialDialog:SLServiceTypeFacebook];
+    }
+}
+
+// Open the Twitter/Facebook popover dialog.
+- (void)openSocialDialog:(NSString *)serviceType {
+    SLComposeViewController *socialSheet = [SLComposeViewController composeViewControllerForServiceType:serviceType];
+    [socialSheet setInitialText:[NSString stringWithFormat:@"Check out %@ at Heart Gallery of Alabama!", [self.child valueForKey:@"name"]]];
+    [socialSheet addURL:[NSURL URLWithString:kHeartGalleryHome]];
+    [self presentViewController:socialSheet animated:YES completion:nil];
 }
 
 @end
