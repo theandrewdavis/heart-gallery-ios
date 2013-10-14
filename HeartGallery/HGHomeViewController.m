@@ -27,6 +27,13 @@ static NSInteger kButtonHeight = 50;
     background.image = [UIImage imageNamed:@"background.jpeg"];
     [self.view addSubview:background];
     
+    // Add the title logo.
+    UIImage *logoImage = [UIImage imageNamed:@"logo.jpeg"];
+    CGFloat logoHeight = logoImage.size.height / logoImage.size.width * self.view.bounds.size.width;
+    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, logoHeight)];
+    logoView.image = logoImage;
+    [self.view addSubview:logoView];
+    
     // Add a "Donate" button.
     CGFloat buttonWidth = (self.view.bounds.size.width - 2 * kButtonMargin - kButtonPadding) / 2;
     UIButton *donateButton = [UIButton buttonWithColor:[UIColor colorWithRed:90.0f/255.0f green:124.0f/255.0f blue:194.0f/255.0f alpha:1.0f]];
@@ -41,24 +48,6 @@ static NSInteger kButtonHeight = 50;
     [childrenButton setTitle:@"Children" forState:UIControlStateNormal];
     [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:childrenButton];
-
-    // Add the title text.
-    NSString *titleText = @"Heart Gallery of Alabama";
-    CGFloat minFontSize = 1;
-    CGFloat maxFontSize = 100;
-    CGFloat titleFontSize;
-    UIFont *titleFont = [UIFont fontWithName:@"GillSans-Light" size:maxFontSize];
-    CGFloat titleWidth = self.view.bounds.size.width * 0.8;
-    [titleText sizeWithFont:titleFont minFontSize:minFontSize actualFontSize:&titleFontSize forWidth:titleWidth lineBreakMode:NSLineBreakByWordWrapping];
-    titleFont = [titleFont fontWithSize:titleFontSize];
-    CGFloat titleHeight = [titleText sizeWithFont:titleFont].height;
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, titleWidth, titleHeight)];
-    title.center = CGPointMake(self.view.bounds.size.width * 0.5, self.view.bounds.size.height * 0.1);
-    title.font = [titleFont fontWithSize:titleFontSize];
-    title.text = titleText;
-    title.textAlignment = NSTextAlignmentCenter;
-    title.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:title];
 }
 
 // Hide the navigation bar for this view only.
