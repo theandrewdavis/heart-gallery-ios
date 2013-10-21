@@ -7,7 +7,6 @@
 //
 
 #import "HGWebImageView.h"
-#import "UIImage+PDF.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface HGWebImageView ()

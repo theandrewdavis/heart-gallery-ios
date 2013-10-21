@@ -7,8 +7,10 @@
 //
 
 #import "HGAppDelegate.h"
-#import "HGRemoteDataController.h"
+#import "HGDataController.h"
 #import "HGHomeViewController.h"
+#import "HGMenuViewController.h"
+#import "NVSlideMenuController.h"
 
 static NSString *kStoreFile = @"HGCoreDataStore.sqlite";
 static NSString *kUrlCache = @"HGUrlCache";
@@ -26,17 +28,16 @@ static NSInteger kUrlCacheDiskSize = 20;
     NSURLCache *urlCache = [[NSURLCache alloc] initWithMemoryCapacity:1024 * 1024 * kUrlCacheMemorySize diskCapacity:1024 * 1024 * kUrlCacheDiskSize diskPath:kUrlCache];
     [NSURLCache setSharedURLCache:urlCache];
     
-    // Create a remote data controller to manage fetching children from the web.
+    // Create a managed object context and use it to initialize the remote data controller.
     NSManagedObjectContext *managedObjectContext = [self createManagedObjectContext];
-    HGRemoteDataController *remoteDataController = [[HGRemoteDataController alloc] init];
-    remoteDataController.managedObjectContext = managedObjectContext;
+    [HGDataController sharedController].managedObjectContext = managedObjectContext;
     
-    // Create a navigation controller as the root view controller and insert the home screen into it.
-    HGHomeViewController *homeViewController = [[HGHomeViewController alloc] init];
-    homeViewController.managedObjectContext = managedObjectContext;
-    homeViewController.remoteDataController = remoteDataController;
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+    // Create the slide-out menu controller.
+    HGMenuViewController *menuViewController = [[HGMenuViewController alloc] init];
+    UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:[[HGHomeViewController alloc] init]];
+    self.window.rootViewController = [[NVSlideMenuController alloc] initWithMenuViewController:menuViewController andContentViewController:homeNavigationController];
     
+    // Show the home screen.
     [self.window makeKeyAndVisible];
     return YES;
 }

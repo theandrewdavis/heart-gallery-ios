@@ -1,9 +1,9 @@
-platform :ios, '5.0'
+platform :ios, '5.1'
 
 xcodeproj 'HeartGallery.xcodeproj'
 
-pod 'AFNetworking'
+pod 'AFNetworking', "~> 1.3"
 pod 'Reachability'
 pod 'SVProgressHUD'
 pod 'CKRefreshControl'
-pod 'UIImage+PDF'
+pod 'NVSlideMenuController'

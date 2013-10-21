@@ -7,7 +7,7 @@
 //
 
 #import "HGChildTableViewController.h"
-#import "HGRemoteDataController.h"
+#import "HGDataController.h"
 #import "HGChildViewController.h"
 #import "SVProgressHUD.h"
 #import "CKRefreshControl.h"
@@ -24,6 +24,8 @@ static NSInteger kChildFetchRequestBatchSize = 40;
 static NSInteger kSearchBarHeight = 44;
 
 @interface HGChildTableViewController ()
+@property (nonatomic, strong) HGDataController *dataController;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) HGFilterViewController *filterViewController;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -37,6 +39,9 @@ static NSInteger kSearchBarHeight = 44;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.dataController = [HGDataController sharedController];
+    self.managedObjectContext = self.dataController.managedObjectContext;
+    
     self.tableView.rowHeight = kTableRowHeight;
 
     // Set the title of the navigation controller.
@@ -69,13 +74,13 @@ static NSInteger kSearchBarHeight = 44;
 
     // Set up pull to refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.remoteDataController.delegate = self;
-    [self.refreshControl addTarget:self.remoteDataController action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    self.dataController.delegate = self;
+    [self.refreshControl addTarget:self.dataController action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
 
     // If data is more than a day old, get updates from the web and start the pull to refresh spinner.
-    if ([self.remoteDataController isDataStale]) {
+    if ([self.dataController isDataStale]) {
         [self beginVisualRefreshing];
-        [self.remoteDataController fetchData];
+        [self.dataController fetchData];
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  HGRemoteDataController.h
+//  HGDataController.h
 //  HeartGallery
 //
 //  Created by Andrew Davis on 8/4/13.
@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol HGRemoteDataControllerDelegate <NSObject>
+@protocol HGDataControllerDelegate <NSObject>
 - (void)remoteRequestSuccess;
 - (void)remoteRequestFailure;
 @end
 
-@interface HGRemoteDataController : NSObject
-@property (weak, nonatomic) id <HGRemoteDataControllerDelegate> delegate;
+@interface HGDataController : NSObject
+@property (weak, nonatomic) id <HGDataControllerDelegate> delegate;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
++ (HGDataController *)sharedController;
 - (void)fetchData;
 - (BOOL)isDataStale;
 @end

@@ -12,6 +12,7 @@
 		491F51A117E9D6A400CB5940 /* UITableViewController+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */; };
 		491F51A517EC71B000CB5940 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491F51A417EC71AF00CB5940 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		491F51A717EC71B800CB5940 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491F51A617EC71B800CB5940 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		492BADC71815527200C45E44 /* HGContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492BADC61815527200C45E44 /* HGContentTableViewController.m */; };
 		4943DC6417D207390090FE11 /* background.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4943DC6317D207390090FE11 /* background.jpeg */; };
 		4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4945A024178446D500B116F1 /* HGHomeViewController.m */; };
 		495064D217BFA2290085CA30 /* HGMovieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495064CF17BFA2290085CA30 /* HGMovieView.m */; };
@@ -24,8 +25,13 @@
 		49531E7D17CF6CFD00EE8210 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49531E7917CF6CFD00EE8210 /* Icon-Small@2x.png */; };
 		496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496E849517C2FDF50093AE1E /* HGFilterViewController.m */; };
 		499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildViewController.m */; };
-		499EB5ED17AE7F5F00C3BE34 /* HGRemoteDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */; };
+		499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */; };
 		49C3B56C180C16AE00B95470 /* logo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56B180C16AE00B95470 /* logo.jpeg */; };
+		49C3B56F180C7FE200B95470 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56D180C7FE200B95470 /* menu-icon.png */; };
+		49C3B570180C7FE200B95470 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56E180C7FE200B95470 /* menu-icon@2x.png */; };
+		49C3B573180C864F00B95470 /* HGMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3B572180C864F00B95470 /* HGMenuViewController.m */; };
+		49C3B576180EC05E00B95470 /* HGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3B575180EC05E00B95470 /* HGAboutViewController.m */; };
+		49C3B579180EC20300B95470 /* HGContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3B578180EC20300B95470 /* HGContentViewController.m */; };
 		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
 		49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */; };
 		49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */; };
@@ -58,6 +64,8 @@
 		491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+Refresh.m"; sourceTree = "<group>"; };
 		491F51A417EC71AF00CB5940 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		491F51A617EC71B800CB5940 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		492BADC51815527200C45E44 /* HGContentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGContentTableViewController.h; sourceTree = "<group>"; };
+		492BADC61815527200C45E44 /* HGContentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGContentTableViewController.m; sourceTree = "<group>"; };
 		4943DC6317D207390090FE11 /* background.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpeg; sourceTree = "<group>"; };
 		4945A023178446D500B116F1 /* HGHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGHomeViewController.h; sourceTree = "<group>"; };
 		4945A024178446D500B116F1 /* HGHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGHomeViewController.m; sourceTree = "<group>"; };
@@ -76,9 +84,17 @@
 		496E849517C2FDF50093AE1E /* HGFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFilterViewController.m; sourceTree = "<group>"; };
 		499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildViewController.h; sourceTree = "<group>"; };
 		499EB5E017A7E47500C3BE34 /* HGChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildViewController.m; sourceTree = "<group>"; };
-		499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGRemoteDataController.h; sourceTree = "<group>"; };
-		499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGRemoteDataController.m; sourceTree = "<group>"; };
+		499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDataController.h; sourceTree = "<group>"; };
+		499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDataController.m; sourceTree = "<group>"; };
 		49C3B56B180C16AE00B95470 /* logo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpeg; sourceTree = "<group>"; };
+		49C3B56D180C7FE200B95470 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
+		49C3B56E180C7FE200B95470 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
+		49C3B571180C864F00B95470 /* HGMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMenuViewController.h; sourceTree = "<group>"; };
+		49C3B572180C864F00B95470 /* HGMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGMenuViewController.m; sourceTree = "<group>"; };
+		49C3B574180EC05E00B95470 /* HGAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGAboutViewController.h; sourceTree = "<group>"; };
+		49C3B575180EC05E00B95470 /* HGAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGAboutViewController.m; sourceTree = "<group>"; };
+		49C3B577180EC20300B95470 /* HGContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGContentViewController.h; sourceTree = "<group>"; };
+		49C3B578180EC20300B95470 /* HGContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGContentViewController.m; sourceTree = "<group>"; };
 		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
 		49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
@@ -133,10 +149,18 @@
 			children = (
 				49F3E701178445BB002B66E7 /* HGAppDelegate.h */,
 				49F3E702178445BB002B66E7 /* HGAppDelegate.m */,
-				499EB5EB17AE7F5F00C3BE34 /* HGRemoteDataController.h */,
-				499EB5EC17AE7F5F00C3BE34 /* HGRemoteDataController.m */,
+				499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */,
+				499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */,
+				49C3B571180C864F00B95470 /* HGMenuViewController.h */,
+				49C3B572180C864F00B95470 /* HGMenuViewController.m */,
+				49C3B577180EC20300B95470 /* HGContentViewController.h */,
+				49C3B578180EC20300B95470 /* HGContentViewController.m */,
+				492BADC51815527200C45E44 /* HGContentTableViewController.h */,
+				492BADC61815527200C45E44 /* HGContentTableViewController.m */,
 				4945A023178446D500B116F1 /* HGHomeViewController.h */,
 				4945A024178446D500B116F1 /* HGHomeViewController.m */,
+				49C3B574180EC05E00B95470 /* HGAboutViewController.h */,
+				49C3B575180EC05E00B95470 /* HGAboutViewController.m */,
 				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
 				49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */,
 				496E849417C2FDF50093AE1E /* HGFilterViewController.h */,
@@ -181,6 +205,8 @@
 		49DE452E17CE23EC005D2FB5 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				49C3B56D180C7FE200B95470 /* menu-icon.png */,
+				49C3B56E180C7FE200B95470 /* menu-icon@2x.png */,
 				49C3B56B180C16AE00B95470 /* logo.jpeg */,
 				4943DC6317D207390090FE11 /* background.jpeg */,
 				49DE454117CE2494005D2FB5 /* Icon.png */,
@@ -313,9 +339,11 @@
 				49F3E6FD178445BB002B66E7 /* InfoPlist.strings in Resources */,
 				49DE453817CE2432005D2FB5 /* play-button.png in Resources */,
 				49DE453E17CE244B005D2FB5 /* Default.png in Resources */,
+				49C3B56F180C7FE200B95470 /* menu-icon.png in Resources */,
 				49DE454217CE2494005D2FB5 /* Icon.png in Resources */,
 				49DE454417CE249D005D2FB5 /* Icon@2x.png in Resources */,
 				49DE454617CE24A8005D2FB5 /* Icon-72.png in Resources */,
+				49C3B570180C7FE200B95470 /* menu-icon@2x.png in Resources */,
 				49DE454817CE24AB005D2FB5 /* Icon-72@2x.png in Resources */,
 				49DE454A17CE24FC005D2FB5 /* Default-568h@2x.png in Resources */,
 				49531E7A17CF6CFD00EE8210 /* Icon-Small.png in Resources */,
@@ -365,17 +393,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F3E6FF178445BB002B66E7 /* main.m in Sources */,
+				49C3B576180EC05E00B95470 /* HGAboutViewController.m in Sources */,
+				492BADC71815527200C45E44 /* HGContentTableViewController.m in Sources */,
 				49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */,
 				4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */,
 				49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */,
 				499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */,
-				499EB5ED17AE7F5F00C3BE34 /* HGRemoteDataController.m in Sources */,
+				499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */,
 				49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */,
 				49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */,
 				495064D217BFA2290085CA30 /* HGMovieView.m in Sources */,
 				495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */,
+				49C3B573180C864F00B95470 /* HGMenuViewController.m in Sources */,
 				495064DA17C151350085CA30 /* UIScrollView+Resize.m in Sources */,
 				496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */,
+				49C3B579180EC20300B95470 /* HGContentViewController.m in Sources */,
 				491752C317D603040057BFE2 /* NSManagedObjectContext+JSON.m in Sources */,
 				491752C617D60D080057BFE2 /* BirthdayPredicate.m in Sources */,
 				49FA1E4817E72B6B00FA88DD /* Model.xcdatamodeld in Sources */,

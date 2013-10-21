@@ -1,12 +1,12 @@
 //
-//  HGRemoteDataController.m
+//  HGDataController.m
 //  HeartGallery
 //
 //  Created by Andrew Davis on 8/4/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "HGRemoteDataController.h"
+#import "HGDataController.h"
 #import "AFJSONRequestOperation.h"
 #import "Reachability.h"
 #import "NSManagedObjectContext+JSON.h"
@@ -17,7 +17,16 @@ static NSString *kLastUpdateTimeKey = @"LastUpdateTime";
 static NSString *kLastUpdateVersionKey = @"LastUpdateVersion";
 static NSInteger kUpdateInterval = 60 * 60 * 24;
 
-@implementation HGRemoteDataController
+@implementation HGDataController
+
+// Initializes and returns the singleton remote data controller.
++ (HGDataController *)sharedController {
+    static HGDataController *sharedController = NULL;
+    if (!sharedController) {
+        sharedController = [[HGDataController alloc] init];
+    }
+    return sharedController;
+}
 
 // Fetch a list of all children from the network.
 - (void)fetchData {
@@ -38,6 +47,35 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
         [self.delegate remoteRequestFailure];
     }];
     [operation start];
+}
+
+
+// Clear all children in the store and replace them with the children in the given JSON object.
+- (void)update:(NSDictionary *)data version:(NSString *)version  {
+    // Don't update the store if the version has already been saved.
+    if (![self isNewVersion:version]) {
+        return;
+    }
+    
+    // Replace all children from the web response.
+    [self deleteAllEntitiesOfName:@"Child"];
+    for (NSDictionary *childData in data[@"children"]) {
+        NSManagedObject *child = [self.managedObjectContext addEntity:@"Child" fromJSON:childData];
+        NSMutableOrderedSet *media = [[NSMutableOrderedSet alloc] init];
+        for (NSDictionary *mediaItemData in childData[@"media"]) {
+            [media addObject:[self.managedObjectContext addEntity:@"MediaItem" fromJSON:mediaItemData]];
+        }
+        [child setValue:media forKey:@"media"];
+    }
+    
+    // Save the context.
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Context save failed: %@, %@", error.localizedDescription, error.userInfo);
+    };
+    
+    // Save the time and version number of the last remote data access.
+    [self updateVersion:version];
 }
 
 // Check if the network is currently reachable.
@@ -72,34 +110,6 @@ static NSInteger kUpdateInterval = 60 * 60 * 24;
 - (BOOL)isDataStale {
     NSDate *lastUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:kLastUpdateTimeKey];
     return !lastUpdate || [lastUpdate timeIntervalSinceNow] < -kUpdateInterval;
-}
-
-// Clear all children in the store and replace them with the children in the given JSON object.
-- (void)update:(NSDictionary *)data version:(NSString *)version  {
-    // Don't update the store if the version has already been saved.
-    if (![self isNewVersion:version]) {
-        return;
-    }
-
-    // Replace all children from the web response.
-    [self deleteAllEntitiesOfName:@"Child"];
-    for (NSDictionary *childData in data[@"children"]) {
-        NSManagedObject *child = [self.managedObjectContext addEntity:@"Child" fromJSON:childData];
-        NSMutableOrderedSet *media = [[NSMutableOrderedSet alloc] init];
-        for (NSDictionary *mediaItemData in childData[@"media"]) {
-            [media addObject:[self.managedObjectContext addEntity:@"MediaItem" fromJSON:mediaItemData]];
-        }
-        [child setValue:media forKey:@"media"];
-    }
-
-    // Save the context.
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Context save failed: %@, %@", error.localizedDescription, error.userInfo);
-    };
-    
-    // Save the time and version number of the last remote data access.
-    [self updateVersion:version];
 }
 
 @end
