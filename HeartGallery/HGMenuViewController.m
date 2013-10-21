@@ -29,6 +29,9 @@ static NSString *kMenuCellIdentifier = @"Menu Cell";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kMenuCellIdentifier];
     self.menuTitles = @[@"Home", @"About Us", @"Contact Us", @"Children", @"How Can You Help?", @"News & Events"];
     self.menuControllers = @[[HGHomeViewController class], [HGAboutViewController class], [HGAboutViewController class], [HGChildTableViewController class], [HGAboutViewController class], [HGAboutViewController class]];
+    
+    self.tableView.backgroundColor = [UIColor colorWithWhite:0.173 alpha:1.000];
+    self.tableView.separatorColor = [UIColor blackColor];
 }
 
 // Set the number of sections in the table.
@@ -45,6 +48,7 @@ static NSString *kMenuCellIdentifier = @"Menu Cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMenuCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = self.menuTitles[indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
