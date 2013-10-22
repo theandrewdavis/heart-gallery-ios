@@ -26,10 +26,14 @@ static NSString *kMenuCellIdentifier = @"Menu Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Register the class that will be used to create each table cell.
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kMenuCellIdentifier];
+    
+    // Set the menu titles and the view controllers they will call.
     self.menuTitles = @[@"Home", @"About Us", @"Contact Us", @"Children", @"How Can You Help?", @"News & Events"];
     self.menuControllers = @[[HGHomeViewController class], [HGAboutViewController class], [HGAboutViewController class], [HGChildTableViewController class], [HGAboutViewController class], [HGAboutViewController class]];
     
+    // Change the table to dark gray with black separators.
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.173 alpha:1.000];
     self.tableView.separatorColor = [UIColor blackColor];
 }
@@ -49,6 +53,7 @@ static NSString *kMenuCellIdentifier = @"Menu Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMenuCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = self.menuTitles[indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor colorWithWhite:0.173 alpha:1.000];
     return cell;
 }
 

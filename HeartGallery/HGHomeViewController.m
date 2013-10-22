@@ -16,13 +16,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Set the title bar text.
+    // Set the navigation bar text.
     self.navigationItem.title = @"Heart Gallery";
     
+    // Don't extend the view underneath the navigation bar.
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    
     // Add the background image.
-    CGFloat viewHeight = self.view.bounds.size.height - self.navigationController.navigationBar.frame.size.height;
-    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, viewHeight)];
+    CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - navBarHeight)];
     background.image = [UIImage imageNamed:@"background.jpeg"];
+    background.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:background];
     
     // Add the title logo.
