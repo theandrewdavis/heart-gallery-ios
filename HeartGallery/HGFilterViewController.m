@@ -21,7 +21,7 @@ static NSInteger kNavigationBarHeight = 44;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     // Add a navigation bar to the view.
     CGRect navigationBarFrame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, kNavigationBarHeight);
     UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:navigationBarFrame];
@@ -79,7 +79,7 @@ static NSInteger kNavigationBarHeight = 44;
         [predicates addObject:predicate];
     }
     [self.delegate didChangePredicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]];
-    [self dismissModalViewControllerAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 // Calculate the number of sections to show from the filters array.

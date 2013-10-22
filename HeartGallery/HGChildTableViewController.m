@@ -107,7 +107,7 @@ static NSInteger kSearchBarHeight = 44;
 
 // Open a filter view to create a filter to pass to the fetched results controller.
 - (void)filter {
-    [self.navigationController presentModalViewController:self.filterViewController animated:YES];
+    [self presentViewController:self.filterViewController animated:YES completion:nil];
 }
 
 #pragma mark - HGRemoteDataControllerDelegate

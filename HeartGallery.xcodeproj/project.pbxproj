@@ -312,6 +312,11 @@
 				CLASSPREFIX = HG;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Andrew Davis";
+				TargetAttributes = {
+					49F3E6EE178445BB002B66E7 = {
+						DevelopmentTeam = 3BEZF2MDCF;
+					};
+				};
 			};
 			buildConfigurationList = 49F3E6EA178445BB002B66E7 /* Build configuration list for PBXProject "HeartGallery" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -496,10 +501,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HeartGallery/HeartGallery-Prefix.pch";
 				INFOPLIST_FILE = "HeartGallery/HeartGallery-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Heart Gallery";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CEEF17D6-8007-41E7-82EB-E3DC88105807";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -513,10 +516,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HeartGallery/HeartGallery-Prefix.pch";
 				INFOPLIST_FILE = "HeartGallery/HeartGallery-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Heart Gallery";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CEEF17D6-8007-41E7-82EB-E3DC88105807";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
