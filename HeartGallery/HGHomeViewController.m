@@ -32,7 +32,7 @@
     [self.view addSubview:background];
     
     // Add the title logo.
-    UIImage *logoImage = [UIImage imageNamed:@"logo.jpeg"];
+    UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
     CGFloat logoHeight = logoImage.size.height / logoImage.size.width * self.view.bounds.size.width;
     UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, logoHeight)];
     logoView.image = logoImage;
