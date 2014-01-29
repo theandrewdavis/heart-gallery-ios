@@ -43,7 +43,7 @@ static NSInteger kNavigationBarHeight = 44;
             @{
                 @"title": @"Filter by siblings",
                 @"filters": @[
-                    @{@"title": @"Individual or Siblings", @"predicate": [NSPredicate predicateWithValue:YES]},
+                    @{@"title": @"Individual or siblings", @"predicate": [NSPredicate predicateWithValue:YES]},
                     @{@"title": @"Individual", @"predicate": [NSPredicate predicateWithFormat:@"category = %@", @"individual"]},
                     @{@"title": @"Siblings", @"predicate": [NSPredicate predicateWithFormat:@"category = %@", @"sibling"]}
                 ]
@@ -60,9 +60,9 @@ static NSInteger kNavigationBarHeight = 44;
                 @"title": @"Filter by age",
                 @"filters": @[
                     @{@"title": @"All ages", @"predicate": [NSPredicate predicateWithValue:YES]},
-                    @{@"title": @"12 & Younger", @"predicate": [BirthdayPredicate predicateForAgeAtMost:12]},
+                    @{@"title": @"12 & younger", @"predicate": [BirthdayPredicate predicateForAgeAtMost:12]},
                     @{@"title": @"13 - 15", @"predicate": [BirthdayPredicate predicateForAgeBetween:13 maxAge:15]},
-                    @{@"title": @"16 & Older", @"predicate": [BirthdayPredicate predicateForAgeAtLeast:16]}
+                    @{@"title": @"16 & older", @"predicate": [BirthdayPredicate predicateForAgeAtLeast:16]}
                 ]
             }
         ];
