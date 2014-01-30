@@ -29,6 +29,9 @@
 		49C3721A1899CC74004B078B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C372191899CC74004B078B /* logo.png */; };
 		49C3721D1899D06B004B078B /* HGContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3721C1899D06B004B078B /* HGContactViewController.m */; };
 		49C372201899D27C004B078B /* HGInvolvedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3721F1899D27C004B078B /* HGInvolvedViewController.m */; };
+		49C372231899D772004B078B /* HGCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C372221899D772004B078B /* HGCalendarViewController.m */; };
+		49C372261899D7FC004B078B /* HGCalendarEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C372251899D7FC004B078B /* HGCalendarEventCell.m */; };
+		49C372291899D8CB004B078B /* HGManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C372281899D8CB004B078B /* HGManagedObjectContext.m */; };
 		49C3B56F180C7FE200B95470 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56D180C7FE200B95470 /* menu-icon.png */; };
 		49C3B570180C7FE200B95470 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56E180C7FE200B95470 /* menu-icon@2x.png */; };
 		49C3B573180C864F00B95470 /* HGMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3B572180C864F00B95470 /* HGMenuViewController.m */; };
@@ -93,6 +96,12 @@
 		49C3721C1899D06B004B078B /* HGContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGContactViewController.m; sourceTree = "<group>"; };
 		49C3721E1899D27C004B078B /* HGInvolvedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGInvolvedViewController.h; sourceTree = "<group>"; };
 		49C3721F1899D27C004B078B /* HGInvolvedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGInvolvedViewController.m; sourceTree = "<group>"; };
+		49C372211899D772004B078B /* HGCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCalendarViewController.h; sourceTree = "<group>"; };
+		49C372221899D772004B078B /* HGCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCalendarViewController.m; sourceTree = "<group>"; };
+		49C372241899D7FC004B078B /* HGCalendarEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCalendarEventCell.h; sourceTree = "<group>"; };
+		49C372251899D7FC004B078B /* HGCalendarEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCalendarEventCell.m; sourceTree = "<group>"; };
+		49C372271899D8CB004B078B /* HGManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGManagedObjectContext.h; sourceTree = "<group>"; };
+		49C372281899D8CB004B078B /* HGManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGManagedObjectContext.m; sourceTree = "<group>"; };
 		49C3B56D180C7FE200B95470 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
 		49C3B56E180C7FE200B95470 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 		49C3B571180C864F00B95470 /* HGMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMenuViewController.h; sourceTree = "<group>"; };
@@ -177,6 +186,8 @@
 				496E849517C2FDF50093AE1E /* HGFilterViewController.m */,
 				499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */,
 				499EB5E017A7E47500C3BE34 /* HGChildViewController.m */,
+				49C372211899D772004B078B /* HGCalendarViewController.h */,
+				49C372221899D772004B078B /* HGCalendarViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -196,6 +207,8 @@
 				495064D917C151340085CA30 /* UIScrollView+Resize.m */,
 				491F519F17E9D6A400CB5940 /* UITableViewController+Refresh.h */,
 				491F51A017E9D6A400CB5940 /* UITableViewController+Refresh.m */,
+				49C372241899D7FC004B078B /* HGCalendarEventCell.h */,
+				49C372251899D7FC004B078B /* HGCalendarEventCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -208,6 +221,8 @@
 				491752C517D60D080057BFE2 /* BirthdayPredicate.m */,
 				491752C117D603040057BFE2 /* NSManagedObjectContext+JSON.h */,
 				491752C217D603040057BFE2 /* NSManagedObjectContext+JSON.m */,
+				49C372271899D8CB004B078B /* HGManagedObjectContext.h */,
+				49C372281899D8CB004B078B /* HGManagedObjectContext.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -417,7 +432,10 @@
 				49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */,
 				499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */,
 				499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */,
+				49C372291899D8CB004B078B /* HGManagedObjectContext.m in Sources */,
 				49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */,
+				49C372261899D7FC004B078B /* HGCalendarEventCell.m in Sources */,
+				49C372231899D772004B078B /* HGCalendarViewController.m in Sources */,
 				49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */,
 				495064D217BFA2290085CA30 /* HGMovieView.m in Sources */,
 				495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */,

@@ -11,6 +11,7 @@
 #import "HGAboutViewController.h"
 #import "HGContactViewController.h"
 #import "HGInvolvedViewController.h"
+#import "HGCalendarViewController.h"
 #import "HGHomeViewController.h"
 #import "HGChildTableViewController.h"
 
@@ -33,7 +34,7 @@ static NSString *kMenuCellIdentifier = @"Menu Cell";
     
     // Set the menu titles and the view controllers they will call.
     self.menuTitles = @[@"Home", @"About Us", @"Contact Us", @"Children", @"Get Involved", @"Calendar"];
-    self.menuControllers = @[[HGHomeViewController class], [HGAboutViewController class], [HGContactViewController class], [HGChildTableViewController class], [HGInvolvedViewController class], [HGAboutViewController class]];
+    self.menuControllers = @[[HGHomeViewController class], [HGAboutViewController class], [HGContactViewController class], [HGChildTableViewController class], [HGInvolvedViewController class], [HGCalendarViewController class]];
     
     // Change the table to dark gray with black separators.
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.173 alpha:1.000];
