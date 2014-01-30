@@ -13,13 +13,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"About";
+    self.navigationItem.title = @"About Us";
     
-    NSString *loremIpsum = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
-    
-    UIWebView *aboutTextView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    [aboutTextView loadHTMLString:loremIpsum baseURL:nil];
-    [self.view addSubview:aboutTextView];
+    NSString *text = @"<style>p {font-size: 18px}</style><p>For many reasons beyond their control - including neglect, abuse and abandonment - hundreds of children have found themselves in the Alabama foster care system. Heart Gallery Alabama's mission is to promote adoption of these children by recruiting professional photographers & videographers to take meaningful portraits and interviews that capture the individuality and personality of each child.</p><p>These portraits are featured in \"galleries\" hosted in various venues across the state. The portraits and interviews with the children allow prospective adoptive families to learn more about the Alabama children who are waiting for their forever families because Heart Gallery Alabama believes that if given the opportunity to spread their wings, these children will soar!</p>";
+
+    UIWebView *textView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    [textView loadHTMLString:text baseURL:nil];
+    [self.view addSubview:textView];
 
 }
 

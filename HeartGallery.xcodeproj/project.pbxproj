@@ -27,6 +27,8 @@
 		499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildViewController.m */; };
 		499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */; };
 		49C3721A1899CC74004B078B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C372191899CC74004B078B /* logo.png */; };
+		49C3721D1899D06B004B078B /* HGContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3721C1899D06B004B078B /* HGContactViewController.m */; };
+		49C372201899D27C004B078B /* HGInvolvedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3721F1899D27C004B078B /* HGInvolvedViewController.m */; };
 		49C3B56F180C7FE200B95470 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56D180C7FE200B95470 /* menu-icon.png */; };
 		49C3B570180C7FE200B95470 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56E180C7FE200B95470 /* menu-icon@2x.png */; };
 		49C3B573180C864F00B95470 /* HGMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3B572180C864F00B95470 /* HGMenuViewController.m */; };
@@ -87,6 +89,10 @@
 		499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDataController.h; sourceTree = "<group>"; };
 		499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGDataController.m; sourceTree = "<group>"; };
 		49C372191899CC74004B078B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		49C3721B1899D06B004B078B /* HGContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGContactViewController.h; sourceTree = "<group>"; };
+		49C3721C1899D06B004B078B /* HGContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGContactViewController.m; sourceTree = "<group>"; };
+		49C3721E1899D27C004B078B /* HGInvolvedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGInvolvedViewController.h; sourceTree = "<group>"; };
+		49C3721F1899D27C004B078B /* HGInvolvedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGInvolvedViewController.m; sourceTree = "<group>"; };
 		49C3B56D180C7FE200B95470 /* menu-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon.png"; sourceTree = "<group>"; };
 		49C3B56E180C7FE200B95470 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
 		49C3B571180C864F00B95470 /* HGMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGMenuViewController.h; sourceTree = "<group>"; };
@@ -161,6 +167,10 @@
 				4945A024178446D500B116F1 /* HGHomeViewController.m */,
 				49C3B574180EC05E00B95470 /* HGAboutViewController.h */,
 				49C3B575180EC05E00B95470 /* HGAboutViewController.m */,
+				49C3721B1899D06B004B078B /* HGContactViewController.h */,
+				49C3721C1899D06B004B078B /* HGContactViewController.m */,
+				49C3721E1899D27C004B078B /* HGInvolvedViewController.h */,
+				49C3721F1899D27C004B078B /* HGInvolvedViewController.m */,
 				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
 				49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */,
 				496E849417C2FDF50093AE1E /* HGFilterViewController.h */,
@@ -399,7 +409,9 @@
 			files = (
 				49F3E6FF178445BB002B66E7 /* main.m in Sources */,
 				49C3B576180EC05E00B95470 /* HGAboutViewController.m in Sources */,
+				49C372201899D27C004B078B /* HGInvolvedViewController.m in Sources */,
 				492BADC71815527200C45E44 /* HGContentTableViewController.m in Sources */,
+				49C3721D1899D06B004B078B /* HGContactViewController.m in Sources */,
 				49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */,
 				4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */,
 				49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */,
