@@ -51,7 +51,9 @@
 }
 
 - (void)showChildren {
-    NSLog(@"Children");
+    UIViewController *viewController = [[HGChildTableViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [self.slideMenuController closeMenuBehindContentViewController:navigationController animated:YES bounce:NO completion:nil];
 }
 
 @end
