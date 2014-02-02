@@ -18,7 +18,6 @@
     UIImage *buttonImage = [UIImage imageNamed:@"menu-icon.png"];
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStyleBordered target:self action:@selector(toggleMenu:)];
     self.navigationItem.leftBarButtonItem = buttonItem;
-    self.navigationItem.title = @"About";
 }
 
 // When the menu button is pressed, slide out the menu pane.
