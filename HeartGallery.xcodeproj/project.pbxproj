@@ -24,6 +24,11 @@
 		49531E7C17CF6CFD00EE8210 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49531E7817CF6CFD00EE8210 /* Icon-Small-50@2x.png */; };
 		49531E7D17CF6CFD00EE8210 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 49531E7917CF6CFD00EE8210 /* Icon-Small@2x.png */; };
 		496E849617C2FDF50093AE1E /* HGFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 496E849517C2FDF50093AE1E /* HGFilterViewController.m */; };
+		4992325A189ED78300D9EAD9 /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923255189ED78200D9EAD9 /* Twitter.png */; };
+		4992325B189ED78300D9EAD9 /* Linkedin.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923256189ED78300D9EAD9 /* Linkedin.png */; };
+		4992325C189ED78300D9EAD9 /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923257189ED78300D9EAD9 /* Instagram.png */; };
+		4992325D189ED78300D9EAD9 /* Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923258189ED78300D9EAD9 /* Facebook.png */; };
+		4992325E189ED78300D9EAD9 /* Blogger.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923259189ED78300D9EAD9 /* Blogger.png */; };
 		499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildViewController.m */; };
 		499EB5ED17AE7F5F00C3BE34 /* HGDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5EC17AE7F5F00C3BE34 /* HGDataController.m */; };
 		49C3721A1899CC74004B078B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C372191899CC74004B078B /* logo.png */; };
@@ -87,6 +92,11 @@
 		49531E7917CF6CFD00EE8210 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		496E849417C2FDF50093AE1E /* HGFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGFilterViewController.h; sourceTree = "<group>"; };
 		496E849517C2FDF50093AE1E /* HGFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGFilterViewController.m; sourceTree = "<group>"; };
+		49923255189ED78200D9EAD9 /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
+		49923256189ED78300D9EAD9 /* Linkedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Linkedin.png; sourceTree = "<group>"; };
+		49923257189ED78300D9EAD9 /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram.png; sourceTree = "<group>"; };
+		49923258189ED78300D9EAD9 /* Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook.png; sourceTree = "<group>"; };
+		49923259189ED78300D9EAD9 /* Blogger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blogger.png; sourceTree = "<group>"; };
 		499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildViewController.h; sourceTree = "<group>"; };
 		499EB5E017A7E47500C3BE34 /* HGChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildViewController.m; sourceTree = "<group>"; };
 		499EB5EB17AE7F5F00C3BE34 /* HGDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGDataController.h; sourceTree = "<group>"; };
@@ -230,6 +240,11 @@
 		49DE452E17CE23EC005D2FB5 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				49923255189ED78200D9EAD9 /* Twitter.png */,
+				49923256189ED78300D9EAD9 /* Linkedin.png */,
+				49923257189ED78300D9EAD9 /* Instagram.png */,
+				49923258189ED78300D9EAD9 /* Facebook.png */,
+				49923259189ED78300D9EAD9 /* Blogger.png */,
 				49C372191899CC74004B078B /* logo.png */,
 				49C3B56D180C7FE200B95470 /* menu-icon.png */,
 				49C3B56E180C7FE200B95470 /* menu-icon@2x.png */,
@@ -366,15 +381,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				49F3E6FD178445BB002B66E7 /* InfoPlist.strings in Resources */,
+				4992325D189ED78300D9EAD9 /* Facebook.png in Resources */,
+				4992325C189ED78300D9EAD9 /* Instagram.png in Resources */,
 				49DE453817CE2432005D2FB5 /* play-button.png in Resources */,
 				49DE453E17CE244B005D2FB5 /* Default.png in Resources */,
 				49C3B56F180C7FE200B95470 /* menu-icon.png in Resources */,
+				4992325A189ED78300D9EAD9 /* Twitter.png in Resources */,
 				49C3721A1899CC74004B078B /* logo.png in Resources */,
 				49DE454217CE2494005D2FB5 /* Icon.png in Resources */,
 				49DE454417CE249D005D2FB5 /* Icon@2x.png in Resources */,
 				49DE454617CE24A8005D2FB5 /* Icon-72.png in Resources */,
+				4992325E189ED78300D9EAD9 /* Blogger.png in Resources */,
 				49C3B570180C7FE200B95470 /* menu-icon@2x.png in Resources */,
 				49DE454817CE24AB005D2FB5 /* Icon-72@2x.png in Resources */,
+				4992325B189ED78300D9EAD9 /* Linkedin.png in Resources */,
 				49DE454A17CE24FC005D2FB5 /* Default-568h@2x.png in Resources */,
 				49531E7A17CF6CFD00EE8210 /* Icon-Small.png in Resources */,
 				49531E7B17CF6CFD00EE8210 /* Icon-Small-50.png in Resources */,

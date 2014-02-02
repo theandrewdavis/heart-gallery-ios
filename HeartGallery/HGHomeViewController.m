@@ -11,6 +11,10 @@
 #import "UIButton+ColorButton.h"
 #import "NVSlideMenuController.h"
 
+@interface HGHomeViewController()
+@property (strong, nonatomic) NSArray *socialButtons;
+@end
+
 @implementation HGHomeViewController
 
 - (void)viewDidLoad {
@@ -42,18 +46,43 @@
 
     // Add a "Children" button.
     CGFloat kButtonMargin = 12;
-    CGFloat kButtonHeight = 50;
+    CGFloat kButtonHeight = 45;
     UIButton *childrenButton = [UIButton buttonWithColor:[UIColor redColor]];
     childrenButton.frame = CGRectMake(kButtonMargin, self.view.frame.size.height - kButtonHeight - kButtonMargin, self.view.frame.size.width - 2 * kButtonMargin, kButtonHeight);
     [childrenButton setTitle:@"Children" forState:UIControlStateNormal];
     [childrenButton addTarget:self action:@selector(showChildren) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:childrenButton];
+
+    // Add social buttons.
+    self.socialButtons = @[
+        @{@"image": @"Facebook.png", @"link": @"https://www.facebook.com/heartgalleryal"},
+        @{@"image": @"Twitter.png", @"link": @"https://twitter.com/heartgal"},
+        @{@"image": @"Instagram.png", @"link": @"https://www.facebook.com/media/set/?set=a.10151407098701225.1073741825.173059181224&type=3"},
+        @{@"image": @"Linkedin.png", @"link": @"http://www.linkedin.com/company/heart-gallery-alabama"},
+        @{@"image": @"Blogger.png", @"link": @"http://heartgalleryal.blogspot.com/"},
+    ];
+    CGFloat buttonPadding = (childrenButton.frame.size.width - self.socialButtons.count * kButtonHeight) / (self.socialButtons.count - 1);
+    for (int buttonIndex = 0; buttonIndex < self.socialButtons.count; buttonIndex++) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.tag = buttonIndex;
+        NSString *imageName = self.socialButtons[buttonIndex][@"image"];
+        [button setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(clickSocialButton:) forControlEvents:UIControlEventTouchUpInside];
+        CGFloat buttonFrameX = childrenButton.frame.origin.x + (kButtonHeight + buttonPadding) * buttonIndex;
+        button.frame = CGRectMake(buttonFrameX, childrenButton.frame.origin.y - kButtonHeight - kButtonMargin / 2, kButtonHeight, kButtonHeight);
+        [self.view addSubview:button];
+    }
 }
 
 - (void)showChildren {
     UIViewController *viewController = [[HGChildTableViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     [self.slideMenuController closeMenuBehindContentViewController:navigationController animated:YES bounce:NO completion:nil];
+}
+
+- (void)clickSocialButton:(id)sender {
+    NSString *linkText = self.socialButtons[[(UIButton *)sender tag]][@"link"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:linkText]];
 }
 
 @end
