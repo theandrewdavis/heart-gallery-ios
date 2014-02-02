@@ -8,5 +8,5 @@
 
 #import "HGContentViewController.h"
 
-@interface HGInvolvedViewController : HGContentViewController
+@interface HGInvolvedViewController : HGContentViewController <UIWebViewDelegate>
 @end
