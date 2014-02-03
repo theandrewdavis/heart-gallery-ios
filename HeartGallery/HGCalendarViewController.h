@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HGContentTableViewController.h"
 
-@interface HGCalendarViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface HGCalendarViewController : HGContentTableViewController <NSFetchedResultsControllerDelegate>
 @end
