@@ -44,14 +44,14 @@
 
 // Fetch calendar events. Show a pull-down spinner while updating.
 - (void)updateCalendar {
-    NSString *calendarId = @"47ou48fasc70l0758i9lh76sr8@group.calendar.google.com";
-    NSString *apiKey = @"AIzaSyCAkVQVwMzmPHxbaLUAqvb6dYUwjKU5qnM";
-    NSString *urlFormat = @"https://www.googleapis.com/calendar/v3/calendars/%@/events?key=%@&fields=items(id,start,summary,status)";
-    NSString *calendarUrl = [NSString stringWithFormat:urlFormat, calendarId, apiKey];
+    NSString *apiKey = @"AIzaSyBNDX9ZvvrzcY75UEKuUpewPOwSn9BB5gs";
+    NSString *baseUrl = @"https://www.googleapis.com/calendar/v3/calendars/uqug2vcr34i6ao749n5vfb8vks@group.calendar.google.com/events?key=";
+    NSString *calendarUrl = [baseUrl stringByAppendingString:apiKey];
 
     // Update calendar from online Google Calendar.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:calendarUrl]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"%@", JSON);
         [HGManagedObjectContext updateEvents:JSON[@"items"]];
         [self.refreshControl endRefreshing];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

@@ -7,25 +7,21 @@
 //
 
 #import "HGChildTableViewController.h"
-#import "HGDataController.h"
 #import "HGChildViewController.h"
-#import "SVProgressHUD.h"
-#import "CKRefreshControl.h"
 #import "HGWebImageView.h"
 #import "HGFilterViewController.h"
-#import "UITableViewController+Refresh.h"
+#import "HGManagedObjectContext.h"
+#import "AFNetworking.h"
 
 static NSInteger kTableRowHeight = 90;
 static NSInteger kCellImageTag = 1;
 static NSInteger kCellLabelTag = 2;
 static NSInteger kCellLabelLeftMargin = 10;
 static NSInteger kCellLabelRightMargin = 20;
-static NSInteger kChildFetchRequestBatchSize = 40;
 static NSInteger kSearchBarHeight = 44;
+static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 
 @interface HGChildTableViewController ()
-@property (nonatomic, strong) HGDataController *dataController;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) HGFilterViewController *filterViewController;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -39,9 +35,6 @@ static NSInteger kSearchBarHeight = 44;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.dataController = [HGDataController sharedController];
-    self.managedObjectContext = self.dataController.managedObjectContext;
-    
     self.tableView.rowHeight = kTableRowHeight;
 
     // Set the title of the navigation controller.
@@ -70,38 +63,33 @@ static NSInteger kSearchBarHeight = 44;
     self.clearButtonClicked = NO;
     self.filterPredicate = [NSPredicate predicateWithValue:YES];
     self.searchPredicate = [NSPredicate predicateWithValue:YES];
-    [self updateTable];
+    [self tableFiltersChanged];
 
     // Set up pull to refresh control.
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.dataController.delegate = self;
-    [self.refreshControl addTarget:self.dataController action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
-
-    // If data is more than a day old, get updates from the web and start the pull to refresh spinner.
-    if ([self.dataController isDataStale]) {
-        [self beginVisualRefreshing];
-        [self.dataController fetchData];
-    }
+    [self.refreshControl addTarget:self action:@selector(updateFromWeb) forControlEvents:UIControlEventValueChanged];
+    [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:NO];
+    [self.refreshControl beginRefreshing];
+    [self updateFromWeb];
 }
 
-// Update table view to display children that pass the filter and search predicates.
-- (void)updateTable {
-    // Create a new fetched results controller.
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Child"];
-    NSSortDescriptor *sortNameAscending = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    request.sortDescriptors = @[sortNameAscending];
-    request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[self.searchPredicate, self.filterPredicate]];
-    request.fetchBatchSize = kChildFetchRequestBatchSize;
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+// Update list of children from web API.
+- (void)updateFromWeb {
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kChildApiUrl]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        [HGManagedObjectContext updateChildren:JSON[@"children"]];
+        [self.refreshControl endRefreshing];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [self.refreshControl endRefreshing];
+    }];
+    [operation start];
+}
+
+// Called when the search or filter predicate change to update the fetched results controller.
+- (void)tableFiltersChanged {
+    self.fetchedResultsController = [HGManagedObjectContext createChildResultsControllerWithPredicates:@[self.searchPredicate, self.filterPredicate]];
     self.fetchedResultsController.delegate = self;
-
-    // Perform the fetch.
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Fetch request failed: %@, %@", error.localizedDescription, error.userInfo);
-    }
-
-    // Reload the table to display results.
+    [self.fetchedResultsController performFetch:nil];
     [self.tableView reloadData];
 }
 
@@ -110,32 +98,55 @@ static NSInteger kSearchBarHeight = 44;
     [self presentViewController:self.filterViewController animated:YES completion:nil];
 }
 
-#pragma mark - HGRemoteDataControllerDelegate
-
-// Hide the spinner when a remote request completes successfully.
-- (void)remoteRequestSuccess {
-    [self.refreshControl endRefreshing];
-}
-
-// Hide the spinner and show an error message when a remote request fails.
-- (void)remoteRequestFailure {
-    [self.refreshControl endRefreshing];
-    [SVProgressHUD showErrorWithStatus:@"Could not connect"];
-}
-
 #pragma mark - HGFilterViewControllerDelegate
 
 // Reload table data when a new filter is selected.
 - (void)didChangePredicate:(NSPredicate *)predicate {
     self.filterPredicate = predicate;
-    [self updateTable];
+    [self tableFiltersChanged];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
-// Update the table when data first loads.
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView reloadData];
+    [self.tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+    }
 }
 
 #pragma mark - UISearchBarDelegate
@@ -149,7 +160,7 @@ static NSInteger kSearchBarHeight = 44;
 
     NSPredicate *textPredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", searchText];
     self.searchPredicate = ([searchText isEqualToString:@""]) ? [NSPredicate predicateWithValue:YES] : textPredicate;
-    [self updateTable];
+    [self tableFiltersChanged];
 }
 
 // Hide the keyboard when the "Done" button is pressed.
@@ -178,6 +189,14 @@ static NSInteger kSearchBarHeight = 44;
 
 #pragma mark - UITableViewDelegate
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSManagedObject *child = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
+    HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
+    label.text = [child valueForKey:@"name"];
+    imageView.url = [NSURL URLWithString:[child valueForKey:@"thumbnail"]];
+}
+
 // Create a cell for the given section and row.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ChildTableCell";
@@ -204,13 +223,7 @@ static NSInteger kSearchBarHeight = 44;
         [cell.contentView addSubview:label];
     }
 
-    // Fill out the cached cell with the child's name and image.
-    NSManagedObject *child = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
-    HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
-    label.text = [child valueForKey:@"name"];
-    imageView.url = [NSURL URLWithString:[child valueForKey:@"thumbnail"]];
-
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 

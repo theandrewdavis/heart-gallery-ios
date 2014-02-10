@@ -7,7 +7,6 @@
 //
 
 #import "HGAppDelegate.h"
-#import "HGDataController.h"
 #import "HGHomeViewController.h"
 #import "HGMenuViewController.h"
 #import "NVSlideMenuController.h"
@@ -27,10 +26,6 @@ static NSInteger kUrlCacheDiskSize = 20;
     // Initialize the URL cache.
     NSURLCache *urlCache = [[NSURLCache alloc] initWithMemoryCapacity:1024 * 1024 * kUrlCacheMemorySize diskCapacity:1024 * 1024 * kUrlCacheDiskSize diskPath:kUrlCache];
     [NSURLCache setSharedURLCache:urlCache];
-    
-    // Create a managed object context and use it to initialize the remote data controller.
-    NSManagedObjectContext *managedObjectContext = [self createManagedObjectContext];
-    [HGDataController sharedController].managedObjectContext = managedObjectContext;
     
     // Create the slide-out menu controller.
     HGMenuViewController *menuViewController = [[HGMenuViewController alloc] init];

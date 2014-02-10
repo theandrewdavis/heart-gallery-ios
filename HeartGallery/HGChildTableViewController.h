@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "HGFilterViewController.h"
 #import "HGContentTableViewController.h"
-#import "HGDataController.h"
 
-@interface HGChildTableViewController : HGContentTableViewController <HGDataControllerDelegate, HGFilterViewControllerDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate>
+@interface HGChildTableViewController : HGContentTableViewController <HGFilterViewControllerDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate>
 @end

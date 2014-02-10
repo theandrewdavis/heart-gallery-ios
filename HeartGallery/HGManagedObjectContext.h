@@ -10,6 +10,8 @@
 
 @interface HGManagedObjectContext : NSObject
 + (NSManagedObjectContext *)sharedContext;
++ (void)updateChildren:(NSArray *)children;
++ (NSFetchedResultsController *)createChildResultsControllerWithPredicates:(NSArray *)predicates;
 + (void)updateEvents:(NSArray *)events;
 + (NSFetchedResultsController *)createEventResultsController;
 @end

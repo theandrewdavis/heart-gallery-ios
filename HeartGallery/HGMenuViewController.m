@@ -18,7 +18,6 @@
 static NSString *kMenuCellIdentifier = @"Menu Cell";
 
 @interface HGMenuViewController ()
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSArray *menuTitles;
 @property (nonatomic, strong) NSArray *menuControllers;
 @end
