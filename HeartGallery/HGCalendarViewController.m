@@ -51,7 +51,6 @@
     // Update calendar from online Google Calendar.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:calendarUrl]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"%@", JSON);
         [HGManagedObjectContext updateEvents:JSON[@"items"]];
         [self.refreshControl endRefreshing];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

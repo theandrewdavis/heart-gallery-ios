@@ -42,70 +42,70 @@ static NSString *const kEventEntityName = @"Event";
     [context performBlockAndWait:^{
         NSMutableSet *apiChildIds = [[NSMutableSet alloc] init];
 
-        for (NSDictionary *childData in children) {
-            NSManagedObject *child;
+        for (NSDictionary *apiChild in children) {
+            NSManagedObject *storedChild;
             BOOL changed = NO;
 
             // Get the child entity if it has already been stored and check whether it has changed.
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kChildEntityName];
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"hgaid == %@", childData[@"id"]];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"hgaid == %@", apiChild[@"id"]];
             NSArray *results = [context executeFetchRequest:fetchRequest error:nil];
             if (results.count > 0) {
-                child = results[0];
-                changed = changed || ![[child valueForKey:@"biography"] isEqualToString:childData[@"biography"]];
-                changed = changed || ![[child valueForKey:@"category"] isEqualToString:childData[@"category"]];
-                changed = changed || ![[child valueForKey:@"gender"] isEqualToString:childData[@"gender"]];
-                changed = changed || ![[child valueForKey:@"hgaid"] isEqualToString:childData[@"id"]];
-                changed = changed || ![[child valueForKey:@"name"] isEqualToString:childData[@"name"]];
-                changed = changed || ![[child valueForKey:@"thumbnail"] isEqualToString:childData[@"thumbnail"]];
+                storedChild = results[0];
+                changed = changed || ![[storedChild valueForKey:@"biography"] isEqualToString:apiChild[@"biography"]];
+                changed = changed || ![[storedChild valueForKey:@"category"] isEqualToString:apiChild[@"category"]];
+                changed = changed || ![[storedChild valueForKey:@"gender"] isEqualToString:apiChild[@"gender"]];
+                changed = changed || ![[storedChild valueForKey:@"hgaid"] isEqualToString:apiChild[@"id"]];
+                changed = changed || ![[storedChild valueForKey:@"name"] isEqualToString:apiChild[@"name"]];
+                changed = changed || ![[storedChild valueForKey:@"thumbnail"] isEqualToString:apiChild[@"thumbnail"]];
 
-                if (childData[@"birthday"] == [NSNull null]) {
-                    changed = changed || [child valueForKey:@"birthday"] != [NSNull null];
-                } else {
-                    changed = changed || ![[child valueForKey:@"birthday"] isEqualToDate:[self parseDate:childData[@"birthday"]]];
+                NSDate *apiBirthday = (apiChild[@"birthday"] == [NSNull null]) ? nil : [self parseDate:apiChild[@"birthday"]];
+                NSDate *storedBirthday = ([storedChild valueForKey:@"birthday"] == [NSNull null]) ? nil : [storedChild valueForKey:@"birthday"];
+                if (apiBirthday || storedBirthday) {
+                    changed = changed || ![storedBirthday isEqualToDate:apiBirthday];
                 }
 
-                NSOrderedSet *storedAssets = [child valueForKey:@"assets"];
-                NSArray *apiAssets = childData[@"media"];
+                NSOrderedSet *storedAssets = [storedChild valueForKey:@"assets"];
+                NSArray *apiAssets = apiChild[@"media"];
                 changed = changed || storedAssets.count != apiAssets.count;
-                for (int i = 0; i < storedAssets.count; i++) {
-                    NSMutableDictionary *storedAsset = [[NSMutableDictionary alloc] init];
-                    storedAsset[@"type"] = [storedAssets[i] valueForKey:@"type"];
-                    storedAsset[@"url"] = [storedAssets[i] valueForKey:@"url"];
-                    changed = changed || ![apiAssets containsObject:storedAsset];
+                for (NSManagedObject *storedAsset in storedAssets) {
+                    NSMutableDictionary *storedAssetDict = [[NSMutableDictionary alloc] init];
+                    storedAssetDict[@"type"] = [storedAsset valueForKey:@"type"];
+                    storedAssetDict[@"url"] = [storedAsset valueForKey:@"url"];
+                    changed = changed || ![apiAssets containsObject:storedAssetDict];
                 }
             } else {
                 changed = YES;
-                child = [NSEntityDescription insertNewObjectForEntityForName:kChildEntityName inManagedObjectContext:context];
+                storedChild = [NSEntityDescription insertNewObjectForEntityForName:kChildEntityName inManagedObjectContext:context];
             }
 
             // Save the child's id so we can track whther it has been deleted.
-            [apiChildIds addObject:childData[@"id"]];
+            [apiChildIds addObject:apiChild[@"id"]];
 
-            // Update the event if it has changed.
+            // Update the child if it has changed.
             if (changed) {
-                [child setValue:childData[@"biography"] forKey:@"biography"];
-                [child setValue:childData[@"category"] forKey:@"category"];
-                [child setValue:childData[@"gender"] forKey:@"gender"];
-                [child setValue:childData[@"id"] forKey:@"hgaid"];
-                [child setValue:childData[@"name"] forKey:@"name"];
-                [child setValue:childData[@"thumbnail"] forKey:@"thumbnail"];
+                [storedChild setValue:apiChild[@"biography"] forKey:@"biography"];
+                [storedChild setValue:apiChild[@"category"] forKey:@"category"];
+                [storedChild setValue:apiChild[@"gender"] forKey:@"gender"];
+                [storedChild setValue:apiChild[@"id"] forKey:@"hgaid"];
+                [storedChild setValue:apiChild[@"name"] forKey:@"name"];
+                [storedChild setValue:apiChild[@"thumbnail"] forKey:@"thumbnail"];
 
-                if (childData[@"birthday"] == [NSNull null]) {
-                    [child setValue:nil forKey:@"birthday"];
+                if (apiChild[@"birthday"] == [NSNull null]) {
+                    [storedChild setValue:nil forKey:@"birthday"];
                 } else {
-                    NSDate *birthday = [self parseDate:childData[@"birthday"]];
-                    [child setValue:birthday forKey:@"birthday"];
+                    NSDate *birthday = [self parseDate:apiChild[@"birthday"]];
+                    [storedChild setValue:birthday forKey:@"birthday"];
                 }
 
                 NSMutableOrderedSet *assets = [[NSMutableOrderedSet alloc] init];
-                for (NSDictionary *apiAsset in childData[@"media"]) {
+                for (NSDictionary *apiAsset in apiChild[@"media"]) {
                     NSManagedObject *asset = [NSEntityDescription insertNewObjectForEntityForName:kAssetEntityName inManagedObjectContext:context];
                     [asset setValue:apiAsset[@"url"] forKey:@"url"];
                     [asset setValue:apiAsset[@"type"] forKey:@"type"];
                     [assets addObject:asset];
                 }
-                [child setValue:assets forKey:@"assets"];
+                [storedChild setValue:assets forKey:@"assets"];
             }
         }
 
