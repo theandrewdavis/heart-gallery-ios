@@ -40,7 +40,7 @@ static NSString *kHeartGalleryHome = @"http://www.heartgalleryalabama.com";
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:self.scrollView];
     
-    // Add a slide show to display the child's media.
+    // Add a slide show to display the child's assets.
     CGRect slideShowFrame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, self.view.bounds.size.width * 2 / 3);
     self.slideShow = [[HGSlideShow alloc] initWithFrame:slideShowFrame];
     self.slideShow.backgroundColor = [UIColor blackColor];
@@ -68,21 +68,21 @@ static NSString *kHeartGalleryHome = @"http://www.heartgalleryalabama.com";
 
 // Find the number of views in the slide show.
 - (NSUInteger)numberOfViews {
-    return [(NSOrderedSet *)[self.child valueForKey:@"media"] count];
+    return [(NSOrderedSet *)[self.child valueForKey:@"assets"] count];
 }
 
-// Create a view for each media item in the slide show.
+// Create a view for each asset in the slide show.
 - (UIView *)viewForIndex:(NSUInteger)index {
-    NSManagedObject *mediaItem = [(NSOrderedSet *)[self.child valueForKey:@"media"] array][index];
-    NSString *mediaItemType = [mediaItem valueForKey:@"type"];
-    if ([mediaItemType isEqualToString:@"image"]) {
+    NSManagedObject *asset = [(NSOrderedSet *)[self.child valueForKey:@"assets"] array][index];
+    NSString *assetType = [asset valueForKey:@"type"];
+    if ([assetType isEqualToString:@"image"]) {
         HGWebImageView *view = [[HGWebImageView alloc] init];
-        view.url = [NSURL URLWithString:[mediaItem valueForKey:@"url"]];
+        view.url = [NSURL URLWithString:[asset valueForKey:@"url"]];
         view.contentMode = UIViewContentModeScaleAspectFit;
         return view;
-    } else if ([mediaItemType isEqualToString:@"video"] || [mediaItemType isEqualToString:@"audio"]) {
+    } else if ([assetType isEqualToString:@"video"] || [assetType isEqualToString:@"audio"]) {
         HGMovieView *movieView = [[HGMovieView alloc] init];
-        movieView.movieURL = [NSURL URLWithString:[mediaItem valueForKey:@"url"]];
+        movieView.movieURL = [NSURL URLWithString:[asset valueForKey:@"url"]];
         movieView.rootViewController = self;
         return movieView;
     } else {
