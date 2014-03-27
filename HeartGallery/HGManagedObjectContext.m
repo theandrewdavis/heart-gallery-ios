@@ -38,7 +38,7 @@ static NSString *const kEventEntityName = @"Event";
 
 // Update the stored child database with results from an API call.
 + (void)updateChildren:(NSArray *)children {
-    NSManagedObjectContext *context = [HGManagedObjectContext sharedContext];
+    NSManagedObjectContext *context = [self.class sharedContext];
     [context performBlockAndWait:^{
         NSMutableSet *apiChildIds = [[NSMutableSet alloc] init];
 
@@ -127,65 +127,111 @@ static NSString *const kEventEntityName = @"Event";
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:kChildEntityName];
     request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
     request.predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[HGManagedObjectContext sharedContext] sectionNameKeyPath:nil cacheName:nil];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[self.class sharedContext] sectionNameKeyPath:nil cacheName:nil];
 }
 
-// Update the stored event database with results from an API call.
-+ (void)updateEvents:(NSArray *)events {
-    NSManagedObjectContext *context = [HGManagedObjectContext sharedContext];
+// Parse a dictionary of events and add new events to the Core Data store.
++ (void)updateEvents:(NSArray *)remoteEvents {
+    NSManagedObjectContext *context = [self.class sharedContext];
     [context performBlockAndWait:^{
-        // Add all new events.
-        for (NSDictionary *eventData in events) {
-            // Find an event if it is already stored or create it otherwise.
-            NSManagedObject *event;
+        NSMutableSet *remoteEventIds = [[NSMutableSet alloc] init];
+        for (NSDictionary *remoteEvent in remoteEvents) {
+            // Save all remote ids to identify which local records have been deleted remotely.
+            [remoteEventIds addObject:remoteEvent[@"id"]];
+
+            // Check if there a local record id matches the remote record id.
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kEventEntityName];
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"googleid == %@", eventData[@"id"]];
-            NSArray *results = [context executeFetchRequest:fetchRequest error:nil];
-            event = (results.count > 0) ? results[0] : [NSEntityDescription insertNewObjectForEntityForName:kEventEntityName inManagedObjectContext:context];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"gid == %@", remoteEvent[@"id"]];
+            NSArray *localEvents = [context executeFetchRequest:fetchRequest error:nil];
 
-            // Find the start date of the event.
-            NSDate *date;
-            if (eventData[@"start"][@"date"]) {
-                date = [self parseDate:eventData[@"start"][@"date"]];
-            } else if (eventData[@"start"][@"dateTime"]) {
-                date = [self parseDateTime:eventData[@"start"][@"dateTime"]];
+            // If no local id matches the remote id, create a new record.
+            NSManagedObject *localEvent;
+            if (localEvents.count > 0) {
+                localEvent = localEvents[0];
+            } else {
+                localEvent = [NSEntityDescription insertNewObjectForEntityForName:kEventEntityName inManagedObjectContext:context];
+                [localEvent setValue:remoteEvent[@"id"] forKey:@"gid"];
             }
 
-            // Update event properties.
-            [event setValue:eventData[@"id"] forKey:@"googleid"];
-            [event setValue:eventData[@"summary"] forKey:@"summary"];
-            [event setValue:date forKey:@"date"];
-
-            // Delete cancelled events.
-            if ([eventData[@"status"] isEqualToString:@"cancelled"]) {
-                [context deleteObject:event];
-            }
+            // Update the local record with any changes from the remote record.
+            [self updateAttributeIfChanged:localEvent withLocalKey:@"summary" andRemoteValue:remoteEvent[@"summary"]];
+            [self updateAttributeIfChanged:localEvent withLocalKey:@"details" andRemoteValue:remoteEvent[@"description"]];
+            [self updateAttributeIfChanged:localEvent withLocalKey:@"location" andRemoteValue:remoteEvent[@"location"]];
+            [self updateAttributeIfChanged:localEvent withLocalKey:@"start" andRemoteValue:[self parseCalendarDate:remoteEvent[@"start"]]];
+            [self updateAttributeIfChanged:localEvent withLocalKey:@"end" andRemoteValue:[self parseCalendarDate:remoteEvent[@"end"]]];
         }
 
-        // Delete old events.
+
+        // Delete local records that no longer exist remotely.
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:kEventEntityName];
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"date < %@", [self today]];
-        NSArray *oldEvents = [context executeFetchRequest:fetchRequest error:nil];
-        for (NSManagedObject *oldEvent in oldEvents) {
-            [context deleteObject:oldEvent];
+        NSArray *localEvents = [context executeFetchRequest:fetchRequest error:nil];
+        for (NSManagedObject *localEvent in localEvents) {
+            if (![remoteEventIds containsObject:[localEvent valueForKey:@"gid"]]) {
+                [context deleteObject:localEvent];
+            }
         }
-
+        
         [context save:nil];
     }];
 }
 
-// Create a fetched results controller to get events that will occur in the next year.
-+ (NSFetchedResultsController *)createEventResultsController {
-    // Get the date of today and one year from today.
-    NSDate *today = [self today];
-    NSDate *nextYear = [self yearFromDate:today];
+// Set a value on an NSManagedObject only if that value has changed.
++ (void)updateAttributeIfChanged:(NSManagedObject *)object withLocalKey:(NSString *)localKey andRemoteValue:(NSObject *)remoteValue {
+    BOOL changed = NO;
+    NSAttributeType attributeType = [(NSAttributeDescription*)object.entity.attributesByName[localKey] attributeType];
 
-    // The fetched results controller should show events in the next year sorted by date.
+    if (remoteValue == nil || remoteValue == [NSNull null]) {
+        changed = [object valueForKey:localKey] != nil;
+    } else if (attributeType == NSStringAttributeType) {
+        changed = ![[object valueForKey:localKey] isEqualToString:(NSString *)remoteValue];
+    } else if (attributeType == NSDateAttributeType) {
+        changed = ![[object valueForKey:localKey] isEqualToDate:(NSDate *)remoteValue];
+    }
+
+    if (changed) {
+        [object setValue:remoteValue forKey:localKey];
+    }
+}
+
+// Create a fetched results controller to fetch all events that haven't ended.
++ (NSFetchedResultsController *)createEventResultsController {
+    // Find the cuttoff time by converting the beginning of today in local time to UTC.
+    NSCalendar *localCalendar = [NSCalendar currentCalendar];
+    NSCalendar *utcCalendar = [NSCalendar currentCalendar];
+    utcCalendar.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    NSDateComponents *components = [localCalendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
+    NSDate *utcMidnight = [utcCalendar dateFromComponents:components];
+
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:kEventEntityName];
-    request.predicate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date < %@)", today, nextYear];
-    request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]];
-    NSManagedObjectContext *context = [HGManagedObjectContext sharedContext];
-    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:@"EventCache"];
+    request.predicate = [NSPredicate predicateWithFormat:@"end > %@", utcMidnight];
+    request.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"start" ascending:YES]];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:[self.class sharedContext] sectionNameKeyPath:nil cacheName:nil];
+}
+
+// Parse date dictionary from Google Calendar.
++ (NSDate *)parseCalendarDate:(NSDictionary *)dateData {
+    // Date formatter to parse date strings that look like 2014-02-07.
+    static NSDateFormatter *dateFormatter;
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+
+    // Date formatter to parse date strings that look like 2014-02-07T14:00:00-06:00.
+    static NSDateFormatter *dateTimeFormatter;
+    if (!dateTimeFormatter) {
+        dateTimeFormatter = [[NSDateFormatter alloc] init];
+        dateTimeFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        dateTimeFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+    }
+
+    if (dateData[@"date"]) {
+        return [dateFormatter dateFromString:dateData[@"date"]];
+    } else if (dateData[@"dateTime"]) {
+        return [dateTimeFormatter dateFromString:dateData[@"dateTime"]];
+    }
+    return nil;
 }
 
 // Parse date strings that look like 2014-02-07.
@@ -197,34 +243,6 @@ static NSString *const kEventEntityName = @"Event";
         dateFormatter.dateFormat = @"yyyy-MM-dd";
     }
     return [dateFormatter dateFromString:dateString];
-}
-
-// Parse date strings that look like 2014-02-07T14:00:00-06:00.
-+ (NSDate *)parseDateTime:(NSString *)dateString {
-    static NSDateFormatter *dateFormatter;
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
-    }
-    return [dateFormatter dateFromString:dateString];
-}
-
-// Get the beginning of today's date in GMT.
-+ (NSDate *)today {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    calendar.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-    NSDateComponents *components = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
-    return [calendar dateFromComponents:components];
-}
-
-// Get a date in GMT by adding one year to the given date.
-+ (NSDate *)yearFromDate:(NSDate *)date {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    calendar.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
-    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
-    offsetComponents.year = 1;
-    return [calendar dateByAddingComponents:offsetComponents toDate:date options:0];
 }
 
 @end

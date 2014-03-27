@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HGCalendarEventCell : UITableViewCell
-- (void)setSummary:(NSString *)summary andDate:(NSDate *)date;
+- (void)setSummary:(NSString *)summary startDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 @end

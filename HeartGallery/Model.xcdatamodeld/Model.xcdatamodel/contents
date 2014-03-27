@@ -16,13 +16,16 @@
         <relationship name="assets" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Asset" inverseName="child" inverseEntity="Asset" syncable="YES"/>
     </entity>
     <entity name="Event" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="googleid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Child" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Asset" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Child" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Event" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

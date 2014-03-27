@@ -7,62 +7,106 @@
 //
 
 #import "HGCalendarEventCell.h"
+#import "HGCalendarEventDates.h"
 
 @interface HGCalendarEventCell ()
-@property (strong, nonatomic) UILabel *summaryLabel;
-@property (strong, nonatomic) UILabel *monthLabel;
-@property (strong, nonatomic) UILabel *dayLabel;
+@property (strong, nonatomic) NSString *summary;
+@property (strong, nonatomic) NSDate *startDate;
+@property (strong, nonatomic) NSDate *endDate;
 @end
 
+static const CGFloat kCalendarCellDayVericalMargin = -6;
+static const CGFloat kCalendarCellDayLeftMargin = 14;
+static const CGFloat kCalendarCellSummaryLeftMargin = 10;
+static const CGFloat kAccessoryViewWidth = 24;
 
 @implementation HGCalendarEventCell
 
-- (void)setSummary:(NSString *)summary andDate:(NSDate *)date {
-    static NSDateFormatter *dateFormatter;
-    if (!dateFormatter) {
-        dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"MMM";
-    }
+- (void)layoutSubviews {
+    HGCalendarEventDates *dates = [[HGCalendarEventDates alloc] initWithStartDate:self.startDate andEndDate:self.endDate];
 
-    NSInteger kMonthTopMargin = 4;
-    NSInteger kMonthLeftMargin = 10;
-    NSInteger kDayTopMargin = -4;
-    NSInteger kSummaryLeftMargin = 12;
-
+    // Clear the view of any existing subviews.
     [[self.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
-    CGFloat monthLabelHeight = self.frame.size.height * .3;
-    CGFloat dayLabelHeight = self.frame.size.height * .7;
+    // Layout the start and end dates if this is a multiday event; otherwise, only layout the start date.
+    CGFloat dateRightBorder;
+    if (!dates.multiday) {
+        CGRect startFrame = [self addDateWithXOffset:0 day:dates.startDay month:dates.startMonth year:dates.startYear];
+        dateRightBorder = startFrame.origin.x + kCalendarCellDayLeftMargin + startFrame.size.width * 2;
+    } else {
+        // Add the start and end dates.
+        CGRect startFrame = [self addDateWithXOffset:0 day:dates.startDay month:dates.startMonth year:dates.startYear];
+        CGRect endFrame = [self addDateWithXOffset:startFrame.origin.x + startFrame.size.width day:dates.endDay month:dates.endMonth year:dates.endYear];
+        dateRightBorder = endFrame.origin.x + endFrame.size.width;
 
-    self.monthLabel = [[UILabel alloc] init];
-    self.monthLabel.text = [[dateFormatter stringFromDate:date] uppercaseString];
-    self.monthLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    CGFloat monthFontSize = self.monthLabel.font.pointSize / [self.monthLabel.text sizeWithFont:self.monthLabel.font].height * monthLabelHeight;
-    self.monthLabel.font = [UIFont boldSystemFontOfSize:monthFontSize];
-    self.monthLabel.textColor = [UIColor grayColor];
-    CGSize monthLabelSize = [self.monthLabel.text sizeWithFont:self.monthLabel.font];
-    self.monthLabel.frame = CGRectMake(kMonthLeftMargin, kMonthTopMargin, monthLabelSize.width, monthLabelSize.height);
-    [self.contentView addSubview:self.monthLabel];
+        // Add the dash between the start and end dates.
+        UILabel *dashLabel = [self labelWithText:@"-" fitToHeight:self.frame.size.height * .5];
+        CGFloat dashLabelX = startFrame.origin.x + startFrame.size.width;
+        CGFloat dashLabelY = startFrame.origin.y + startFrame.size.height / 2 - dashLabel.frame.size.height / 2;
+        dashLabel.frame = CGRectMake(dashLabelX, dashLabelY, dashLabel.frame.size.width, dashLabel.frame.size.height);
+        [self.contentView addSubview:dashLabel];
+    }
 
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    self.dayLabel = [[UILabel alloc] init];
-    self.dayLabel.text = [NSString stringWithFormat:@"%02d", [calendar components:NSDayCalendarUnit fromDate:date].day];
-    self.dayLabel.font = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
-    CGFloat dayFontSize = self.dayLabel.font.pointSize / [self.dayLabel.text sizeWithFont:self.dayLabel.font].height * dayLabelHeight;
-    self.dayLabel.font = [UIFont boldSystemFontOfSize:dayFontSize];
-    CGSize dayLabelSize = [self.dayLabel.text sizeWithFont:self.dayLabel.font];
-    CGFloat dayLabelX = self.monthLabel.frame.origin.x + self.monthLabel.frame.size.width / 2 - dayLabelSize.width / 2;
-    CGFloat dayLabelY = self.monthLabel.frame.origin.y + self.monthLabel.frame.size.height + kDayTopMargin;
-    self.dayLabel.frame = CGRectMake(dayLabelX, dayLabelY, dayLabelSize.width, dayLabelSize.height);
-    self.dayLabel.backgroundColor = [UIColor clearColor];
-    [self.contentView addSubview:self.dayLabel];
+    // Add an arrow to show that the cell can be tapped for more info.
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-    CGFloat summaryLabelX = self.dayLabel.frame.origin.x + self.dayLabel.frame.size.width + kSummaryLeftMargin;
-    CGRect summaryLabelFrame = CGRectMake(summaryLabelX, 0, self.frame.size.width - summaryLabelX, self.frame.size.height);
-    self.summaryLabel = [[UILabel alloc] initWithFrame:summaryLabelFrame];
-    self.summaryLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    self.summaryLabel.text = summary;
-    [self.contentView addSubview:self.summaryLabel];
+    // Add the summary text.
+    UILabel *summaryLabel = [[UILabel alloc] init];
+    dateRightBorder += kCalendarCellSummaryLeftMargin;
+    summaryLabel.frame = CGRectMake(dateRightBorder, 0, self.frame.size.width - dateRightBorder - kAccessoryViewWidth, self.frame.size.height);
+    summaryLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    summaryLabel.text = self.summary;
+    summaryLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    summaryLabel.numberOfLines = 0;
+    [self.contentView addSubview:summaryLabel];
+}
+
+- (CGRect)addDateWithXOffset:(CGFloat)offset day:(NSString *)day month:(NSString *)month year:(NSString *)year {
+    // Date component formatting constants.
+    CGFloat dayLabelHeight = self.frame.size.height * .55;
+    CGFloat monthLabelHeight = self.frame.size.height * .25;
+    CGFloat yearLabelHeight = self.frame.size.height * .2;
+
+    // Add the day label.
+    UILabel *dayLabel = [self labelWithText:day fitToHeight:dayLabelHeight];
+    dayLabel.frame = CGRectMake(kCalendarCellDayLeftMargin + offset, monthLabelHeight, dayLabel.frame.size.width, dayLabel.frame.size.height);
+    [self.contentView addSubview:dayLabel];
+
+    // Add the month label.
+    UILabel *monthLabel = [self labelWithText:month fitToHeight:monthLabelHeight];
+    CGFloat monthLabelX = dayLabel.frame.origin.x + dayLabel.frame.size.width / 2 - monthLabel.frame.size.width / 2;
+    CGFloat monthLabelY = dayLabel.frame.origin.y - monthLabel.frame.size.height - kCalendarCellDayVericalMargin;
+    monthLabel.frame = CGRectMake(monthLabelX, monthLabelY, monthLabel.frame.size.width, monthLabel.frame.size.height);
+    monthLabel.textColor = [UIColor grayColor];
+    [self.contentView addSubview:monthLabel];
+
+    // Add the year label.
+    UILabel *yearLabel = [self labelWithText:year fitToHeight:yearLabelHeight];
+    CGFloat yearLabelX = dayLabel.frame.origin.x + dayLabel.frame.size.width / 2 - yearLabel.frame.size.width / 2;
+    CGFloat yearLabelY = dayLabel.frame.origin.y + dayLabel.frame.size.height + kCalendarCellDayVericalMargin;
+    yearLabel.frame = CGRectMake(yearLabelX, yearLabelY, yearLabel.frame.size.width, yearLabel.frame.size.height);
+    yearLabel.textColor = [UIColor grayColor];
+    [self.contentView addSubview:yearLabel];
+
+    return dayLabel.frame;
+}
+
+- (UILabel *)labelWithText:(NSString *)text fitToHeight:(CGFloat)height {
+    UILabel *label = [[UILabel alloc] init];
+    label.text = text;
+    label.font = [UIFont boldSystemFontOfSize:[UIFont systemFontSize]];
+    CGFloat labelFontSize = label.font.pointSize / [label.text sizeWithFont:label.font].height * height;
+    label.font = [UIFont boldSystemFontOfSize:labelFontSize];
+    CGSize labelSize = [label.text sizeWithFont:label.font];
+    label.frame = CGRectMake(0, 0, labelSize.width, labelSize.height);
+    label.backgroundColor = [UIColor clearColor];
+    return label;
+}
+
+- (void)setSummary:(NSString *)summary startDate:(NSDate *)startDate endDate:(NSDate *)endDate {
+    self.summary = summary;
+    self.startDate = startDate;
+    self.endDate = endDate;
 }
 
 @end

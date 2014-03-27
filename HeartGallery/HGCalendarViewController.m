@@ -8,13 +8,16 @@
 
 #import "HGCalendarViewController.h"
 #import "AFNetworking.h"
-#import "HGCalendarEventCell.h"
 #import "HGManagedObjectContext.h"
+#import "HGCalendarEventCell.h"
+#import "HGCalendarDetailViewController.h"
 
 @interface HGCalendarViewController ()
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @end
+
+static const CGFloat kCalendarViewRowHeight = 80.0;
 
 @implementation HGCalendarViewController
 
@@ -44,9 +47,11 @@
 
 // Fetch calendar events. Show a pull-down spinner while updating.
 - (void)updateCalendar {
-    NSString *apiKey = @"AIzaSyBNDX9ZvvrzcY75UEKuUpewPOwSn9BB5gs";
-    NSString *baseUrl = @"https://www.googleapis.com/calendar/v3/calendars/uqug2vcr34i6ao749n5vfb8vks@group.calendar.google.com/events?key=";
-    NSString *calendarUrl = [baseUrl stringByAppendingString:apiKey];
+    // Format the Google Calendar URL.
+    NSString *calendarId = @"uqug2vcr34i6ao749n5vfb8vks@group.calendar.google.com";
+    NSString *apiKey = @"AIzaSyCAkVQVwMzmPHxbaLUAqvb6dYUwjKU5qnM";
+    NSString *urlFormat = @"https://www.googleapis.com/calendar/v3/calendars/%@/events?key=%@&fields=items(id,start,end,summary,status,description,location)";
+    NSString *calendarUrl = [NSString stringWithFormat:urlFormat, calendarId, apiKey];
 
     // Update calendar from online Google Calendar.
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:calendarUrl]];
@@ -61,7 +66,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSManagedObject *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [(HGCalendarEventCell *)cell setSummary:[event valueForKey:@"summary"] andDate:[event valueForKey:@"date"]];
+    [(HGCalendarEventCell *)cell setSummary:[event valueForKey:@"summary"] startDate:[event valueForKey:@"start"] endDate:[event valueForKey:@"end"]];
 }
 
 #pragma mark - UITableViewDataSource
@@ -74,6 +79,10 @@
     return [self.fetchedResultsController.sections[section] numberOfObjects];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return kCalendarViewRowHeight;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"ADCalendarViewControllerCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -82,6 +91,14 @@
     }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSManagedObject *event = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    HGCalendarDetailViewController *controller = [[HGCalendarDetailViewController alloc] initWithEvent:event];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
