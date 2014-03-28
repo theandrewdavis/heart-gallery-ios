@@ -1,5 +1,5 @@
 //
-//  HGCalendarViewController.h
+//  HGCalendarMasterViewController.h
 //  HeartGallery
 //
 //  Created by Andrew Davis on 1/29/14.
@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "HGContentTableViewController.h"
 
-@interface HGCalendarViewController : HGContentTableViewController <NSFetchedResultsControllerDelegate>
+@interface HGCalendarMasterViewController : HGContentTableViewController <NSFetchedResultsControllerDelegate>
 @end

@@ -1,12 +1,12 @@
 //
-//  HGChildViewController.m
+//  HGChildDetailViewController.m
 //  HeartGallery
 //
 //  Created by Andrew Davis on 7/30/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "HGChildViewController.h"
+#import "HGChildDetailViewController.h"
 #import "HGWebImageView.h"
 #import "HGMovieView.h"
 #import "UIScrollView+Resize.h"
@@ -18,13 +18,13 @@ static NSString *kTwitterTitle = @"Share with Twitter";
 static NSString *kFacebookTitle = @"Share with Facebook";
 static NSString *kHeartGalleryHome = @"http://www.heartgalleryalabama.com";
 
-@interface HGChildViewController()
+@interface HGChildDetailViewController()
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) HGSlideShow *slideShow;
 @property (strong, nonatomic) UIWebView *biographyView;
 @end
 
-@implementation HGChildViewController
+@implementation HGChildDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,25 +1,25 @@
 //
-//  HGCalendarViewController.m
+//  HGCalendarMasterViewController.m
 //  HeartGallery
 //
 //  Created by Andrew Davis on 1/29/14.
 //  Copyright (c) 2014 Andrew Davis. All rights reserved.
 //
 
-#import "HGCalendarViewController.h"
+#import "HGCalendarMasterViewController.h"
 #import "AFNetworking.h"
 #import "HGManagedObjectContext.h"
 #import "HGCalendarEventCell.h"
 #import "HGCalendarDetailViewController.h"
 
-@interface HGCalendarViewController ()
+@interface HGCalendarMasterViewController ()
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @end
 
 static const CGFloat kCalendarViewRowHeight = 80.0;
 
-@implementation HGCalendarViewController
+@implementation HGCalendarMasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

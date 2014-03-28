@@ -1,13 +1,13 @@
 //
-//  HGChildTableViewController.m
+//  HGChildMasterViewController.m
 //  HeartGallery
 //
 //  Created by Andrew Davis on 6/15/13.
 //  Copyright (c) 2013 Andrew Davis. All rights reserved.
 //
 
-#import "HGChildTableViewController.h"
-#import "HGChildViewController.h"
+#import "HGChildMasterViewController.h"
+#import "HGChildDetailViewController.h"
 #import "HGWebImageView.h"
 #import "HGFilterViewController.h"
 #import "HGManagedObjectContext.h"
@@ -21,7 +21,7 @@ static NSInteger kCellLabelRightMargin = 20;
 static NSInteger kSearchBarHeight = 44;
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 
-@interface HGChildTableViewController ()
+@interface HGChildMasterViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) HGFilterViewController *filterViewController;
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -30,7 +30,7 @@ static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 @property (nonatomic) BOOL clearButtonClicked;
 @end
 
-@implementation HGChildTableViewController
+@implementation HGChildMasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -230,7 +230,7 @@ static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 // On selection, show a detail view of the child.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.searchBar resignFirstResponder];
-    HGChildViewController *childViewController = [[HGChildViewController alloc] init];
+    HGChildDetailViewController *childViewController = [[HGChildDetailViewController alloc] init];
     childViewController.child = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self.navigationController pushViewController:childViewController animated:YES];
 }

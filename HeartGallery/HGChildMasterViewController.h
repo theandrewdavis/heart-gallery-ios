@@ -1,5 +1,5 @@
 //
-//  HGChildTableViewController.h
+//  HGChildMasterViewController.h
 //  HeartGallery
 //
 //  Created by Andrew Davis on 6/15/13.
@@ -10,5 +10,5 @@
 #import "HGFilterViewController.h"
 #import "HGContentTableViewController.h"
 
-@interface HGChildTableViewController : HGContentTableViewController <HGFilterViewControllerDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate>
+@interface HGChildMasterViewController : HGContentTableViewController <HGFilterViewControllerDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate>
 @end

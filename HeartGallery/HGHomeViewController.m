@@ -7,7 +7,7 @@
 //
 
 #import "HGHomeViewController.h"
-#import "HGChildTableViewController.h"
+#import "HGChildMasterViewController.h"
 #import "UIButton+ColorButton.h"
 #import "NVSlideMenuController.h"
 
@@ -75,7 +75,7 @@
 }
 
 - (void)showChildren {
-    UIViewController *viewController = [[HGChildTableViewController alloc] init];
+    UIViewController *viewController = [[HGChildMasterViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     [self.slideMenuController closeMenuBehindContentViewController:navigationController animated:YES bounce:NO completion:nil];
 }

@@ -1,5 +1,5 @@
 //
-//  HGChildViewController.h
+//  HGChildDetailViewController.h
 //  HeartGallery
 //
 //  Created by Andrew Davis on 7/30/13.
@@ -11,6 +11,6 @@
 
 @class Child;
 
-@interface HGChildViewController : UIViewController <HGSlideShowDataSource, UIWebViewDelegate, UIActionSheetDelegate>
+@interface HGChildDetailViewController : UIViewController <HGSlideShowDataSource, UIWebViewDelegate, UIActionSheetDelegate>
 @property (strong, nonatomic) NSManagedObject *child;
 @end

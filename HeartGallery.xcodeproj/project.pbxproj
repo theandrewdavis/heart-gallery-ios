@@ -28,11 +28,11 @@
 		4992325C189ED78300D9EAD9 /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923257189ED78300D9EAD9 /* Instagram.png */; };
 		4992325D189ED78300D9EAD9 /* Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923258189ED78300D9EAD9 /* Facebook.png */; };
 		4992325E189ED78300D9EAD9 /* Blogger.png in Resources */ = {isa = PBXBuildFile; fileRef = 49923259189ED78300D9EAD9 /* Blogger.png */; };
-		499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildViewController.m */; };
+		499EB5E117A7E47500C3BE34 /* HGChildDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 499EB5E017A7E47500C3BE34 /* HGChildDetailViewController.m */; };
 		49C3721A1899CC74004B078B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C372191899CC74004B078B /* logo.png */; };
 		49C3721D1899D06B004B078B /* HGContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3721C1899D06B004B078B /* HGContactViewController.m */; };
 		49C372201899D27C004B078B /* HGInvolvedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3721F1899D27C004B078B /* HGInvolvedViewController.m */; };
-		49C372231899D772004B078B /* HGCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C372221899D772004B078B /* HGCalendarViewController.m */; };
+		49C372231899D772004B078B /* HGCalendarMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C372221899D772004B078B /* HGCalendarMasterViewController.m */; };
 		49C372261899D7FC004B078B /* HGCalendarEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C372251899D7FC004B078B /* HGCalendarEventCell.m */; };
 		49C372291899D8CB004B078B /* HGManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C372281899D8CB004B078B /* HGManagedObjectContext.m */; };
 		49C3B56F180C7FE200B95470 /* menu-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49C3B56D180C7FE200B95470 /* menu-icon.png */; };
@@ -41,7 +41,7 @@
 		49C3B576180EC05E00B95470 /* HGAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3B575180EC05E00B95470 /* HGAboutViewController.m */; };
 		49C3B579180EC20300B95470 /* HGContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C3B578180EC20300B95470 /* HGContentViewController.m */; };
 		49C4FC2F178C351C00CA0DE2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C4FC2E178C351C00CA0DE2 /* CoreData.framework */; };
-		49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */; };
+		49C4FC461792D35B00CA0DE2 /* HGChildMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C4FC451792D35B00CA0DE2 /* HGChildMasterViewController.m */; };
 		49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */; };
 		49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CC15CD17BBA434001ECEF9 /* HGWebImageView.m */; };
 		49DAD02A1796BAC900893D33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49DAD0291796BAC900893D33 /* SystemConfiguration.framework */; };
@@ -93,15 +93,15 @@
 		49923257189ED78300D9EAD9 /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram.png; sourceTree = "<group>"; };
 		49923258189ED78300D9EAD9 /* Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Facebook.png; sourceTree = "<group>"; };
 		49923259189ED78300D9EAD9 /* Blogger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blogger.png; sourceTree = "<group>"; };
-		499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildViewController.h; sourceTree = "<group>"; };
-		499EB5E017A7E47500C3BE34 /* HGChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildViewController.m; sourceTree = "<group>"; };
+		499EB5DF17A7E47500C3BE34 /* HGChildDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildDetailViewController.h; sourceTree = "<group>"; };
+		499EB5E017A7E47500C3BE34 /* HGChildDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildDetailViewController.m; sourceTree = "<group>"; };
 		49C372191899CC74004B078B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		49C3721B1899D06B004B078B /* HGContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGContactViewController.h; sourceTree = "<group>"; };
 		49C3721C1899D06B004B078B /* HGContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGContactViewController.m; sourceTree = "<group>"; };
 		49C3721E1899D27C004B078B /* HGInvolvedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGInvolvedViewController.h; sourceTree = "<group>"; };
 		49C3721F1899D27C004B078B /* HGInvolvedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGInvolvedViewController.m; sourceTree = "<group>"; };
-		49C372211899D772004B078B /* HGCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCalendarViewController.h; sourceTree = "<group>"; };
-		49C372221899D772004B078B /* HGCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCalendarViewController.m; sourceTree = "<group>"; };
+		49C372211899D772004B078B /* HGCalendarMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCalendarMasterViewController.h; sourceTree = "<group>"; };
+		49C372221899D772004B078B /* HGCalendarMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCalendarMasterViewController.m; sourceTree = "<group>"; };
 		49C372241899D7FC004B078B /* HGCalendarEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCalendarEventCell.h; sourceTree = "<group>"; };
 		49C372251899D7FC004B078B /* HGCalendarEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCalendarEventCell.m; sourceTree = "<group>"; };
 		49C372271899D8CB004B078B /* HGManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGManagedObjectContext.h; sourceTree = "<group>"; };
@@ -115,8 +115,8 @@
 		49C3B577180EC20300B95470 /* HGContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGContentViewController.h; sourceTree = "<group>"; };
 		49C3B578180EC20300B95470 /* HGContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGContentViewController.m; sourceTree = "<group>"; };
 		49C4FC2E178C351C00CA0DE2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildTableViewController.h; sourceTree = "<group>"; };
-		49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildTableViewController.m; sourceTree = "<group>"; };
+		49C4FC441792D35B00CA0DE2 /* HGChildMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildMasterViewController.h; sourceTree = "<group>"; };
+		49C4FC451792D35B00CA0DE2 /* HGChildMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildMasterViewController.m; sourceTree = "<group>"; };
 		49CC15C317BA8374001ECEF9 /* UIButton+ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ColorButton.h"; sourceTree = "<group>"; };
 		49CC15C417BA8374001ECEF9 /* UIButton+ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ColorButton.m"; sourceTree = "<group>"; };
 		49CC15CC17BBA434001ECEF9 /* HGWebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGWebImageView.h; sourceTree = "<group>"; };
@@ -300,14 +300,14 @@
 		49F8F85918E44AF700412EAC /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				49C372211899D772004B078B /* HGCalendarViewController.h */,
-				49C372221899D772004B078B /* HGCalendarViewController.m */,
+				49C372211899D772004B078B /* HGCalendarMasterViewController.h */,
+				49C372221899D772004B078B /* HGCalendarMasterViewController.m */,
+				49F8F85D18E44DCC00412EAC /* HGCalendarDetailViewController.h */,
+				49F8F85E18E44DCC00412EAC /* HGCalendarDetailViewController.m */,
 				49C372241899D7FC004B078B /* HGCalendarEventCell.h */,
 				49C372251899D7FC004B078B /* HGCalendarEventCell.m */,
 				49F8F85A18E44D3E00412EAC /* HGCalendarEventDates.h */,
 				49F8F85B18E44D3E00412EAC /* HGCalendarEventDates.m */,
-				49F8F85D18E44DCC00412EAC /* HGCalendarDetailViewController.h */,
-				49F8F85E18E44DCC00412EAC /* HGCalendarDetailViewController.m */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -315,12 +315,12 @@
 		49F8F86018E5987200412EAC /* Children */ = {
 			isa = PBXGroup;
 			children = (
-				49C4FC441792D35B00CA0DE2 /* HGChildTableViewController.h */,
-				49C4FC451792D35B00CA0DE2 /* HGChildTableViewController.m */,
+				49C4FC441792D35B00CA0DE2 /* HGChildMasterViewController.h */,
+				49C4FC451792D35B00CA0DE2 /* HGChildMasterViewController.m */,
+				499EB5DF17A7E47500C3BE34 /* HGChildDetailViewController.h */,
+				499EB5E017A7E47500C3BE34 /* HGChildDetailViewController.m */,
 				496E849417C2FDF50093AE1E /* HGFilterViewController.h */,
 				496E849517C2FDF50093AE1E /* HGFilterViewController.m */,
-				499EB5DF17A7E47500C3BE34 /* HGChildViewController.h */,
-				499EB5E017A7E47500C3BE34 /* HGChildViewController.m */,
 				491752C417D60D080057BFE2 /* BirthdayPredicate.h */,
 				491752C517D60D080057BFE2 /* BirthdayPredicate.m */,
 			);
@@ -469,14 +469,14 @@
 				49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */,
 				49F8F85C18E44D3E00412EAC /* HGCalendarEventDates.m in Sources */,
 				4945A025178446D500B116F1 /* HGHomeViewController.m in Sources */,
-				49C4FC461792D35B00CA0DE2 /* HGChildTableViewController.m in Sources */,
-				499EB5E117A7E47500C3BE34 /* HGChildViewController.m in Sources */,
+				49C4FC461792D35B00CA0DE2 /* HGChildMasterViewController.m in Sources */,
+				499EB5E117A7E47500C3BE34 /* HGChildDetailViewController.m in Sources */,
 				493D51F218A84C0C004399B8 /* Model.xcdatamodeld in Sources */,
 				49C372291899D8CB004B078B /* HGManagedObjectContext.m in Sources */,
 				49F8F85F18E44DCC00412EAC /* HGCalendarDetailViewController.m in Sources */,
 				49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */,
 				49C372261899D7FC004B078B /* HGCalendarEventCell.m in Sources */,
-				49C372231899D772004B078B /* HGCalendarViewController.m in Sources */,
+				49C372231899D772004B078B /* HGCalendarMasterViewController.m in Sources */,
 				49CC15CE17BBA434001ECEF9 /* HGWebImageView.m in Sources */,
 				495064D217BFA2290085CA30 /* HGMovieView.m in Sources */,
 				495064D317BFA2290085CA30 /* HGSlideShow.m in Sources */,
