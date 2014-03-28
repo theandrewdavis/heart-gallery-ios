@@ -57,7 +57,7 @@
     self.socialButtons = @[
         @{@"image": @"Facebook.png", @"link": @"https://www.facebook.com/heartgalleryal"},
         @{@"image": @"Twitter.png", @"link": @"https://twitter.com/heartgal"},
-        @{@"image": @"Instagram.png", @"link": @"https://www.facebook.com/media/set/?set=a.10151407098701225.1073741825.173059181224&type=3"},
+        @{@"image": @"Instagram.png", @"link": @"https://instagram.com/heartgalleryal"},
         @{@"image": @"Linkedin.png", @"link": @"http://www.linkedin.com/company/heart-gallery-alabama"},
         @{@"image": @"Blogger.png", @"link": @"http://heartgalleryal.blogspot.com/"},
     ];
