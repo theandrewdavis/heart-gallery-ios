@@ -12,12 +12,8 @@
 #import "HGFilterViewController.h"
 #import "HGManagedObjectContext.h"
 #import "AFNetworking.h"
+#import "HGChildViewCell.h"
 
-static NSInteger kTableRowHeight = 90;
-static NSInteger kCellImageTag = 1;
-static NSInteger kCellLabelTag = 2;
-static NSInteger kCellLabelLeftMargin = 10;
-static NSInteger kCellLabelRightMargin = 20;
 static NSInteger kSearchBarHeight = 44;
 static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 
@@ -35,7 +31,7 @@ static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.tableView.rowHeight = kTableRowHeight;
+    self.tableView.rowHeight = kChildViewCellHeight;
 
     // Set the title of the navigation controller.
     self.navigationItem.title = @"Children";
@@ -139,7 +135,7 @@ static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [(HGChildViewCell *)[self.tableView cellForRowAtIndexPath:indexPath] configureCellWithChild:[self.fetchedResultsController objectAtIndexPath:indexPath]];
             break;
 
         case NSFetchedResultsChangeMove:
@@ -189,41 +185,17 @@ static NSString *kChildApiUrl = @"http://heartgalleryalabama.com/api.php";
 
 #pragma mark - UITableViewDelegate
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *child = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    UILabel *label = (UILabel *)[cell.contentView viewWithTag:kCellLabelTag];
-    HGWebImageView *imageView = (HGWebImageView *)[cell.contentView viewWithTag:kCellImageTag];
-    label.text = [child valueForKey:@"name"];
-    imageView.url = [NSURL URLWithString:[child valueForKey:@"thumbnail"]];
-}
-
 // Create a cell for the given section and row.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ChildTableCell";
 
     // Get a cached cell layout if it is availble. Create one if it is not yet available.
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HGChildViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-        // Create child thumbnail image.
-        HGWebImageView *imageView = [[HGWebImageView alloc] initWithFrame:CGRectMake(0, 0, tableView.rowHeight - 1, tableView.rowHeight - 1)];
-        imageView.tag = kCellImageTag;
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [imageView setClipsToBounds:YES];
-        [cell.contentView addSubview:imageView];
-
-        // Create label for child name.
-        CGFloat labelWidth = tableView.bounds.size.width - tableView.rowHeight - kCellLabelLeftMargin - kCellLabelRightMargin;
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(tableView.rowHeight + kCellLabelLeftMargin, 0, labelWidth, tableView.rowHeight)];
-        label.tag = kCellLabelTag;
-        label.font = [UIFont boldSystemFontOfSize:20];
-        label.numberOfLines = 0;
-        [cell.contentView addSubview:label];
+        cell = [[HGChildViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    [cell configureCellWithChild:[self.fetchedResultsController objectAtIndexPath:indexPath]];
 
-    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 

@@ -60,6 +60,7 @@
 		49F3E703178445BB002B66E7 /* HGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F3E702178445BB002B66E7 /* HGAppDelegate.m */; };
 		49F8F85C18E44D3E00412EAC /* HGCalendarEventDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F8F85B18E44D3E00412EAC /* HGCalendarEventDates.m */; };
 		49F8F85F18E44DCC00412EAC /* HGCalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F8F85E18E44DCC00412EAC /* HGCalendarDetailViewController.m */; };
+		49F8F86418E59AFE00412EAC /* HGChildViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F8F86318E59AFE00412EAC /* HGChildViewCell.m */; };
 		AB3F917E4B0047889E3D44FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9420B9594BB473DA47667A5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,8 @@
 		49F8F85B18E44D3E00412EAC /* HGCalendarEventDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCalendarEventDates.m; sourceTree = "<group>"; };
 		49F8F85D18E44DCC00412EAC /* HGCalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGCalendarDetailViewController.h; sourceTree = "<group>"; };
 		49F8F85E18E44DCC00412EAC /* HGCalendarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGCalendarDetailViewController.m; sourceTree = "<group>"; };
+		49F8F86218E59AFE00412EAC /* HGChildViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGChildViewCell.h; sourceTree = "<group>"; };
+		49F8F86318E59AFE00412EAC /* HGChildViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGChildViewCell.m; sourceTree = "<group>"; };
 		C9420B9594BB473DA47667A5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -319,6 +322,8 @@
 				49C4FC451792D35B00CA0DE2 /* HGChildMasterViewController.m */,
 				499EB5DF17A7E47500C3BE34 /* HGChildDetailViewController.h */,
 				499EB5E017A7E47500C3BE34 /* HGChildDetailViewController.m */,
+				49F8F86218E59AFE00412EAC /* HGChildViewCell.h */,
+				49F8F86318E59AFE00412EAC /* HGChildViewCell.m */,
 				496E849417C2FDF50093AE1E /* HGFilterViewController.h */,
 				496E849517C2FDF50093AE1E /* HGFilterViewController.m */,
 				491752C417D60D080057BFE2 /* BirthdayPredicate.h */,
@@ -472,6 +477,7 @@
 				49C4FC461792D35B00CA0DE2 /* HGChildMasterViewController.m in Sources */,
 				499EB5E117A7E47500C3BE34 /* HGChildDetailViewController.m in Sources */,
 				493D51F218A84C0C004399B8 /* Model.xcdatamodeld in Sources */,
+				49F8F86418E59AFE00412EAC /* HGChildViewCell.m in Sources */,
 				49C372291899D8CB004B078B /* HGManagedObjectContext.m in Sources */,
 				49F8F85F18E44DCC00412EAC /* HGCalendarDetailViewController.m in Sources */,
 				49CC15C517BA8374001ECEF9 /* UIButton+ColorButton.m in Sources */,
