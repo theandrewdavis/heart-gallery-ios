@@ -22,7 +22,7 @@
     [self addSubview:self.previewBackgroundView];
     
     // Add the "play" overlay to indicate that this is a movie.
-    UIImageView *playImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"play-button.png"]];
+    UIImageView *playImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PlayButton"]];
     playImageView.frame = self.bounds;
     playImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:playImageView];

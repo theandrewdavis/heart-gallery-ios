@@ -32,13 +32,13 @@
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, newFrameHeight);
 
     // Add the background image.
-    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpeg"]];
+    UIImageView *background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"HomeBackground"]];
     background.contentMode = UIViewContentModeScaleAspectFill;
     background.frame = self.view.bounds;
     [self.view addSubview:background];
 
     // Add the title logo.
-    UIImage *logoImage = [UIImage imageNamed:@"logo.png"];
+    UIImage *logoImage = [UIImage imageNamed:@"WideLogo"];
     CGFloat logoHeight = logoImage.size.height / logoImage.size.width * self.view.bounds.size.width;
     UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, logoHeight)];
     logoView.image = logoImage;
@@ -55,11 +55,11 @@
 
     // Add social buttons.
     self.socialButtons = @[
-        @{@"image": @"Facebook.png", @"link": @"https://www.facebook.com/heartgalleryal"},
-        @{@"image": @"Twitter.png", @"link": @"https://twitter.com/heartgal"},
-        @{@"image": @"Instagram.png", @"link": @"https://instagram.com/heartgalleryal"},
-        @{@"image": @"Linkedin.png", @"link": @"http://www.linkedin.com/company/heart-gallery-alabama"},
-        @{@"image": @"Blogger.png", @"link": @"http://heartgalleryal.blogspot.com/"},
+        @{@"image": @"Facebook", @"link": @"https://www.facebook.com/heartgalleryal"},
+        @{@"image": @"Twitter", @"link": @"https://twitter.com/heartgal"},
+        @{@"image": @"Instagram", @"link": @"https://instagram.com/heartgalleryal"},
+        @{@"image": @"Linkedin", @"link": @"http://www.linkedin.com/company/heart-gallery-alabama"},
+        @{@"image": @"Blogger", @"link": @"http://heartgalleryal.blogspot.com/"},
     ];
     CGFloat buttonPadding = (childrenButton.frame.size.width - self.socialButtons.count * kButtonHeight) / (self.socialButtons.count - 1);
     for (int buttonIndex = 0; buttonIndex < self.socialButtons.count; buttonIndex++) {

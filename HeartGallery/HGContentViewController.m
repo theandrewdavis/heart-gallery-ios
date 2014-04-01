@@ -15,7 +15,7 @@
     [super viewDidLoad];
     
     // Set up the navigation menu title bar.
-    UIImage *buttonImage = [UIImage imageNamed:@"menu-icon.png"];
+    UIImage *buttonImage = [UIImage imageNamed:@"MenuIcon"];
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonItemStyleBordered target:self action:@selector(toggleMenu:)];
     self.navigationItem.leftBarButtonItem = buttonItem;
 }
