@@ -58,7 +58,7 @@
         @{@"image": @"Facebook", @"link": @"https://www.facebook.com/heartgalleryal"},
         @{@"image": @"Twitter", @"link": @"https://twitter.com/heartgal"},
         @{@"image": @"Instagram", @"link": @"https://instagram.com/heartgalleryal"},
-        @{@"image": @"Linkedin", @"link": @"http://www.linkedin.com/company/heart-gallery-alabama"},
+        @{@"image": @"LinkedIn", @"link": @"http://www.linkedin.com/company/heart-gallery-alabama"},
         @{@"image": @"Blogger", @"link": @"http://heartgalleryal.blogspot.com/"},
     ];
     CGFloat buttonPadding = (childrenButton.frame.size.width - self.socialButtons.count * kButtonHeight) / (self.socialButtons.count - 1);
